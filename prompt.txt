@@ -70,11 +70,6 @@ sadece uygulama ızgarası gösterir).
 - Ancak ondan sonra `com.google.android.apps.tv.launcherx` paketini kapat.
 - TV'yi yeniden başlat, ana ekranın hâlâ FLauncher olduğunu doğrula.
 
-REKLAMLAR
-Uygulama içi reklamları TV'ye bir şey kurarak değil, ağ seviyesinde engelle:
-router veya DNS ayarından NextDNS / AdGuard DNS / Pi-hole. Not: YouTube
-reklamları DNS ile engellenmez, çünkü videoyla aynı sunucudan gelir.
-
 BİTİRİNCE BANA ŞUNLARI VER
 1. Önce/sonra RAM tablosu.
 2. Kapattığın paketlerin listesi, her birinin yanında bir cümlelik "bu neydi".
