@@ -1,40 +1,40 @@
 <!doctype html>
-<html lang="tr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Android TV'ni ADB ile temizle: reklam şeritlerini kaldır, fabrika uygulamalarını kapat, ana ekranı değiştir. Root gerekmiyor. Hazır prompt ve adım adım rehber."
+      content="Clean up your Android TV over ADB: drop the ad rows, disable factory apps, replace the home screen. No root needed. Copy-paste prompt and a step-by-step guide."
     />
     <meta name="theme-color" content="#131110" />
-    <title>Android TV'ni temizle</title>
+    <title>Clean up your Android TV</title>
 
-    <link rel="canonical" href="https://tv.cobanov.dev/" />
+    <link rel="canonical" href="https://tv.cobanov.dev/en/" />
     <link rel="alternate" hreflang="tr" href="https://tv.cobanov.dev/" />
     <link rel="alternate" hreflang="en" href="https://tv.cobanov.dev/en/" />
     <link rel="alternate" hreflang="x-default" href="https://tv.cobanov.dev/" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Android TV'ni temizle" />
+    <meta property="og:title" content="Clean up your Android TV" />
     <meta
       property="og:description"
-      content="Yapay zekâ ajanını ADB ile televizyonuna bağla, gereksiz uygulamaları kapattır, ana ekranı değiştir. Root yok, silme yok, her şey geri alınabilir."
+      content="Point an AI agent at your TV over ADB, have it disable the apps you never use and replace the home screen. No root, nothing uninstalled, everything reversible."
     />
-    <meta property="og:url" content="https://tv.cobanov.dev/" />
+    <meta property="og:url" content="https://tv.cobanov.dev/en/" />
     <meta property="og:site_name" content="cobanov" />
-    <meta property="og:locale" content="tr_TR" />
-    <meta property="og:image" content="https://tv.cobanov.dev/assets/og.png" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="https://tv.cobanov.dev/assets/og-en.png" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Android TV'ni yapay zekaya temizlet - tv.cobanov.dev" />
+    <meta property="og:image:alt" content="Clean up your Android TV - tv.cobanov.dev" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@mertcobanov" />
     <meta name="twitter:creator" content="@mertcobanov" />
-    <meta name="twitter:title" content="Android TV'ni temizle" />
-    <meta name="twitter:description" content="Yapay zeka ajanini ADB ile televizyonuna bagla, gereksiz uygulamalari kapattir, ana ekrani degistir. Root yok, silme yok, her sey geri alinabilir." />
-    <meta name="twitter:image" content="https://tv.cobanov.dev/assets/og.png" />
-    <meta name="twitter:image:alt" content="Android TV'ni yapay zekaya temizlet - tv.cobanov.dev" />
+    <meta name="twitter:title" content="Clean up your Android TV" />
+    <meta name="twitter:description" content="Point an AI agent at your TV over ADB, have it disable the apps you never use and replace the home screen. No root, nothing uninstalled, everything reversible." />
+    <meta name="twitter:image" content="https://tv.cobanov.dev/assets/og-en.png" />
+    <meta name="twitter:image:alt" content="Clean up your Android TV - tv.cobanov.dev" />
 
     <link
       rel="icon"
@@ -47,10 +47,10 @@
       href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/site.css" />
+    <link rel="stylesheet" href="../assets/site.css" />
   </head>
   <body>
-    <a class="skip-link" href="#main">İçeriğe geç</a>
+    <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="masthead">
       <div class="shell masthead-inner">
@@ -58,9 +58,9 @@
           <span class="wordmark-mark" aria-hidden="true"></span>
           <span>cobanov</span>
         </a>
-        <nav aria-label="Bağlantılar">
+        <nav aria-label="Links">
           <a class="nav-text" href="#prompt">Prompt</a>
-          <a class="nav-text" href="/en/" hreflang="en">English</a>
+          <a class="nav-text" href="/" hreflang="tr">Türkçe</a>
           <a class="nav-icon" href="https://x.com/mertcobanov" rel="noreferrer" aria-label="X">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.9 2.5h3.3l-7.2 8.2 8.5 11.3h-6.7l-5.2-6.9-6 6.9H2.3l7.7-8.8L1.9 2.5h6.9l4.7 6.3 5.4-6.3Zm-1.2 17.6h1.8L7.4 4.3H5.5l12.2 15.8Z"/></svg>
           </a>
@@ -70,55 +70,57 @@
 
     <main id="main">
       <div class="shell hero">
-        <h1>Android TV'ni temizle</h1>
+        <h1>Clean up your Android TV</h1>
         <p class="hero-lede">
-          Televizyonun kasıyorsa, kullanmadığın fabrika uygulamalarını
-          kapatabilirsin. Aşağıda dört adımlık hazırlık ve yapay zekâ ajanına
-          vereceğin prompt var. Hiçbir şey silinmez, her adım geri alınabilir.
-          Windows, Mac ya da Linux fark etmez.
+          If your TV has gotten sluggish, you can disable the factory apps you
+          never use. Below is a four-step setup and the prompt you hand to an AI
+          agent. Nothing gets uninstalled, every step is reversible. Windows,
+          Mac and Linux all work.
         </p>
       </div>
 
-      <section id="adimlar">
+      <section id="steps">
         <div class="shell">
-          <div class="section-head"><h2>Hazırlık</h2></div>
+          <div class="section-head"><h2>Setup</h2></div>
 
           <ol class="steps">
             <li class="step">
-              <h3>Geliştirici seçeneklerini aç</h3>
+              <h3>Turn on developer options</h3>
               <p>
-                Televizyonda <strong>Ayarlar → Sistem → Hakkında → Derleme</strong>
-                satırının üstüne kumandayla yedi kez bas.
+                On the TV, go to <strong>Settings → System → About</strong> and
+                press the remote's OK button on the <strong>Build</strong> row
+                seven times.
               </p>
             </li>
 
             <li class="step">
-              <h3>Hata ayıklamayı aç</h3>
+              <h3>Turn on debugging</h3>
               <p>
-                <strong>Ayarlar → Sistem → Geliştirici seçenekleri → USB hata
-                ayıklama.</strong> Ayrı bir "Kablosuz hata ayıklama" seçeneği
-                varsa onu da aç.
+                <strong>Settings → System → Developer options → USB debugging.</strong>
+                If there is a separate "Wireless debugging" toggle, turn that on
+                too.
               </p>
             </li>
 
             <li class="step">
-              <h3>Televizyonun IP adresini öğren</h3>
+              <h3>Find the TV's IP address</h3>
               <p>
-                <strong>Ayarlar → Ağ ve internet → Durum.</strong>
-                <code>192.168.</code> ile başlayan sayıyı not et. Bilgisayarın
-                da televizyonla <strong>aynı ağda</strong> olmalı: ikisi de
-                aynı Wi-Fi ya da aynı modem.
+                <strong>Settings → Network &amp; internet → Status.</strong>
+                Note the number starting with <code>192.168.</code> Your
+                computer has to be on the <strong>same network</strong> as the
+                TV: same Wi-Fi, or same router.
               </p>
             </li>
 
             <li class="step">
-              <h3>Claude Code ya da Codex'i aç, prompt'u yapıştır</h3>
+              <h3>Open Claude Code or Codex and paste the prompt</h3>
               <p>
-                Aşağıdaki metni kopyala, ilk iki satırdaki
-                <code>BURAYA YAZ</code> yerlerine televizyonunun modelini ve
-                IP adresini yaz, ajana ver. Gerisini o yapıyor: gereken aracı
-                kuruyor, televizyona bağlanıyor, temizliyor. Sana ara ara
-                "şunu onayla, şunu test et" diyecek.
+                Copy the text below, replace the two
+                <code>FILL THIS IN</code> placeholders with your TV's model and
+                IP address, and hand it to the agent. It takes care of the rest:
+                installing the tooling, connecting to the TV, doing the cleanup.
+                It will occasionally stop and ask you to approve or test
+                something.
               </p>
             </li>
           </ol>
@@ -131,67 +133,65 @@
           <div class="code code-prompt">
             <div class="code-bar">
               <span class="code-label">prompt.txt</span>
-              <button class="copy" type="button" data-copy>Kopyala</button>
+              <button class="copy" type="button" data-copy>Copy</button>
             </div>
             <pre><code>__PROMPT__</code></pre>
           </div>
         </div>
       </section>
 
-      <section id="dikkat">
+      <section id="warnings">
         <div class="shell">
-          <div class="section-head"><h2>Üç uyarı</h2></div>
+          <div class="section-head"><h2>Three warnings</h2></div>
 
           <div class="note note-danger">
             <p>
-              <strong>Adından ne olduğunu anlamadığın paketi kapatma</strong>
-              Bende <code>com.tcl.suspension</code> kapanınca kumandanın
-              "Girişler" tuşu öldü, HDMI'ya geçemedim. Meğer kaynak menüsüymüş.
+              <strong>Never disable a package you can't identify by name</strong>
+              On my TV, disabling <code>com.tcl.suspension</code> killed the
+              "Inputs" button on the remote and I could no longer switch to
+              HDMI. It turned out to be the source-select menu.
             </p>
           </div>
 
           <div class="note note-danger">
             <p>
-              <strong>Ana ekranı, yenisini kurmadan kapatma</strong>
-              Önce FLauncher'ı kur ve varsayılan yap; ancak ondan sonra eskisini
-              kapat. Yoksa siyah ekran.
+              <strong>Don't disable the home screen before installing a new one</strong>
+              Install FLauncher and set it as the default first. Only then
+              disable the old launcher. Otherwise you get a black screen.
             </p>
           </div>
 
           <div class="note note-danger">
             <p>
-              <strong>Root yapma</strong>
-              Televizyon fabrika ayarına döner ve Widevine L3'e düşerse Netflix
-              SD'ye iner. Kazancı yok: kalıcı silme işini
-              <code>disable-user</code> zaten yapıyor.
+              <strong>Don't root it</strong>
+              Unlocking the bootloader factory-resets the TV, and if Widevine
+              drops to L3 Netflix falls back to SD. There is nothing to gain:
+              <code>disable-user</code> already does what root would.
             </p>
           </div>
         </div>
       </section>
 
-      <section id="geri-alma">
+      <section id="undo">
         <div class="shell">
-          <div class="section-head"><h2>Geri alma</h2></div>
+          <div class="section-head"><h2>Undoing it</h2></div>
           <div class="prose">
             <p>
-              Hiçbir şey silinmediği için her adım geri alınabilir. Ajan
-              kapattığı paketlerin listesini tuttuğu için ona
-              <strong>"kapattığın her şeyi geri aç"</strong> demen yeterli.
+              Nothing is uninstalled, so every step can be reversed. The agent
+              keeps a list of what it disabled, so telling it
+              <strong>"re-enable everything you disabled"</strong> is enough.
             </p>
-            <p>
-              Sadece tek bir uygulamayı geri açmak istersen:
-            </p>
+            <p>To bring back a single app yourself:</p>
           </div>
           <div class="code" style="margin-top: 14px; max-width: 66ch">
             <div class="code-bar">
               <span class="code-label">terminal</span>
-              <button class="copy" type="button" data-copy>Kopyala</button>
+              <button class="copy" type="button" data-copy>Copy</button>
             </div>
             <pre><code>adb shell pm enable com.tcl.suspension</code></pre>
           </div>
         </div>
       </section>
-
     </main>
 
     <footer>
@@ -202,13 +202,13 @@
         </span>
         <span>
           <a href="prompt.txt">prompt.txt</a> ·
-          <a href="https://github.com/cobanov/tv" rel="noreferrer">kaynak</a>
+          <a href="https://github.com/cobanov/tv" rel="noreferrer">source</a>
         </span>
       </div>
     </footer>
 
     <script>
-      // Kopyala düğmeleri: aynı kutudaki <pre> içeriğini panoya alır.
+      // Copy buttons: grab the <pre> inside the same box and confirm for 2s.
       document.querySelectorAll("[data-copy]").forEach(function (btn) {
         btn.addEventListener("click", async function () {
           var text = btn.closest(".code").querySelector("pre").innerText;
@@ -223,7 +223,7 @@
             ta.remove();
           }
           var label = btn.textContent;
-          btn.textContent = "Kopyalandı";
+          btn.textContent = "Copied";
           btn.setAttribute("data-copied", "");
           setTimeout(function () {
             btn.textContent = label;
