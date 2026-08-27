@@ -286,12 +286,20 @@ body::after {
 .promo-bar-close:hover { background: var(--surface-2); color: var(--ink); }
 .promo-bar-close svg { width: 16px; height: 16px; }
 
-/* Dar ekran: cümle kendi satırını alır, düğmeler altına geçer. Yoksa her
-   öğe iki kelimelik bir sütun için kavga ediyor. */
+.promo-tiny { display: none; }
+
+/* Telefon ne cümleyi kaldırıyor ne üçüncü bağlantıyı: şeridin bütün amacı iki
+   adres ve bir çıkış kapısı. Gerisi onu üç satırlık bir kalasa çevirip sayfayı
+   yana itiyordu. Kalan tek satır, iki kısa adlı çip. Taşmayı asıl durduran
+   min-width: bir flex öğesi, temeli ne kadar küçük olursa olsun, bu olmadan
+   kendi içeriğinin altına inmiyor. */
 @media (max-width: 639px) {
-  .promo-bar-text { flex-basis: 100%; order: 2; }
-  .promo-bar-actions { order: 3; flex-basis: 100%; margin-left: 0; }
-  .promo-bar-actions .btn { flex: 1 1 auto; }
+  .promo-bar-text,
+  .promo-bar-actions .btn-more,
+  .promo-full { display: none; }
+  .promo-tiny { display: inline; }
+  .promo-bar-actions { flex: 1 1 auto; min-width: 0; flex-wrap: nowrap; margin-left: 0; }
+  .promo-bar-actions .btn { flex: 1 1 0; min-width: 0; }
 }
 
 /* --- ölçüm şeridi -------------------------------------------------------- */
@@ -425,13 +433,11 @@ section { padding-block: var(--section-y); border-top: 1px solid var(--line); }
   padding: 16px 18px;
   background: var(--surface);
   border: 1px solid var(--line);
-  border-left: 2px solid var(--accent);
   border-radius: var(--radius-sm);
   margin: 0 0 16px;
   max-width: var(--prose);
 }
 .note:last-child { margin-bottom: 0; }
-.note-danger { border-left-color: var(--warn); }
 .note p { margin: 0; font-size: var(--step--1); color: var(--muted); }
 .note p strong { display: block; color: var(--ink); font-size: var(--step-0); margin-bottom: 4px; }
 
