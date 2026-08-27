@@ -208,6 +208,92 @@ body::after {
 }
 .btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: var(--on-accent); }
 
+/* --- çapraz tanıtım şeridi ----------------------------------------------- */
+
+/* Masthead'in üstünde duran bant. Sabit değil: bir kez açılır, sonra sayfayla
+   birlikte yukarı kayar. Kapatılınca 30 gün geri gelmez. */
+.promo-bar {
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+/* Yüksekliği animasyonlamak, sabit bir bandı sayfanın üzerine kaydırmaktan
+   iyi: hiçbir şey örtülmüyor, masthead yalnızca aşağı itiliyor. */
+@media (prefers-reduced-motion: no-preference) {
+  .promo-bar {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition: grid-template-rows 0.5s var(--ease), opacity 0.4s var(--ease);
+  }
+
+  .promo-bar.is-open {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+
+  /* Bir grid satırı ancak içeriği küçülebiliyorsa kapanır. */
+  .promo-bar > * { min-height: 0; }
+}
+
+.promo-bar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+  padding-block: 12px;
+}
+
+/* Her düğme karşı sitenin kendi işaretini, kendi renginde taşıyor; şerit
+   böylece tek bir bağlantının iki kez söylenmesi gibi değil, iki ayrı yer
+   gibi okunuyor. */
+.promo-bar-icon { width: 16px; height: 16px; flex: 0 0 auto; }
+
+.promo-bar-text {
+  flex: 1 1 22ch;
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--step--1);
+  line-height: 1.45;
+}
+
+.promo-bar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-left: auto;
+}
+
+/* Tam boy düğme, düğmenin ekranın amacı olduğu yerde doğru. Başlığın
+   üstündeki bir bantta kalın duruyor, o yüzden şerit kısasını kullanıyor. */
+.btn-sm { min-height: 34px; padding: 0 14px; }
+
+.promo-bar-close {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  border: 0;
+  border-radius: var(--pill);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.25s var(--ease), background 0.25s var(--ease);
+}
+
+.promo-bar-close:hover { background: var(--surface-2); color: var(--ink); }
+.promo-bar-close svg { width: 16px; height: 16px; }
+
+/* Dar ekran: cümle kendi satırını alır, düğmeler altına geçer. Yoksa her
+   öğe iki kelimelik bir sütun için kavga ediyor. */
+@media (max-width: 639px) {
+  .promo-bar-text { flex-basis: 100%; order: 2; }
+  .promo-bar-actions { order: 3; flex-basis: 100%; margin-left: 0; }
+  .promo-bar-actions .btn { flex: 1 1 auto; }
+}
+
 /* --- ölçüm şeridi -------------------------------------------------------- */
 
 .stats {
