@@ -69,7 +69,7 @@
         <h1>Android TV'ni temizle</h1>
         <p class="hero-lede">
           Televizyonun kasıyorsa, kullanmadığın fabrika uygulamalarını ADB ile
-          kapatabilirsin. Aşağıda beş adımlık hazırlık ve yapay zekâ ajanına
+          kapatabilirsin. Aşağıda üç adımlık hazırlık ve yapay zekâ ajanına
           vereceğin prompt var. Hiçbir şey silinmez, her adım geri alınabilir.
         </p>
       </div>
@@ -97,36 +97,13 @@
             </li>
 
             <li class="step">
-              <h3>adb kur</h3>
-              <div class="code">
-                <div class="code-bar">
-                  <span class="code-label">macOS · Windows/Linux için platform-tools</span>
-                  <button class="copy" type="button" data-copy>Kopyala</button>
-                </div>
-                <pre><code>brew install android-platform-tools</code></pre>
-              </div>
-            </li>
-
-            <li class="step">
-              <h3>Bağlan</h3>
-              <p>Televizyonda çıkan izin kutusunu onayla.</p>
-              <div class="code">
-                <div class="code-bar">
-                  <span class="code-label">terminal</span>
-                  <button class="copy" type="button" data-copy>Kopyala</button>
-                </div>
-                <pre><code>adb connect 192.168.1.42:5555
-adb devices</code></pre>
-              </div>
-              <p>IP'nin yanında <code>device</code> yazıyorsa hazırsın.</p>
-            </li>
-
-            <li class="step">
               <h3>Prompt'u yapıştır</h3>
               <p>
                 Aşağıdaki metni kopyala, ilk iki satırdaki
-                <code>BURAYA YAZ</code> yerlerini doldur, ajana ver. Gerisini o
-                halleder; sana ara ara "şunu test et" diyecek.
+                <code>BURAYA YAZ</code> yerlerini doldur, Claude Code veya
+                Codex'e ver. <code>adb</code> kurulumunu, bağlantıyı ve
+                temizliği o yapar; sana ara ara "şunu onayla, şunu test et"
+                diyecek.
               </p>
             </li>
           </ol>

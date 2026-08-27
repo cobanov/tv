@@ -47,8 +47,12 @@ KURALLAR — bunlara harfiyen uy
 7. Bir şey bozulursa önce son kapattığın partiyi geri aç, sonra tek tek dene.
 
 SIRAYLA YAP
-a) `adb connect <IP>:5555` ile bağlan. Android 11 ve üstünde TV "Kablosuz
-   hata ayıklama" ekranında eşleştirme kodu istiyorsa önce `adb pair` kullan.
+a) Bilgisayarımda `adb` kurulu mu bak, değilse kur (macOS: `brew install
+   android-platform-tools`, Linux: `apt install adb`, Windows: Google'ın
+   platform-tools paketi). Sonra `adb connect <IP>:5555` ile bağlan.
+   Televizyonda "Bu bilgisayara izin verilsin mi?" kutusu çıkacak — bana
+   söyle, onaylayayım. Android 11 ve üstünde televizyon "Kablosuz hata
+   ayıklama" ekranında eşleştirme kodu istiyorsa önce `adb pair` kullan.
 b) Ölçümleri al, paket listesini çıkar.
 c) Paketleri üç gruba ayır ve bana tabloyla göster: (1) kesin çöp — kullanılmayan
    mağaza uygulamaları, demo/tanıtım, ekran koruyucu, sesli asistan, kurulum
