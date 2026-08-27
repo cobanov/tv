@@ -1,0 +1,81 @@
+Android TV'mi ADB üzerinden temizlemeni istiyorum. Amaç: reklam ve öneri
+şeritlerinden kurtulmak, kullanmadığım fabrika uygulamalarını kapatıp
+televizyonu hızlandırmak. Komutları sen çalıştır, ne yaptığını bana sade bir
+dille anlat.
+
+BENİM TV'M
+- Marka / model: BURAYA YAZ            (örnek: TCL Smart TV Pro)
+- TV'nin IP adresi: BURAYA YAZ         (TV > Ayarlar > Ağ ve internet > Durum)
+- TV'de "Geliştirici seçenekleri" ve "USB hata ayıklama / Kablosuz hata
+  ayıklama" açık. Bilgisayarım ve TV aynı Wi-Fi ağında.
+
+KURALLAR — bunlara harfiyen uy
+1. HİÇBİR PAKETİ SİLME. Yalnızca `pm disable-user --user 0` kullan. Böylece
+   her şey `pm enable <paket>` ile geri gelir. `pm uninstall` yasak.
+2. Root, bootloader açma, custom ROM teklif etme ve deneme. Bunlar TV'yi
+   fabrika ayarına döndürür ve Widevine sertifikası L1'den L3'e düşerse
+   Netflix SD çözünürlüğe iner. Kazancı yok.
+3. ÖNCE ÖLÇ. Başlamadan `dumpsys meminfo`, `pm list packages -s`,
+   `pm list packages -d` çıktılarını al ve bir dosyaya kaydet. Bitince aynı
+   ölçümü tekrarla, önce/sonra tablosu çıkar.
+4. PARTİLER HALİNDE İLERLE. Her seferinde en fazla 10 paket kapat, sonra DUR
+   ve bana şunları test ettir: kumandanın "Girişler / Kaynak" tuşu çalışıyor
+   mu, HDMI'ya geçebiliyor muyum, Netflix ve YouTube açılıyor mu, ses ve
+   klavye çalışıyor mu. Ben "tamam" demeden sonraki partiye geçme.
+5. AŞAĞIDAKİ LİSTEYİ ASLA KAPATMA (bunlar TV'yi kullanılamaz hale getirir):
+      com.tcl.suspension          -> kumandadaki Girişler/Kaynak menüsü.
+                                     Adı çöp gibi durur ama kapatırsan
+                                     HDMI'ya geçemezsin. Markanın kendi
+                                     "quick panel" paketi neyse o da aynı.
+      com.tcl.tv, com.tcl.tvinput -> HDMI / anten giriş servisleri
+      com.google.android.tv.remote.service,
+      com.tcl.tcl_bt_rcu_service,
+      com.tcl.autopair            -> kumanda
+      com.google.android.gms,
+      com.google.android.gsf,
+      com.android.vending         -> Play Servisleri ve Play Store
+      com.android.location.fused  -> kapatılırsa TV açılış döngüsüne girer
+      *.inputmethod.*             -> klavye
+      com.google.android.apps.tv.launcherx
+                                  -> ana ekran. Yerine başka bir launcher
+                                     KURULMADAN kapatılırsa siyah ekran.
+   Marka farklıysa bu listenin karşılıklarını bul. Emin olamadığın bir paketi
+   kapatmadan önce bana sor.
+6. KAYIT TUT. Kapattığın her paketi `~/tv-debloat/kapatilanlar.txt` dosyasına
+   yaz. `~/tv-debloat/DEBLOAT-LOG.md` içinde ne yaptığını, neden yaptığını ve
+   tek tek geri alma komutlarını tut.
+7. Bir şey bozulursa önce son kapattığın partiyi geri aç, sonra tek tek dene.
+
+SIRAYLA YAP
+a) `adb connect <IP>:5555` ile bağlan. Android 11 ve üstünde TV "Kablosuz
+   hata ayıklama" ekranında eşleştirme kodu istiyorsa önce `adb pair` kullan.
+b) Ölçümleri al, paket listesini çıkar.
+c) Paketleri üç gruba ayır ve bana tabloyla göster: (1) kesin çöp — kullanılmayan
+   mağaza uygulamaları, demo/tanıtım, ekran koruyucu, sesli asistan, kurulum
+   sihirbazı, telemetri; (2) bana bağlı — kullanıp kullanmadığımı sor;
+   (3) dokunulmaz. Onayımı alıp 1. gruptan başla.
+d) Animasyon hızlarını yarıya indir:
+      settings put global window_animation_scale 0.5
+      settings put global transition_animation_scale 0.5
+      settings put global animator_duration_scale 0.5
+e) `pm trim-caches` ile önbelleği temizle.
+f) TV'yi yeniden başlat, ölçümü tekrarla.
+
+ANA EKRANI DEĞİŞTİR
+Google TV'nin kendi ana ekranı reklam ve "önerilen içerik" şeritleriyle dolu.
+Onun yerine FLauncher kullanacağım (Play Store'da var, ücretsiz, açık kaynak,
+sadece uygulama ızgarası gösterir).
+- Önce FLauncher'ı kurmamı iste, kurulduğunu doğrula.
+- FLauncher'ı bir kez açtırıp ana ekran olarak seçtir.
+- Ancak ondan sonra `com.google.android.apps.tv.launcherx` paketini kapat.
+- TV'yi yeniden başlat, ana ekranın hâlâ FLauncher olduğunu doğrula.
+
+REKLAMLAR
+Uygulama içi reklamları TV'ye bir şey kurarak değil, ağ seviyesinde engelle:
+router veya DNS ayarından NextDNS / AdGuard DNS / Pi-hole. Not: YouTube
+reklamları DNS ile engellenmez, çünkü videoyla aynı sunucudan gelir.
+
+BİTİRİNCE BANA ŞUNLARI VER
+1. Önce/sonra RAM tablosu.
+2. Kapattığın paketlerin listesi, her birinin yanında bir cümlelik "bu neydi".
+3. Her şeyi geri almak için tek satırlık komut.

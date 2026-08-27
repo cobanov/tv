@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Android TV'ni ADB ile temizle: reklam şeritlerini kaldır, fabrika uygulamalarını kapat, ana ekranı değiştir. Root gerekmiyor. Hazır prompt ve adım adım rehber."
+    />
+    <meta name="theme-color" content="#131110" />
+    <title>Android TV'ni temizle — cobanov</title>
+
+    <link rel="canonical" href="https://tv.cobanov.dev/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Android TV'ni temizle" />
+    <meta
+      property="og:description"
+      content="Yapay zekâ ajanını ADB ile televizyonuna bağla, gereksiz uygulamaları kapattır, ana ekranı değiştir. Root yok, silme yok, her şey geri alınabilir."
+    />
+    <meta property="og:url" content="https://tv.cobanov.dev/" />
+    <meta property="og:site_name" content="cobanov" />
+    <meta property="og:locale" content="tr_TR" />
+    <meta property="og:image" content="https://tv.cobanov.dev/assets/og.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Android TV'ni yapay zekaya temizlet - tv.cobanov.dev" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@mertcobanov" />
+    <meta name="twitter:creator" content="@mertcobanov" />
+    <meta name="twitter:title" content="Android TV'ni temizle" />
+    <meta name="twitter:description" content="Yapay zeka ajanini ADB ile televizyonuna bagla, gereksiz uygulamalari kapattir, ana ekrani degistir. Root yok, silme yok, her sey geri alinabilir." />
+    <meta name="twitter:image" content="https://tv.cobanov.dev/assets/og.png" />
+    <meta name="twitter:image:alt" content="Android TV'ni yapay zekaya temizlet - tv.cobanov.dev" />
+
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23131110'/%3E%3Crect x='7' y='9' width='18' height='13' rx='2.5' fill='none' stroke='%23f0a63c' stroke-width='2'/%3E%3Crect x='13' y='24' width='6' height='2' rx='1' fill='%23f0a63c'/%3E%3C/svg%3E"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/site.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">İçeriğe geç</a>
+
+    <header class="masthead">
+      <div class="shell masthead-inner">
+        <a class="wordmark" href="https://cobanov.dev">
+          <span class="wordmark-mark" aria-hidden="true"></span>
+          <span>cobanov</span>
+        </a>
+        <nav aria-label="Bağlantılar">
+          <a class="nav-text" href="#prompt">Prompt</a>
+          <a class="nav-text" href="#adimlar">Adımlar</a>
+          <a
+            class="nav-icon"
+            href="https://x.com/mertcobanov"
+            rel="noreferrer"
+            aria-label="X (Twitter)"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M18.9 2.5h3.3l-7.2 8.2 8.5 11.3h-6.7l-5.2-6.9-6 6.9H2.3l7.7-8.8L1.9 2.5h6.9l4.7 6.3 5.4-6.3Zm-1.2 17.6h1.8L7.4 4.3H5.5l12.2 15.8Z"
+              />
+            </svg>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ================================================================= -->
+      <div class="shell hero">
+        <span class="eyebrow"><b>Root yok</b> · silme yok · her şey geri alınabilir</span>
+        <h1>Android TV'ni yapay zekâya temizlet</h1>
+        <p class="hero-lede">
+          Dört yıllık televizyonum kasıyordu. Bir sabah geliştirici seçeneklerini
+          açtım, Claude'u ADB ile televizyona bağladım ve "bunu temizle" dedim.
+          Kullanmadığım altmış fabrika uygulamasını kapattı, ana ekranı
+          değiştirdi, animasyonları hızlandırdı. İlk aldığım günkünden akıcı
+          çalışıyor. Aşağıda aynısını kendi televizyonunda yapman için gereken
+          her şey var.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#prompt">Prompt'u kopyala</a>
+          <a class="btn" href="#adimlar">Önce hazırlığa bak</a>
+        </div>
+
+        <dl class="stats">
+          <div class="stat">
+            <dt>Kapatılan uygulama</dt>
+            <dd>60</dd>
+          </div>
+          <div class="stat">
+            <dt>Boş RAM</dt>
+            <dd>149 <small>→</small> 220 <small>MB</small></dd>
+          </div>
+          <div class="stat">
+            <dt>Süre</dt>
+            <dd>~40 <small>dakika</small></dd>
+          </div>
+          <div class="stat">
+            <dt>Maliyet</dt>
+            <dd>0 <small>TL</small></dd>
+          </div>
+        </dl>
+      </div>
+
+      <!-- ================================================================= -->
+      <section>
+        <div class="shell">
+          <div class="section-head">
+            <h2>Burada tam olarak ne oluyor?</h2>
+          </div>
+          <div class="prose">
+            <p>
+              Televizyonun aslında bir Android telefon. Üreticiler bu telefona,
+              senin hiç açmayacağın onlarca uygulama kuruyor: yurt dışı yayın
+              servisleri, sesli asistan, ekran koruyucu, oyun barı, kurulum
+              sihirbazı, telemetri toplayan servisler. Bunların çoğu sen
+              açmasan bile arka planda çalışıp <strong>RAM yiyor</strong>.
+              Televizyonda RAM az olduğu için (benimkinde 2 GB) sistem sürekli
+              uygulama öldürüp yeniden başlatıyor — kasma dediğin şey bu.
+            </p>
+            <p>
+              <strong>ADB</strong> (Android Debug Bridge), bilgisayarından
+              Android cihazına komut göndermeni sağlayan resmî Google aracı.
+              Aynı Wi-Fi ağındaysan kablo bile gerekmiyor. ADB ile bir
+              uygulamayı <strong>kapatabilirsin</strong>: uygulama diskte
+              kalır, ama açılışta başlamaz, RAM tüketmez, listelerde görünmez.
+            </p>
+            <p>
+              Buradaki bütün iş bu tek komutla yapılıyor:
+              <code>pm disable-user</code>. Hiçbir şey silinmiyor. Yarın fikrin
+              değişirse <code>pm enable</code> yazıp hepsini geri açarsın.
+              Fabrika ayarlarına dönmek de her zaman ihtimal dahilinde.
+            </p>
+            <p>
+              Yapmadığımız şey: <strong>root</strong>. Root, televizyonun
+              kilidini kırıp sistem dosyalarını değiştirmek demek. Gerekmiyor,
+              çünkü kazandıracağı şeyi (uygulamaları kalıcı silmek) yukarıdaki
+              komut zaten yapıyor. Bedeli ise ağır:
+              <a href="#dikkat">aşağıda anlattım</a>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <section id="adimlar">
+        <div class="shell">
+          <div class="section-head">
+            <h2>Hazırlık</h2>
+            <p>
+              Beş adım, on beş dakika. Bunlar bitince ajanı çalıştıracağız.
+            </p>
+          </div>
+
+          <ol class="steps">
+            <li class="step">
+              <h3>Televizyonda geliştirici seçeneklerini aç</h3>
+              <p>
+                Televizyonda <strong>Ayarlar → Sistem → Hakkında</strong>
+                yoluna git. Listede <strong>Derleme / Build</strong> satırını
+                bul ve üstüne kumandanın OK tuşuyla <strong>yedi kez</strong>
+                bas. Ekranda "Artık geliştiricisiniz" yazacak. Marka
+                arayüzlerinde bu satır bazen "Sürüm" ya da "Yapı numarası"
+                diye geçiyor.
+              </p>
+            </li>
+
+            <li class="step">
+              <h3>Hata ayıklamayı aç</h3>
+              <p>
+                <strong>Ayarlar → Sistem → Geliştirici seçenekleri</strong>
+                içinde <strong>USB hata ayıklama</strong>'yı aç. Ayrı bir
+                <strong>Kablosuz hata ayıklama</strong> seçeneği varsa onu da
+                aç. Bazı markalarda bu ayar "Ağ hata ayıklama" adıyla
+                Geliştirici menüsünün en altında duruyor.
+              </p>
+            </li>
+
+            <li class="step">
+              <h3>Televizyonun IP adresini not et</h3>
+              <p>
+                <strong>Ayarlar → Ağ ve internet → (bağlı ağın adı) → Durum</strong>.
+                <code>192.168.</code> ile başlayan sayıyı bir kenara yaz.
+                Televizyonu kablolu bağlamak, kablosuza göre daha stabil
+                oluyor ama şart değil. Bilgisayarınla televizyon
+                <strong>aynı ağda</strong> olmalı.
+              </p>
+            </li>
+
+            <li class="step">
+              <h3>Bilgisayarına adb kur</h3>
+              <p>Mac'te Homebrew ile:</p>
+              <div class="code">
+                <div class="code-bar">
+                  <span class="code-label">macOS</span>
+                  <button class="copy" type="button" data-copy>Kopyala</button>
+                </div>
+                <pre><code>brew install android-platform-tools</code></pre>
+              </div>
+              <p>
+                Windows'ta
+                <a href="https://developer.android.com/tools/releases/platform-tools" rel="noreferrer">Google'ın platform-tools paketini</a>
+                indirip klasörü aç, komutları o klasörün içinde çalıştır.
+                Linux'ta <code>sudo apt install adb</code>.
+              </p>
+            </li>
+
+            <li class="step">
+              <h3>Bağlan</h3>
+              <p>
+                Terminali aç, kendi IP adresinle şunu yaz. Televizyonda
+                "Bu bilgisayara izin verilsin mi?" diye bir kutu çıkacak,
+                <strong>"Bu bilgisayardan her zaman izin ver"</strong> deyip
+                onayla.
+              </p>
+              <div class="code">
+                <div class="code-bar">
+                  <span class="code-label">terminal</span>
+                  <button class="copy" type="button" data-copy>Kopyala</button>
+                </div>
+                <pre><code>adb connect 192.168.1.42:5555
+adb devices</code></pre>
+              </div>
+              <p>
+                İkinci komutun çıktısında IP'nin yanında
+                <code>device</code> yazıyorsa bağlandın. <code>offline</code>
+                yazıyorsa televizyonu bir kapatıp aç.
+              </p>
+              <div class="note">
+                <p>
+                  <strong>Eşleştirme kodu isterse</strong>
+                  Android 11 ve üstü bazı televizyonlarda önce eşleşmek
+                  gerekiyor. Televizyonda "Kablosuz hata ayıklama →
+                  Cihazı eşleştirme koduyla eşleştir" ekranını aç, çıkan
+                  altı haneli kodu ve <em>farklı</em> port numarasını
+                  <code>adb pair 192.168.1.42:41234</code> komutunda kullan.
+                  Eşleşme bittikten sonra yukarıdaki <code>adb connect</code>
+                  komutuna dön.
+                </p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <section id="prompt">
+        <div class="shell">
+          <div class="section-head">
+            <h2>Prompt</h2>
+            <p>
+              Kopyala, <strong>Claude Code</strong> veya <strong>Codex</strong>
+              terminaline yapıştır. İlk iki satırdaki
+              <code>BURAYA YAZ</code> yerlerini kendi televizyonunun modeli ve
+              IP adresiyle doldurmayı unutma. Gerisini ajan halleder — sana
+              sadece ara ara "şunu test et" diyecek.
+            </p>
+          </div>
+
+          <div class="code code-prompt">
+            <div class="code-bar">
+              <span class="code-label">prompt.txt</span>
+              <button class="copy" type="button" data-copy>Kopyala</button>
+            </div>
+            <pre><code>__PROMPT__</code></pre>
+          </div>
+
+          <div class="note">
+            <p>
+              <strong>Neden bu kadar uzun?</strong>
+              Çünkü kritik olan kısım ne yapacağı değil, ne
+              <em>yapmayacağı</em>. Kuralları koymazsan ajan paketleri
+              silmeye, root denemeye ya da elli paketi tek seferde kapatıp
+              hangisinin neyi bozduğunu anlaşılmaz hale getirmeye meyilli.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <section id="dikkat">
+        <div class="shell">
+          <div class="section-head">
+            <h2>Tuzaklar</h2>
+            <p>Benim çarptığım duvarlar. Sen çarpma.</p>
+          </div>
+
+          <div class="note note-danger">
+            <p>
+              <strong>com.tcl.suspension — kumandanın "Girişler" tuşu</strong>
+              Adı "askıya alma" gibi durduğu için kapattım ve kumandadaki
+              Girişler tuşu öldü; Apple TV'ye geçemedim. Meğer bu paket TCL'in
+              hızlı paneli, yani kaynak seçme menüsüymüş. İnternetteki hiçbir
+              debloat listesinde bu uyarı yok. Markan farklıysa senin
+              televizyonunda da benzer bir "quick panel" paketi olacak —
+              adından ne işe yaradığını anlayamadığın hiçbir paketi kapatma.
+            </p>
+          </div>
+
+          <div class="note note-danger">
+            <p>
+              <strong>Ana ekranı, yenisini kurmadan kapatma</strong>
+              <code>launcherx</code> paketini alternatif bir launcher
+              kurmadan kapatırsan televizyon siyah ekrana düşer. Önce
+              FLauncher'ı kur, bir kez aç, varsayılan yap; ancak ondan sonra
+              eskisini kapat.
+            </p>
+          </div>
+
+          <div class="note note-danger">
+            <p>
+              <strong>Root yapma</strong>
+              Bootloader kilidini açmak televizyonu fabrika ayarlarına
+              döndürür ve doğrulanmış açılış zinciri bozulunca Widevine
+              sertifikan L1'den L3'e düşebilir. Pratikte anlamı:
+              <strong>Netflix SD çözünürlüğe iner.</strong> Kazancı ise yok,
+              çünkü root'un vaat ettiği "kalıcı sil" işini
+              <code>disable-user</code> zaten yapıyor.
+            </p>
+          </div>
+
+          <div class="note">
+            <p>
+              <strong>Reklamlar televizyonda değil, ağda engellenir</strong>
+              Uygulama içi reklamlar için router'ının ya da televizyonun DNS
+              ayarını NextDNS, AdGuard DNS veya kendi Pi-hole'una çevir.
+              Televizyona bir şey kurman gerekmiyor. Tek istisna: YouTube
+              reklamları videoyla aynı sunucudan geldiği için DNS ile
+              engellenmiyor.
+            </p>
+          </div>
+
+          <h3 style="margin: 32px 0 14px; font-size: var(--step-1)">
+            Asla kapatılmayacaklar
+          </h3>
+          <div class="table-wrap">
+            <table class="pkg-table">
+              <thead>
+                <tr>
+                  <th>Paket</th>
+                  <th>Kapatırsan ne olur</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>com.tcl.suspension</td>
+                  <td>Kumandadaki Girişler / Kaynak menüsü ölür, HDMI'ya geçemezsin</td>
+                </tr>
+                <tr>
+                  <td>com.tcl.tv · com.tcl.tvinput</td>
+                  <td>HDMI ve anten giriş servisleri gider</td>
+                </tr>
+                <tr>
+                  <td>com.google.android.apps.tv.launcherx</td>
+                  <td>Yerine launcher kurulmadıysa siyah ekran</td>
+                </tr>
+                <tr>
+                  <td>*.remote.service · *.rcu.service · *.autopair</td>
+                  <td>Kumanda çalışmaz</td>
+                </tr>
+                <tr>
+                  <td>com.google.android.gms · com.android.vending</td>
+                  <td>Play Servisleri ve Play Store gider, uygulamalar açılmaz</td>
+                </tr>
+                <tr>
+                  <td>com.android.location.fused</td>
+                  <td>Televizyon açılış döngüsüne girer</td>
+                </tr>
+                <tr>
+                  <td>*.inputmethod.*</td>
+                  <td>Klavye kaybolur, hiçbir yere yazı yazamazsın</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <section id="flauncher">
+        <div class="shell">
+          <div class="section-head">
+            <h2>Ana ekranı değiştir</h2>
+            <p>
+              İşin en çok hissedilen kısmı burası. Google TV'nin ana ekranı
+              artık bir yayın platformu vitrini: reklam şeridi, "senin için
+              öneriler", otomatik oynayan fragmanlar.
+            </p>
+          </div>
+          <div class="prose">
+            <p>
+              <a href="https://play.google.com/store/apps/details?id=me.efesser.flauncher" rel="noreferrer"><strong>FLauncher</strong></a>
+              bunların hiçbirini yapmıyor. Ücretsiz, açık kaynak, reklamsız.
+              Ekranda sadece uygulamalarının ızgarası var — istediğin gibi
+              gruplayabiliyorsun. Play Store'dan televizyona kurulur.
+            </p>
+            <p>
+              Alternatifi <strong>Projectivy Launcher</strong>. Daha çok ayarı
+              var, duvar kâğıdı ve temaları destekliyor. İkisini de denedim,
+              sadeliği için FLauncher'da karar kıldım.
+            </p>
+            <p>
+              Sıralama önemli: kur → bir kez aç → ana ekran olarak seç →
+              <em>ondan sonra</em> eski launcher'ı kapat → televizyonu yeniden
+              başlatıp ana ekranın hâlâ FLauncher olduğunu doğrula.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <section id="geri-alma">
+        <div class="shell">
+          <div class="section-head">
+            <h2>Bir şey bozulursa</h2>
+            <p>
+              Hiçbir şey silinmediği için her adım geri alınabilir. Panik
+              yapmadan önce şunları dene.
+            </p>
+          </div>
+
+          <div class="cards" style="margin-bottom: 20px">
+            <div class="card">
+              <h3>Tek paketi geri aç</h3>
+              <p>Neyin bozulduğunu biliyorsan en hızlı yol bu.</p>
+            </div>
+            <div class="card">
+              <h3>Son partiyi geri aç</h3>
+              <p>
+                Ajana onar dedirt: en son kapattığı on paketi geri açsın,
+                sonra tek tek deneyerek suçluyu bulsun.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Hepsini geri aç</h3>
+              <p>
+                Ajan <code>kapatilanlar.txt</code> tuttuğu için tek satır
+                yetiyor. En kötü ihtimalle fabrika ayarları hep duruyor.
+              </p>
+            </div>
+          </div>
+
+          <div class="code">
+            <div class="code-bar">
+              <span class="code-label">terminal</span>
+              <button class="copy" type="button" data-copy>Kopyala</button>
+            </div>
+            <pre><code># tek paket
+adb shell pm enable com.tcl.suspension
+
+# hepsi (ajanın tuttuğu listeden)
+cd ~/tv-debloat
+for p in $(cat kapatilanlar.txt); do adb shell pm enable $p; done
+
+# animasyonlar da eski haline dönsün
+adb shell settings put global window_animation_scale 1.0
+adb shell settings put global transition_animation_scale 1.0
+adb shell settings put global animator_duration_scale 1.0</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <section id="sonuc">
+        <div class="shell">
+          <div class="section-head">
+            <h2>Sonuçta ne değişti</h2>
+          </div>
+          <div class="prose">
+            <p>
+              Rakamlar TCL Smart TV Pro'dan (Android 11, 2 GB RAM). Boş RAM
+              149 MB'den 220 MB'ye, kullanılabilir RAM 531 MB'den 618 MB'ye
+              çıktı. Arka planda çalışan işlem sayısı 297'den 279'a indi.
+              Listeden tamamen kalkan en büyük tüketiciler sesli arama
+              (237 MB), ekran koruyucu (166 MB), kurulum sihirbazı (80 MB) ve
+              ayarlar asistanı (73 MB) oldu.
+            </p>
+            <p>
+              Ama asıl fark rakamlarda değil. Ana ekran anında açılıyor,
+              uygulamalar arası geçişte bekleme yok, kumandaya bastığında
+              televizyon hemen cevap veriyor. Reklam şeridi diye bir şey
+              kalmadı. Dört yıl önce kutudan çıktığındakinden akıcı.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="shell footer-inner">
+        <span>
+          <a href="https://cobanov.dev" rel="noreferrer">cobanov.dev</a> ·
+          <a href="https://x.com/mertcobanov" rel="noreferrer">@mertcobanov</a>
+        </span>
+        <span>
+          <a href="prompt.txt">prompt.txt</a> ·
+          <a href="https://github.com/cobanov/tv" rel="noreferrer">kaynak</a>
+        </span>
+      </div>
+    </footer>
+
+    <script>
+      // Kopyala düğmeleri: aynı kutudaki <pre> içeriğini panoya alır ve iki
+      // saniye boyunca onay gösterir.
+      document.querySelectorAll("[data-copy]").forEach(function (btn) {
+        btn.addEventListener("click", async function () {
+          var text = btn.closest(".code").querySelector("pre").innerText;
+          try {
+            await navigator.clipboard.writeText(text);
+          } catch (e) {
+            var ta = document.createElement("textarea");
+            ta.value = text;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand("copy");
+            ta.remove();
+          }
+          var label = btn.textContent;
+          btn.textContent = "Kopyalandı";
+          btn.setAttribute("data-copied", "");
+          setTimeout(function () {
+            btn.textContent = label;
+            btn.removeAttribute("data-copied");
+          }, 2000);
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    width: 1200px; height: 630px; overflow: hidden;
+    background: #131110; color: #f4f1ec;
+    font-family: -apple-system, "SF Pro Display", system-ui, sans-serif;
+    display: flex; flex-direction: column; justify-content: space-between;
+    padding: 66px 72px;
+    position: relative;
+  }
+  /* köşede sönük bir kehribar parıltı */
+  body::before {
+    content: ""; position: absolute; right: -180px; top: -180px;
+    width: 620px; height: 620px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(240,166,60,0.16), transparent 68%);
+  }
+  .top { display: flex; align-items: center; gap: 14px; position: relative; }
+  .mark { width: 34px; height: 25px; border: 2.4px solid #f0a63c; border-radius: 6px; position: relative; }
+  .mark::after { content: ""; position: absolute; left: 50%; bottom: -9px; width: 16px; height: 2.4px; background: #f0a63c; transform: translateX(-50%); }
+  .top span { font-size: 25px; font-weight: 600; letter-spacing: -0.01em; color: #a29b91; }
+  h1 { font-size: 82px; line-height: 1.04; letter-spacing: -0.035em; font-weight: 600; max-width: 17ch; position: relative; }
+  h1 em { font-style: normal; color: #f0a63c; }
+  p { margin-top: 26px; font-size: 30px; line-height: 1.4; color: #a29b91; max-width: 30ch; position: relative; }
+  .bottom { display: flex; align-items: flex-end; justify-content: space-between; position: relative; }
+  .stats { display: flex; gap: 44px; }
+  .stat b { display: block; font-size: 38px; font-weight: 600; letter-spacing: -0.02em; }
+  .stat i { display: block; font-style: normal; font-size: 20px; color: #a29b91; margin-top: 4px; }
+  .url { font-size: 28px; font-weight: 600; color: #131110; background: #f0a63c; padding: 12px 26px; border-radius: 999px; }
+</style></head><body>
+  <div class="top"><span class="mark"></span><span>cobanov</span></div>
+  <div>
+    <h1>Android TV'ni <em>yapay zekâya</em> temizlet</h1>
+    <p>Root yok. Silme yok. Hazır prompt, adım adım rehber.</p>
+  </div>
+  <div class="bottom">
+    <div class="stats">
+      <div class="stat"><b>60</b><i>uygulama kapatıldı</i></div>
+      <div class="stat"><b>+71 MB</b><i>boşalan RAM</i></div>
+      <div class="stat"><b>~40 dk</b><i>toplam süre</i></div>
+    </div>
+    <div class="url">tv.cobanov.dev</div>
+  </div>
+</body></html>
