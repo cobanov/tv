@@ -1,7 +1,7 @@
 /* ===========================================================================
-   tv.cobanov.dev — Android TV temizlik rehberi
+   tv.cobanov.dev / Android TV temizlik rehberi
 
-   Tek sayfa. Koyu, sıcak siyah zemin; tek vurgu rengi (kehribar).
+   Tek sayfa. Koyu, sıcak siyah zemin; tek vurgu rengi (Android yeşili).
    Kutu yarıçapı 14px, küçük öğeler 10px, düğmeler hap.
    =========================================================================== */
 
@@ -16,10 +16,10 @@
   --line: rgba(244, 241, 236, 0.09);
   --line-strong: rgba(244, 241, 236, 0.18);
 
-  /* Tek vurgu: eski tüplü televizyonun kehribarı. #131110 üzerinde 8.9:1. */
-  --accent: #f0a63c;
-  --accent-hover: #ffbc5c;
-  --accent-quiet: rgba(240, 166, 60, 0.13);
+  /* Tek vurgu: Android yeşili. #131110 zemininde 11.4:1 okunurluk. */
+  --accent: #3ddc84;
+  --accent-hover: #6ff0a8;
+  --accent-quiet: rgba(61, 220, 132, 0.13);
   --on-accent: #131110;
 
   --code-bg: #0c0b0a;
@@ -73,7 +73,7 @@ img { max-width: 100%; height: auto; }
 
 code, kbd, pre { font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace; }
 
-/* Film taneciği — sabit, tıklanamaz, kaydırmada yeniden çizilmez. */
+/* Film taneciği: sabit, tıklanamaz, kaydırmada yeniden çizilmez. */
 body::after {
   content: "";
   position: fixed;

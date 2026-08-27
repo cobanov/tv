@@ -9,7 +9,7 @@ BENİM TV'M
 - TV'de "Geliştirici seçenekleri" ve "USB hata ayıklama / Kablosuz hata
   ayıklama" açık. Bilgisayarım ve TV aynı Wi-Fi ağında.
 
-KURALLAR — bunlara harfiyen uy
+KURALLAR (bunlara harfiyen uy)
 1. HİÇBİR PAKETİ SİLME. Yalnızca `pm disable-user --user 0` kullan. Böylece
    her şey `pm enable <paket>` ile geri gelir. `pm uninstall` yasak.
 2. Root, bootloader açma, custom ROM teklif etme ve deneme. Bunlar TV'yi
@@ -52,13 +52,13 @@ a) Bilgisayarımda `adb` kurulu mu bak, değilse kur. Hangi işletim sistemini
    platform-tools paketini indirip PATH'e ekle, macOS'ta `brew install
    android-platform-tools`, Linux'ta `apt install adb`. Sonra
    `adb connect <IP>:5555` ile bağlan.
-   Televizyonda "Bu bilgisayara izin verilsin mi?" kutusu çıkacak — bana
+   Televizyonda "Bu bilgisayara izin verilsin mi?" kutusu çıkacak, bana
    söyle, onaylayayım. Android 11 ve üstünde televizyon "Kablosuz hata
    ayıklama" ekranında eşleştirme kodu istiyorsa önce `adb pair` kullan.
 b) Ölçümleri al, paket listesini çıkar.
-c) Paketleri üç gruba ayır ve bana tabloyla göster: (1) kesin çöp — kullanılmayan
+c) Paketleri üç gruba ayır ve bana tabloyla göster: (1) kesin çöp: kullanılmayan
    mağaza uygulamaları, demo/tanıtım, ekran koruyucu, sesli asistan, kurulum
-   sihirbazı, telemetri; (2) bana bağlı — kullanıp kullanmadığımı sor;
+   sihirbazı, telemetri; (2) bana bağlı: kullanıp kullanmadığımı sor;
    (3) dokunulmaz. Onayımı alıp 1. gruptan başla.
 d) Animasyon hızlarını yarıya indir:
       settings put global window_animation_scale 0.5
