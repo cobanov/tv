@@ -41,15 +41,17 @@ KURALLAR — bunlara harfiyen uy
                                      KURULMADAN kapatılırsa siyah ekran.
    Marka farklıysa bu listenin karşılıklarını bul. Emin olamadığın bir paketi
    kapatmadan önce bana sor.
-6. KAYIT TUT. Kapattığın her paketi `~/tv-debloat/kapatilanlar.txt` dosyasına
-   yaz. `~/tv-debloat/DEBLOAT-LOG.md` içinde ne yaptığını, neden yaptığını ve
+6. KAYIT TUT. Kapattığın her paketi bir `tv-debloat` klasöründeki `kapatilanlar.txt` dosyasına
+   yaz. aynı klasördeki `DEBLOAT-LOG.md` içinde ne yaptığını, neden yaptığını ve
    tek tek geri alma komutlarını tut.
 7. Bir şey bozulursa önce son kapattığın partiyi geri aç, sonra tek tek dene.
 
 SIRAYLA YAP
-a) Bilgisayarımda `adb` kurulu mu bak, değilse kur (macOS: `brew install
-   android-platform-tools`, Linux: `apt install adb`, Windows: Google'ın
-   platform-tools paketi). Sonra `adb connect <IP>:5555` ile bağlan.
+a) Bilgisayarımda `adb` kurulu mu bak, değilse kur. Hangi işletim sistemini
+   kullandığımı kontrol et ve ona uygun yolu seç: Windows'ta Google'ın
+   platform-tools paketini indirip PATH'e ekle, macOS'ta `brew install
+   android-platform-tools`, Linux'ta `apt install adb`. Sonra
+   `adb connect <IP>:5555` ile bağlan.
    Televizyonda "Bu bilgisayara izin verilsin mi?" kutusu çıkacak — bana
    söyle, onaylayayım. Android 11 ve üstünde televizyon "Kablosuz hata
    ayıklama" ekranında eşleştirme kodu istiyorsa önce `adb pair` kullan.

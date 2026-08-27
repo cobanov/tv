@@ -68,9 +68,10 @@
       <div class="shell hero">
         <h1>Android TV'ni temizle</h1>
         <p class="hero-lede">
-          Televizyonun kasıyorsa, kullanmadığın fabrika uygulamalarını ADB ile
-          kapatabilirsin. Aşağıda üç adımlık hazırlık ve yapay zekâ ajanına
+          Televizyonun kasıyorsa, kullanmadığın fabrika uygulamalarını
+          kapatabilirsin. Aşağıda dört adımlık hazırlık ve yapay zekâ ajanına
           vereceğin prompt var. Hiçbir şey silinmez, her adım geri alınabilir.
+          Windows, Mac ya da Linux fark etmez.
         </p>
       </div>
 
@@ -88,22 +89,32 @@
             </li>
 
             <li class="step">
-              <h3>Hata ayıklamayı aç, IP'yi not et</h3>
+              <h3>Hata ayıklamayı aç</h3>
               <p>
-                <strong>Ayarlar → Sistem → Geliştirici seçenekleri → USB hata ayıklama.</strong>
-                IP adresi: <strong>Ayarlar → Ağ ve internet → Durum.</strong>
-                Bilgisayarınla televizyon aynı ağda olmalı.
+                <strong>Ayarlar → Sistem → Geliştirici seçenekleri → USB hata
+                ayıklama.</strong> Ayrı bir "Kablosuz hata ayıklama" seçeneği
+                varsa onu da aç.
               </p>
             </li>
 
             <li class="step">
-              <h3>Prompt'u yapıştır</h3>
+              <h3>Televizyonun IP adresini öğren</h3>
+              <p>
+                <strong>Ayarlar → Ağ ve internet → Durum.</strong>
+                <code>192.168.</code> ile başlayan sayıyı not et. Bilgisayarın
+                da televizyonla <strong>aynı ağda</strong> olmalı — ikisi de
+                aynı Wi-Fi ya da aynı modem.
+              </p>
+            </li>
+
+            <li class="step">
+              <h3>Claude Code ya da Codex'i aç, prompt'u yapıştır</h3>
               <p>
                 Aşağıdaki metni kopyala, ilk iki satırdaki
-                <code>BURAYA YAZ</code> yerlerini doldur, Claude Code veya
-                Codex'e ver. <code>adb</code> kurulumunu, bağlantıyı ve
-                temizliği o yapar; sana ara ara "şunu onayla, şunu test et"
-                diyecek.
+                <code>BURAYA YAZ</code> yerlerine televizyonunun modelini ve
+                IP adresini yaz, ajana ver. Gerisini o yapıyor: gereken aracı
+                kuruyor, televizyona bağlanıyor, temizliyor. Sana ara ara
+                "şunu onayla, şunu test et" diyecek.
               </p>
             </li>
           </ol>
@@ -156,24 +167,27 @@
 
       <section id="geri-alma">
         <div class="shell">
-          <div class="section-head">
-            <h2>Geri alma</h2>
-            <p>Hiçbir şey silinmediği için her adım geri alınabilir.</p>
+          <div class="section-head"><h2>Geri alma</h2></div>
+          <div class="prose">
+            <p>
+              Hiçbir şey silinmediği için her adım geri alınabilir. Ajan
+              kapattığı paketlerin listesini tuttuğu için ona
+              <strong>"kapattığın her şeyi geri aç"</strong> demen yeterli.
+            </p>
+            <p>
+              Sadece tek bir uygulamayı geri açmak istersen:
+            </p>
           </div>
-          <div class="code">
+          <div class="code" style="margin-top: 14px; max-width: 66ch">
             <div class="code-bar">
               <span class="code-label">terminal</span>
               <button class="copy" type="button" data-copy>Kopyala</button>
             </div>
-            <pre><code># tek paket
-adb shell pm enable com.tcl.suspension
-
-# hepsi (ajanın tuttuğu listeden)
-cd ~/tv-debloat
-for p in $(cat kapatilanlar.txt); do adb shell pm enable $p; done</code></pre>
+            <pre><code>adb shell pm enable com.tcl.suspension</code></pre>
           </div>
         </div>
       </section>
+
     </main>
 
     <footer>
