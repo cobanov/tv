@@ -1,0 +1,77 @@
+{
+  "code": "zh",
+  "lang": "zh-Hans",
+  "dir": "ltr",
+  "path": "/zh/",
+  "name": "简体中文",
+  "og_locale": "zh_CN",
+
+  "title": "清理你的 Android TV",
+  "meta_description": "用 ADB 清理 Android TV：去掉广告推荐栏，停用出厂应用，替换主界面。不需要 root。现成的提示词和分步指南。",
+  "og_description": "通过 ADB 把电视交给 AI 智能体：停用你从不使用的应用，换掉主界面。不 root，不卸载，一切都可以还原。",
+  "og_image_alt": "清理你的 Android TV - tv.cobanov.dev",
+
+  "skip": "跳到正文",
+  "nav_aria": "链接",
+  "nav_prompt": "提示词",
+  "lang_label": "语言",
+  "lang_aria": "选择语言",
+
+  "promo_text": "还有这个，同样免费。",
+  "promo_full": "在终端里建一个太空帝国",
+  "promo_more": "全部项目",
+  "promo_close": "关闭",
+
+  "hero_h1": "清理你的 Android TV",
+  "hero_lede": "如果电视变卡了，可以把那些你从来不用的出厂应用停用掉。下面是四步准备工作，以及交给 AI 智能体的提示词。不会卸载任何东西，每一步都能还原。Windows、Mac、Linux 都一样。",
+
+  "steps_h2": "准备工作",
+  "steps": [
+    {
+      "h3": "打开开发者选项",
+      "p": "在电视上进入<strong>设置 → 系统 → 关于</strong>，用遥控器的 OK 键在<strong>版本号</strong>那一行连按七次。"
+    },
+    {
+      "h3": "打开调试",
+      "p": "<strong>设置 → 系统 → 开发者选项 → USB 调试。</strong>如果另有一个「无线调试」开关，也一并打开。"
+    },
+    {
+      "h3": "查到电视的 IP 地址",
+      "p": "<strong>设置 → 网络和互联网 → 状态。</strong>记下以 <code>192.168.</code> 开头的那串数字。你的电脑必须和电视在<strong>同一个网络</strong>里：同一个 Wi-Fi，或者同一个路由器。"
+    },
+    {
+      "h3": "打开 Claude Code 或 Codex，粘贴提示词",
+      "p": "复制下面这段文字，把两处 <code>填这里</code> 换成你电视的型号和 IP 地址，然后交给智能体。剩下的它来做：装好工具、连上电视、完成清理。中间它会时不时停下来，让你确认或者测试一下。"
+    }
+  ],
+
+  "prompt_h2": "提示词",
+  "copy": "复制",
+  "copied": "已复制",
+
+  "warn_h2": "三个提醒",
+  "warnings": [
+    {
+      "strong": "看名字认不出来的包，不要停用",
+      "p": "我的电视上停用 <code>com.tcl.suspension</code> 之后，遥控器的「信号源」键就废了，再也切不到 HDMI。原来那就是输入源选择菜单。"
+    },
+    {
+      "strong": "没装好新主界面之前，别停用旧的",
+      "p": "先装 FLauncher 并设为默认，之后再停用旧启动器。顺序反了就是一片黑屏。"
+    },
+    {
+      "strong": "不要 root",
+      "p": "解锁 bootloader 会把电视恢复出厂设置，而且 Widevine 一旦掉到 L3，Netflix 就只能放标清。这么做没有好处：<code>disable-user</code> 已经能做到 root 想做的事。"
+    }
+  ],
+
+  "undo_h2": "怎么还原",
+  "undo_p1": "因为什么都没卸载，每一步都能还原。智能体会记录它停用过的包，所以只要对它说<strong>「把你停用的都恢复回来」</strong>就够了。",
+  "undo_p2": "如果只想自己恢复某一个应用：",
+  "terminal_label": "终端",
+
+  "footer_source": "源码",
+
+  "og_h1": "清理你的 <em>Android TV</em>",
+  "og_sub": "四步准备，一段现成提示词。"
+}

@@ -27,6 +27,12 @@
   --ok: #7fc98a;
   --warn: #e8705a;
 
+  /* Diller kendi yazi tipini secebilsin diye degisken. Geist basta duruyor:
+     harf harf yedekleme sayesinde Latin metin Geist'te kalirken CJK ve Arap
+     harfleri sistemin o dil icin dogru olan yazi tipine dusuyor. */
+  --font-ui: Geist, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
   --gutter: clamp(20px, 5vw, 64px);
   --measure: 900px;
   --prose: 66ch;
@@ -57,7 +63,7 @@ body {
   min-height: 100dvh;
   background: var(--bg);
   color: var(--ink);
-  font-family: Geist, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-family: var(--font-ui);
   font-size: var(--step-0);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
@@ -71,7 +77,40 @@ a:hover { text-decoration-color: var(--accent); }
 
 img { max-width: 100%; height: auto; }
 
-code, kbd, pre { font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace; }
+code, kbd, pre { font-family: var(--font-mono); }
+
+/* Geist'te CJK ve Arap harfi yok. Latin metin Geist'te kalsin diye Geist ilk
+   sirada; eksik glifler sistemin o dile ait yazi tipinden geliyor. */
+html[lang="ja"] {
+  --font-ui: Geist, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic",
+    "Noto Sans JP", Meiryo, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, "Hiragino Sans",
+    "Yu Gothic", monospace;
+}
+
+html[lang^="zh"] {
+  --font-ui: Geist, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Noto Sans SC", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, "PingFang SC",
+    "Microsoft YaHei", monospace;
+}
+
+html[lang="ar"] {
+  --font-ui: Geist, "SF Arabic", "Geeza Pro", "Noto Sans Arabic", Tahoma, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, "Geeza Pro",
+    "Noto Sans Arabic", monospace;
+}
+
+/* Sikistirilmis harf araligi Latin baslik icin ayarlandi; Arap ve CJK
+   yazisinda ayni deger harfleri birbirine yapistiriyor. */
+html[lang="ar"] { line-height: 1.85; }
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] .stat dd,
+html[lang="ja"] h1,
+html[lang="ja"] h2,
+html[lang^="zh"] h1,
+html[lang^="zh"] h2 { letter-spacing: normal; }
 
 /* Film taneciği: sabit, tıklanamaz, kaydırmada yeniden çizilmez. */
 body::after {
@@ -88,16 +127,16 @@ body::after {
 
 .skip-link {
   position: absolute;
-  left: -9999px;
+  inset-inline-start: -9999px;
   top: 0;
   z-index: 100;
   padding: 12px 18px;
   background: var(--accent);
   color: var(--on-accent);
-  border-radius: 0 0 var(--radius-sm) 0;
+  border-end-end-radius: var(--radius-sm);
   font-weight: 600;
 }
-.skip-link:focus { left: 0; }
+.skip-link:focus { inset-inline-start: 0; }
 
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 
@@ -153,6 +192,75 @@ body::after {
 .nav-icon { display: inline-flex; color: var(--muted); }
 .nav-icon:hover { color: var(--ink); }
 .nav-icon svg { width: 19px; height: 19px; display: block; }
+
+/* --- dil menusu ---------------------------------------------------------- */
+
+/* On dil, on baglanti olarak ust cubuga sigmiyor. <details> listeyi tek tusa
+   indiriyor ve okuyucu istemeden hicbir betik calismiyor. */
+.lang { position: relative; }
+
+.lang > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: var(--pill);
+  font-size: var(--step--1);
+  color: var(--muted);
+  cursor: pointer;
+  list-style: none;
+  -webkit-user-select: none;
+  user-select: none;
+  transition: color 0.2s var(--ease), background 0.2s var(--ease);
+}
+.lang > summary::-webkit-details-marker { display: none; }
+.lang > summary:hover,
+.lang[open] > summary { color: var(--ink); background: var(--surface-2); }
+
+.lang-globe { width: 15px; height: 15px; flex: none; }
+.lang-caret { width: 13px; height: 13px; flex: none; transition: transform 0.2s var(--ease); }
+.lang[open] .lang-caret { transform: rotate(180deg); }
+
+.lang-list {
+  position: absolute;
+  top: calc(100% + 8px);
+  inset-inline-end: 0;
+  z-index: 30;
+  min-width: 176px;
+  max-height: min(68vh, 420px);
+  overflow-y: auto;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.55);
+}
+
+/* Her ad kendi dilinde yaziliyor, o yuzden her satir kendi yonunde okunmali. */
+.lang-list a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 7px 10px;
+  border-radius: 7px;
+  font-size: var(--step--1);
+  color: var(--muted);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.lang-list a:hover { background: var(--surface-2); color: var(--ink); }
+.lang-list a[aria-current] { color: var(--accent); }
+.lang-list a[aria-current]::after { content: "\2713"; font-size: 12px; line-height: 1; }
+
+/* Dar ekranda menu, kendini acan dugmeye degil sayfaya hizalanip tasmayi
+   birakiyor. */
+@media (max-width: 479px) {
+  .lang > summary span { display: none; }
+  .lang-list { position: fixed; inset-inline: var(--gutter); min-width: 0; }
+}
 
 /* --- kahraman ------------------------------------------------------------ */
 
@@ -262,7 +370,7 @@ body::after {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-left: auto;
+  margin-inline-start: auto;
 }
 
 /* Tam boy düğme, düğmenin ekranın amacı olduğu yerde doğru. Başlığın
@@ -298,7 +406,7 @@ body::after {
   .promo-bar-actions .btn-more,
   .promo-full { display: none; }
   .promo-tiny { display: inline; }
-  .promo-bar-actions { flex: 1 1 auto; min-width: 0; flex-wrap: nowrap; margin-left: 0; }
+  .promo-bar-actions { flex: 1 1 auto; min-width: 0; flex-wrap: nowrap; margin-inline-start: 0; }
   .promo-bar-actions .btn { flex: 1 1 0; min-width: 0; }
 }
 
@@ -339,14 +447,15 @@ section { padding-block: var(--section-y); border-top: 1px solid var(--line); }
 .step {
   counter-increment: step;
   position: relative;
-  padding: 0 0 32px 56px;
+  padding-bottom: 32px;
+  padding-inline-start: 56px;
 }
 .step:last-child { padding-bottom: 0; }
 
 .step::before {
   content: counter(step);
   position: absolute;
-  left: 0;
+  inset-inline-start: 0;
   top: 0;
   width: 34px;
   height: 34px;
@@ -364,7 +473,7 @@ section { padding-block: var(--section-y); border-top: 1px solid var(--line); }
 .step:not(:last-child)::after {
   content: "";
   position: absolute;
-  left: 17px;
+  inset-inline-start: 17px;
   top: 40px;
   bottom: 10px;
   width: 1px;
@@ -390,7 +499,8 @@ section { padding-block: var(--section-y); border-top: 1px solid var(--line); }
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 8px 10px 8px 14px;
+  padding: 8px 10px;
+  padding-inline-start: 14px;
   border-bottom: 1px solid var(--line);
 }
 .code-label { font-size: var(--step--1); color: var(--code-muted); }
@@ -445,7 +555,7 @@ section { padding-block: var(--section-y); border-top: 1px solid var(--line); }
 
 .pkg-table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
 .pkg-table th,
-.pkg-table td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.pkg-table td { text-align: start; padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
 .pkg-table th { color: var(--muted); font-weight: 500; }
 .pkg-table td:first-child { font-family: "JetBrains Mono", ui-monospace, monospace; color: var(--accent); white-space: nowrap; }
 .pkg-table td:last-child { color: var(--muted); }

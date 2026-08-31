@@ -1,0 +1,76 @@
+{
+  "code": "tr",
+  "dir": "ltr",
+  "path": "/tr/",
+  "name": "Türkçe",
+  "og_locale": "tr_TR",
+
+  "title": "Android TV'ni temizle",
+  "meta_description": "Android TV'ni ADB ile temizle: reklam şeritlerini kaldır, fabrika uygulamalarını kapat, ana ekranı değiştir. Root gerekmiyor. Hazır prompt ve adım adım rehber.",
+  "og_description": "Yapay zekâ ajanını ADB ile televizyonuna bağla, gereksiz uygulamaları kapattır, ana ekranı değiştir. Root yok, silme yok, her şey geri alınabilir.",
+  "og_image_alt": "Android TV'ni yapay zekaya temizlet - tv.cobanov.dev",
+
+  "skip": "İçeriğe geç",
+  "nav_aria": "Bağlantılar",
+  "nav_prompt": "Prompt",
+  "lang_label": "Dil",
+  "lang_aria": "Dil seç",
+
+  "promo_text": "Bir de şu var, o da ücretsiz.",
+  "promo_full": "Terminalden uzay imparatorluğu",
+  "promo_more": "Tüm projeler",
+  "promo_close": "Kapat",
+
+  "hero_h1": "Android TV'ni temizle",
+  "hero_lede": "Televizyonun kasıyorsa, kullanmadığın fabrika uygulamalarını kapatabilirsin. Aşağıda dört adımlık hazırlık ve yapay zekâ ajanına vereceğin prompt var. Hiçbir şey silinmez, her adım geri alınabilir. Windows, Mac ya da Linux fark etmez.",
+
+  "steps_h2": "Hazırlık",
+  "steps": [
+    {
+      "h3": "Geliştirici seçeneklerini aç",
+      "p": "Televizyonda <strong>Ayarlar → Sistem → Hakkında → Derleme</strong> satırının üstüne kumandayla yedi kez bas."
+    },
+    {
+      "h3": "Hata ayıklamayı aç",
+      "p": "<strong>Ayarlar → Sistem → Geliştirici seçenekleri → USB hata ayıklama.</strong> Ayrı bir \"Kablosuz hata ayıklama\" seçeneği varsa onu da aç."
+    },
+    {
+      "h3": "Televizyonun IP adresini öğren",
+      "p": "<strong>Ayarlar → Ağ ve internet → Durum.</strong> <code>192.168.</code> ile başlayan sayıyı not et. Bilgisayarın da televizyonla <strong>aynı ağda</strong> olmalı: ikisi de aynı Wi-Fi ya da aynı modem."
+    },
+    {
+      "h3": "Claude Code ya da Codex'i aç, prompt'u yapıştır",
+      "p": "Aşağıdaki metni kopyala, ilk iki satırdaki <code>BURAYA YAZ</code> yerlerine televizyonunun modelini ve IP adresini yaz, ajana ver. Gerisini o yapıyor: gereken aracı kuruyor, televizyona bağlanıyor, temizliyor. Sana ara ara \"şunu onayla, şunu test et\" diyecek."
+    }
+  ],
+
+  "prompt_h2": "Prompt",
+  "copy": "Kopyala",
+  "copied": "Kopyalandı",
+
+  "warn_h2": "Üç uyarı",
+  "warnings": [
+    {
+      "strong": "Adından ne olduğunu anlamadığın paketi kapatma",
+      "p": "Bende <code>com.tcl.suspension</code> kapanınca kumandanın \"Girişler\" tuşu öldü, HDMI'ya geçemedim. Meğer kaynak menüsüymüş."
+    },
+    {
+      "strong": "Ana ekranı, yenisini kurmadan kapatma",
+      "p": "Önce FLauncher'ı kur ve varsayılan yap; ancak ondan sonra eskisini kapat. Yoksa siyah ekran."
+    },
+    {
+      "strong": "Root yapma",
+      "p": "Televizyon fabrika ayarına döner ve Widevine L3'e düşerse Netflix SD'ye iner. Kazancı yok: kalıcı silme işini <code>disable-user</code> zaten yapıyor."
+    }
+  ],
+
+  "undo_h2": "Geri alma",
+  "undo_p1": "Hiçbir şey silinmediği için her adım geri alınabilir. Ajan kapattığı paketlerin listesini tuttuğu için ona <strong>\"kapattığın her şeyi geri aç\"</strong> demen yeterli.",
+  "undo_p2": "Sadece tek bir uygulamayı geri açmak istersen:",
+  "terminal_label": "terminal",
+
+  "footer_source": "kaynak",
+
+  "og_h1": "Android TV'ni <em>temizle</em>",
+  "og_sub": "Dört adımlık hazırlık ve hazır prompt."
+}

@@ -1,0 +1,76 @@
+{
+  "code": "it",
+  "dir": "ltr",
+  "path": "/it/",
+  "name": "Italiano",
+  "og_locale": "it_IT",
+
+  "title": "Ripulisci la tua Android TV",
+  "meta_description": "Ripulisci la tua Android TV via ADB: togli le righe di pubblicità, disattiva le app di fabbrica, cambia la schermata principale. Senza root. Prompt pronto da incollare e guida passo passo.",
+  "og_description": "Metti un agente IA sulla tua TV via ADB: disattiva le app che non usi mai e cambia la schermata principale. Niente root, niente disinstallazioni, tutto reversibile.",
+  "og_image_alt": "Ripulisci la tua Android TV - tv.cobanov.dev",
+
+  "skip": "Vai al contenuto",
+  "nav_aria": "Collegamenti",
+  "nav_prompt": "Prompt",
+  "lang_label": "Lingua",
+  "lang_aria": "Scegli la lingua",
+
+  "promo_text": "C'è anche questo, ed è gratis pure quello.",
+  "promo_full": "Un impero spaziale dal terminale",
+  "promo_more": "Tutti i progetti",
+  "promo_close": "Chiudi",
+
+  "hero_h1": "Ripulisci la tua Android TV",
+  "hero_lede": "Se la TV è diventata lenta, puoi disattivare le app di fabbrica che non usi mai. Qui sotto trovi quattro passi di preparazione e il prompt da dare a un agente IA. Non viene disinstallato niente e ogni passo è reversibile. Windows, Mac o Linux non fa differenza.",
+
+  "steps_h2": "Preparazione",
+  "steps": [
+    {
+      "h3": "Attiva le opzioni sviluppatore",
+      "p": "Sulla TV vai in <strong>Impostazioni → Sistema → Informazioni</strong> e premi sette volte il tasto OK del telecomando sulla riga <strong>Numero build</strong>."
+    },
+    {
+      "h3": "Attiva il debug",
+      "p": "<strong>Impostazioni → Sistema → Opzioni sviluppatore → Debug USB.</strong> Se c'è una voce separata «Debug wireless», attiva anche quella."
+    },
+    {
+      "h3": "Trova l'indirizzo IP della TV",
+      "p": "<strong>Impostazioni → Rete e Internet → Stato.</strong> Annota il numero che inizia con <code>192.168.</code> Il computer deve stare sulla <strong>stessa rete</strong> della TV: stesso Wi-Fi, o stesso router."
+    },
+    {
+      "h3": "Apri Claude Code o Codex e incolla il prompt",
+      "p": "Copia il testo qui sotto, sostituisci i due <code>DA COMPILARE</code> con modello e indirizzo IP della tua TV e passalo all'agente. Al resto pensa lui: installare gli strumenti, collegarsi alla TV, fare pulizia. Ogni tanto si fermerà per chiederti di approvare o provare qualcosa."
+    }
+  ],
+
+  "prompt_h2": "Prompt",
+  "copy": "Copia",
+  "copied": "Copiato",
+
+  "warn_h2": "Tre avvertenze",
+  "warnings": [
+    {
+      "strong": "Non disattivare un pacchetto che non riconosci dal nome",
+      "p": "Sulla mia TV, disattivando <code>com.tcl.suspension</code> è morto il tasto «Sorgenti» del telecomando e non riuscivo più a passare all'HDMI. Era il menu di selezione degli ingressi."
+    },
+    {
+      "strong": "Non disattivare la schermata principale prima di installarne un'altra",
+      "p": "Prima installa FLauncher e impostalo come predefinito. Solo dopo disattiva il vecchio launcher. Altrimenti: schermo nero."
+    },
+    {
+      "strong": "Non fare il root",
+      "p": "Sbloccare il bootloader riporta la TV alle impostazioni di fabbrica e, se Widevine scende a L3, Netflix torna in SD. Non c'è niente da guadagnare: <code>disable-user</code> fa già quello che farebbe il root."
+    }
+  ],
+
+  "undo_h2": "Tornare indietro",
+  "undo_p1": "Visto che non viene disinstallato niente, ogni passo si può annullare. L'agente tiene l'elenco di ciò che ha disattivato, quindi basta dirgli <strong>«riattiva tutto quello che hai disattivato»</strong>.",
+  "undo_p2": "Per riattivare una singola app da solo:",
+  "terminal_label": "terminale",
+
+  "footer_source": "sorgente",
+
+  "og_h1": "Ripulisci la tua <em>Android TV</em>",
+  "og_sub": "Quattro passi e un prompt pronto da incollare."
+}

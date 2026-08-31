@@ -1,0 +1,89 @@
+Voglio che tu ripulisca la mia Android TV via ADB. L'obiettivo: liberarmi delle
+righe di pubblicità e di consigli, disattivare le app di fabbrica che non uso e
+rendere la TV più veloce. Esegui tu i comandi e spiegami in parole semplici che
+cosa stai facendo.
+
+LA MIA TV
+- Marca / modello: DA COMPILARE          (esempio: TCL Smart TV Pro)
+- Indirizzo IP della TV: DA COMPILARE    (TV > Impostazioni > Rete e Internet
+                                          > Stato)
+- Le «opzioni sviluppatore» e il «debug USB / wireless» sono già attivi. Il mio
+  computer e la TV sono sulla stessa rete.
+
+REGOLE (seguile alla lettera)
+1. NON DISINSTALLARE NIENTE. Usa soltanto `pm disable-user --user 0`, così ogni
+   cosa si può annullare con `pm enable <pacchetto>`. `pm uninstall` è vietato.
+2. Non proporre e non tentare root, sblocco del bootloader o ROM personalizzate.
+   Riportano la TV alle impostazioni di fabbrica e, se il certificato Widevine
+   scende da L1 a L3, Netflix torna in SD. Non c'è niente da guadagnare.
+3. PRIMA MISURA. Prima di cominciare, salva su file l'output di
+   `dumpsys meminfo`, `pm list packages -s` e `pm list packages -d`. Ripeti le
+   stesse misure alla fine e dammi una tabella prima/dopo.
+4. PROCEDI A PICCOLI LOTTI. Disattiva al massimo 10 pacchetti per volta, poi
+   FERMATI e fammi provare: il tasto «Sorgenti / Ingressi» del telecomando
+   funziona ancora, riesco a passare all'HDMI, Netflix e YouTube si aprono, audio
+   e tastiera a schermo funzionano? Non passare al lotto successivo finché non
+   ti dico che va bene.
+5. NON DISATTIVARE MAI QUANTO SEGUE (rende la TV inutilizzabile):
+      com.tcl.suspension          -> il menu Sorgenti/Ingressi del telecomando.
+                                     Il nome sembra spazzatura, ma se lo
+                                     disattivi non si passa più all'HDMI. Su
+                                     un'altra marca, cerca il suo pacchetto
+                                     equivalente del «quick panel».
+      com.tcl.tv, com.tcl.tvinput -> servizi di ingresso HDMI / antenna
+      com.google.android.tv.remote.service,
+      com.tcl.tcl_bt_rcu_service,
+      com.tcl.autopair            -> il telecomando
+      com.google.android.gms,
+      com.google.android.gsf,
+      com.android.vending         -> servizi Play e Play Store
+      com.android.location.fused  -> disattivarlo manda la TV in boot loop
+      *.inputmethod.*             -> la tastiera a schermo
+      com.google.android.apps.tv.launcherx
+                                  -> la schermata principale. Disattivarla
+                                     prima di aver installato un altro launcher
+                                     lascia lo schermo nero.
+   Per altre marche, trova gli equivalenti di questo elenco. Se non sei sicuro
+   di cosa faccia un pacchetto, chiedimelo prima di disattivarlo.
+6. TIENI TRACCIA. Scrivi ogni pacchetto disattivato in un file `disabled.txt`
+   dentro una cartella `tv-debloat`. Nella stessa cartella tieni un
+   `DEBLOAT-LOG.md` con cosa hai fatto, perché, e il comando esatto per
+   annullare ogni modifica.
+7. Se qualcosa si rompe, riattiva prima l'ultimo lotto, poi restringi il campo
+   un pacchetto alla volta.
+
+FALLO IN QUEST'ORDINE
+a) Controlla se `adb` è installato e installalo se non c'è. Guarda che sistema
+   operativo uso e scegli la strada giusta: su Windows scarica il pacchetto
+   platform-tools di Google e aggiungilo al PATH, su macOS
+   `brew install android-platform-tools`, su Linux `apt install adb`. Poi
+   collegati con `adb connect <IP>:5555`. La TV mostrerà la richiesta
+   «Consentire il debug da questo computer?»: avvisami così la approvo. Da
+   Android 11 in su, se la TV chiede un codice di associazione nella schermata
+   «Debug wireless», usa prima `adb pair`.
+b) Prendi le misure ed elenca i pacchetti.
+c) Dividi i pacchetti in tre gruppi e mostrami una tabella: (1) spazzatura
+   sicura: app di streaming che non uso, demo, salvaschermo, assistenti vocali,
+   procedure guidate di configurazione, telemetria; (2) dipende da me: chiedimi
+   se li uso davvero; (3) intoccabili. Ottieni la mia approvazione e parti dal
+   gruppo 1.
+d) Dimezza la velocità delle animazioni:
+      settings put global window_animation_scale 0.5
+      settings put global transition_animation_scale 0.5
+      settings put global animator_duration_scale 0.5
+e) Svuota le cache con `pm trim-caches`.
+f) Riavvia la TV e ripeti le misure.
+
+CAMBIA LA SCHERMATA PRINCIPALE
+La schermata principale di Google TV è piena di pubblicità e di righe
+«consigliati per te». Al suo posto voglio usare FLauncher (è sul Play Store,
+gratuito, open source, e mostra soltanto una griglia con le mie app).
+- Per prima cosa chiedimi di installare FLauncher e verifica che sia installato.
+- Fammelo aprire una volta e impostare come schermata principale.
+- Solo a quel punto disattiva `com.google.android.apps.tv.launcherx`.
+- Riavvia la TV e verifica che la schermata principale sia ancora FLauncher.
+
+QUANDO HAI FINITO, DAMMI
+1. La tabella della RAM prima e dopo.
+2. L'elenco dei pacchetti disattivati, ognuno con una riga «che cos'era».
+3. Un unico comando che annulla tutto.

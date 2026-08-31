@@ -1,40 +1,32 @@
 <!doctype html>
-<html lang="tr">
+<html lang="{{code}}" dir="{{dir}}">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Android TV'ni ADB ile temizle: reklam şeritlerini kaldır, fabrika uygulamalarını kapat, ana ekranı değiştir. Root gerekmiyor. Hazır prompt ve adım adım rehber."
-    />
+    <meta name="description" content="{{meta_description}}" />
     <meta name="theme-color" content="#131110" />
-    <title>Android TV'ni temizle</title>
+    <title>{{title}}</title>
 
-    <link rel="canonical" href="https://tv.cobanov.dev/" />
-    <link rel="alternate" hreflang="tr" href="https://tv.cobanov.dev/" />
-    <link rel="alternate" hreflang="en" href="https://tv.cobanov.dev/en/" />
-    <link rel="alternate" hreflang="x-default" href="https://tv.cobanov.dev/" />
+    <link rel="canonical" href="{{canonical}}" />
+{{hreflangs}}
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Android TV'ni temizle" />
-    <meta
-      property="og:description"
-      content="Yapay zekâ ajanını ADB ile televizyonuna bağla, gereksiz uygulamaları kapattır, ana ekranı değiştir. Root yok, silme yok, her şey geri alınabilir."
-    />
-    <meta property="og:url" content="https://tv.cobanov.dev/" />
+    <meta property="og:title" content="{{title}}" />
+    <meta property="og:description" content="{{og_description}}" />
+    <meta property="og:url" content="{{canonical}}" />
     <meta property="og:site_name" content="cobanov" />
-    <meta property="og:locale" content="tr_TR" />
-    <meta property="og:image" content="https://tv.cobanov.dev/assets/og.png" />
+    <meta property="og:locale" content="{{og_locale}}" />
+    <meta property="og:image" content="{{og_image}}" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Android TV'ni yapay zekaya temizlet - tv.cobanov.dev" />
+    <meta property="og:image:alt" content="{{og_image_alt}}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@mertcobanov" />
     <meta name="twitter:creator" content="@mertcobanov" />
-    <meta name="twitter:title" content="Android TV'ni temizle" />
-    <meta name="twitter:description" content="Yapay zeka ajanini ADB ile televizyonuna bagla, gereksiz uygulamalari kapattir, ana ekrani degistir. Root yok, silme yok, her sey geri alinabilir." />
-    <meta name="twitter:image" content="https://tv.cobanov.dev/assets/og.png" />
-    <meta name="twitter:image:alt" content="Android TV'ni yapay zekaya temizlet - tv.cobanov.dev" />
+    <meta name="twitter:title" content="{{title}}" />
+    <meta name="twitter:description" content="{{og_description}}" />
+    <meta name="twitter:image" content="{{og_image}}" />
+    <meta name="twitter:image:alt" content="{{og_image_alt}}" />
 
     <link
       rel="icon"
@@ -47,7 +39,7 @@
       href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/site.css" />
+    <link rel="stylesheet" href="{{base}}assets/site.css" />
     <script
       async
       src="https://oa-c.cobanov.run/oa.js"
@@ -56,15 +48,15 @@
     ></script>
   </head>
   <body>
-    <a class="skip-link" href="#main">İçeriğe geç</a>
+    <a class="skip-link" href="#main">{{skip}}</a>
 
     <!--
-      Betik kontrol edene kadar gizli: daha önce kapatmış bir okuyucu
-      şeridin her ziyarette önünden geçmesini izlemesin.
+      Hidden until the script has checked whether it was closed before, so a
+      reader who dismissed it does not watch it flash past on every visit.
     -->
     <aside class="promo-bar" id="promo" hidden>
       <div class="shell promo-bar-inner">
-        <p class="promo-bar-text">Bir de şu var, o da ücretsiz.</p>
+        <p class="promo-bar-text">{{promo_text}}</p>
         <span class="promo-bar-actions">
           <a
             class="btn btn-sm"
@@ -77,7 +69,7 @@
               <path d="M6 9l3 3-3 3" stroke-linecap="round" stroke-linejoin="round" />
               <path d="M12.5 15h5" stroke-linecap="round" />
             </svg>
-            <span class="promo-full">Terminalden uzay imparatorluğu</span>
+            <span class="promo-full">{{promo_full}}</span>
             <span class="promo-tiny">terminal.army</span>
           </a>
           <a
@@ -85,9 +77,9 @@
             href="https://cobanov.dev/?ref=tv"
             rel="noreferrer"
             data-oa-event="visit-cobanov"
-          >Tüm projeler</a>
+          >{{promo_more}}</a>
         </span>
-        <button class="promo-bar-close" type="button" id="promoClose" aria-label="Kapat">
+        <button class="promo-bar-close" type="button" id="promoClose" aria-label="{{promo_close}}">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
             <path d="M6 6l12 12M18 6L6 18" />
           </svg>
@@ -101,9 +93,30 @@
           <span class="wordmark-mark" aria-hidden="true"></span>
           <span>cobanov</span>
         </a>
-        <nav aria-label="Bağlantılar">
-          <a class="nav-text" href="#prompt">Prompt</a>
-          <a class="nav-text" href="/en/" hreflang="en">English</a>
+        <nav aria-label="{{nav_aria}}">
+          <a class="nav-text" href="#prompt">{{nav_prompt}}</a>
+
+          <!--
+            Ten languages do not fit on a masthead as ten links. A <details>
+            keeps the whole list one keystroke away without any script running
+            before the reader asks for it.
+          -->
+          <details class="lang" id="lang">
+            <summary title="{{lang_aria}}">
+              <svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M3 12h18M12 3c2.5 2.6 2.5 15 0 18M12 3c-2.5 2.6-2.5 15 0 18" />
+              </svg>
+              <span>{{name}}</span>
+              <svg class="lang-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </summary>
+            <ul class="lang-list">
+{{lang_items}}
+            </ul>
+          </details>
+
           <a class="nav-icon" href="https://x.com/mertcobanov" rel="noreferrer" aria-label="X">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.9 2.5h3.3l-7.2 8.2 8.5 11.3h-6.7l-5.2-6.9-6 6.9H2.3l7.7-8.8L1.9 2.5h6.9l4.7 6.3 5.4-6.3Zm-1.2 17.6h1.8L7.4 4.3H5.5l12.2 15.8Z"/></svg>
           </a>
@@ -113,128 +126,58 @@
 
     <main id="main">
       <div class="shell hero">
-        <h1>Android TV'ni temizle</h1>
-        <p class="hero-lede">
-          Televizyonun kasıyorsa, kullanmadığın fabrika uygulamalarını
-          kapatabilirsin. Aşağıda dört adımlık hazırlık ve yapay zekâ ajanına
-          vereceğin prompt var. Hiçbir şey silinmez, her adım geri alınabilir.
-          Windows, Mac ya da Linux fark etmez.
-        </p>
+        <h1>{{hero_h1}}</h1>
+        <p class="hero-lede">{{hero_lede}}</p>
       </div>
 
-      <section id="adimlar">
+      <section id="steps">
         <div class="shell">
-          <div class="section-head"><h2>Hazırlık</h2></div>
-
+          <div class="section-head"><h2>{{steps_h2}}</h2></div>
           <ol class="steps">
-            <li class="step">
-              <h3>Geliştirici seçeneklerini aç</h3>
-              <p>
-                Televizyonda <strong>Ayarlar → Sistem → Hakkında → Derleme</strong>
-                satırının üstüne kumandayla yedi kez bas.
-              </p>
-            </li>
-
-            <li class="step">
-              <h3>Hata ayıklamayı aç</h3>
-              <p>
-                <strong>Ayarlar → Sistem → Geliştirici seçenekleri → USB hata
-                ayıklama.</strong> Ayrı bir "Kablosuz hata ayıklama" seçeneği
-                varsa onu da aç.
-              </p>
-            </li>
-
-            <li class="step">
-              <h3>Televizyonun IP adresini öğren</h3>
-              <p>
-                <strong>Ayarlar → Ağ ve internet → Durum.</strong>
-                <code>192.168.</code> ile başlayan sayıyı not et. Bilgisayarın
-                da televizyonla <strong>aynı ağda</strong> olmalı: ikisi de
-                aynı Wi-Fi ya da aynı modem.
-              </p>
-            </li>
-
-            <li class="step">
-              <h3>Claude Code ya da Codex'i aç, prompt'u yapıştır</h3>
-              <p>
-                Aşağıdaki metni kopyala, ilk iki satırdaki
-                <code>BURAYA YAZ</code> yerlerine televizyonunun modelini ve
-                IP adresini yaz, ajana ver. Gerisini o yapıyor: gereken aracı
-                kuruyor, televizyona bağlanıyor, temizliyor. Sana ara ara
-                "şunu onayla, şunu test et" diyecek.
-              </p>
-            </li>
+{{steps}}
           </ol>
         </div>
       </section>
 
       <section id="prompt">
         <div class="shell">
-          <div class="section-head"><h2>Prompt</h2></div>
+          <div class="section-head"><h2>{{prompt_h2}}</h2></div>
           <div class="code code-prompt">
             <div class="code-bar">
               <span class="code-label">prompt.txt</span>
-              <button class="copy" type="button" data-copy>Kopyala</button>
+              <button class="copy" type="button" data-copy data-copied-label="{{copied}}">{{copy}}</button>
             </div>
-            <pre><code>__PROMPT__</code></pre>
+            <!-- Left-to-right even on the Arabic page: the block is a mix of
+                 prose and shell commands, and only a fixed base direction keeps
+                 the indentation and the package list readable. -->
+            <pre dir="ltr"><code>{{prompt}}</code></pre>
           </div>
         </div>
       </section>
 
-      <section id="dikkat">
+      <section id="warnings">
         <div class="shell">
-          <div class="section-head"><h2>Üç uyarı</h2></div>
-
-          <div class="note">
-            <p>
-              <strong>Adından ne olduğunu anlamadığın paketi kapatma</strong>
-              Bende <code>com.tcl.suspension</code> kapanınca kumandanın
-              "Girişler" tuşu öldü, HDMI'ya geçemedim. Meğer kaynak menüsüymüş.
-            </p>
-          </div>
-
-          <div class="note">
-            <p>
-              <strong>Ana ekranı, yenisini kurmadan kapatma</strong>
-              Önce FLauncher'ı kur ve varsayılan yap; ancak ondan sonra eskisini
-              kapat. Yoksa siyah ekran.
-            </p>
-          </div>
-
-          <div class="note">
-            <p>
-              <strong>Root yapma</strong>
-              Televizyon fabrika ayarına döner ve Widevine L3'e düşerse Netflix
-              SD'ye iner. Kazancı yok: kalıcı silme işini
-              <code>disable-user</code> zaten yapıyor.
-            </p>
-          </div>
+          <div class="section-head"><h2>{{warn_h2}}</h2></div>
+{{warnings}}
         </div>
       </section>
 
-      <section id="geri-alma">
+      <section id="undo">
         <div class="shell">
-          <div class="section-head"><h2>Geri alma</h2></div>
+          <div class="section-head"><h2>{{undo_h2}}</h2></div>
           <div class="prose">
-            <p>
-              Hiçbir şey silinmediği için her adım geri alınabilir. Ajan
-              kapattığı paketlerin listesini tuttuğu için ona
-              <strong>"kapattığın her şeyi geri aç"</strong> demen yeterli.
-            </p>
-            <p>
-              Sadece tek bir uygulamayı geri açmak istersen:
-            </p>
+            <p>{{undo_p1}}</p>
+            <p>{{undo_p2}}</p>
           </div>
           <div class="code" style="margin-top: 14px; max-width: 66ch">
             <div class="code-bar">
-              <span class="code-label">terminal</span>
-              <button class="copy" type="button" data-copy>Kopyala</button>
+              <span class="code-label">{{terminal_label}}</span>
+              <button class="copy" type="button" data-copy data-copied-label="{{copied}}">{{copy}}</button>
             </div>
-            <pre><code>adb shell pm enable com.tcl.suspension</code></pre>
+            <pre dir="ltr"><code>adb shell pm enable com.tcl.suspension</code></pre>
           </div>
         </div>
       </section>
-
     </main>
 
     <footer>
@@ -245,13 +188,13 @@
         </span>
         <span>
           <a href="prompt.txt">prompt.txt</a> ·
-          <a href="https://github.com/cobanov/tv" rel="noreferrer">kaynak</a>
+          <a href="https://github.com/cobanov/tv" rel="noreferrer">{{footer_source}}</a>
         </span>
       </div>
     </footer>
 
     <script>
-      // Kopyala düğmeleri: aynı kutudaki <pre> içeriğini panoya alır.
+      // Copy buttons: grab the <pre> inside the same box and confirm for 2s.
       document.querySelectorAll("[data-copy]").forEach(function (btn) {
         btn.addEventListener("click", async function () {
           var text = btn.closest(".code").querySelector("pre").innerText;
@@ -266,7 +209,7 @@
             ta.remove();
           }
           var label = btn.textContent;
-          btn.textContent = "Kopyalandı";
+          btn.textContent = btn.dataset.copiedLabel;
           btn.setAttribute("data-copied", "");
           setTimeout(function () {
             btn.textContent = label;
@@ -277,7 +220,28 @@
     </script>
 
     <script>
-      // Çapraz tanıtım şeridi: bir kez açılır, kapatılınca 30 gün geri gelmez.
+      // Language menu: <details> already opens and closes on its own, so this
+      // only adds the two things it does not do, dismiss on Escape and on a
+      // click landing anywhere else.
+      (function () {
+        var menu = document.getElementById("lang");
+        if (!menu) return;
+
+        document.addEventListener("click", function (e) {
+          if (menu.open && !menu.contains(e.target)) menu.open = false;
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && menu.open) {
+            menu.open = false;
+            menu.querySelector("summary").focus();
+          }
+        });
+      })();
+    </script>
+
+    <script>
+      // Cross-promotion bar: slides in once, and stays closed for 30 days.
       (function () {
         var QUIET_DAYS = 30;
         var bar = document.getElementById("promo");
@@ -289,13 +253,13 @@
           var at = Number(localStorage.getItem("tv-promo-closed") || 0);
           dismissed = at > 0 && Date.now() - at < QUIET_DAYS * 86400000;
         } catch (e) {
-          // Gizli sekme, ya da depolama reddedildi. Göstermek güvenli cevap.
+          // Private window, or storage refused. Showing it is the safe answer.
         }
 
         if (!dismissed) {
           bar.hidden = false;
-          // İki kare: tarayıcı önce kapalı halini boyasın, sonra açılsın. Aynı
-          // karede sınıfı vermek geçişi tamamen atlıyor.
+          // Two frames, so the browser paints it closed before it opens. Setting
+          // the class in the same frame skips the transition entirely.
           requestAnimationFrame(function () {
             requestAnimationFrame(function () {
               bar.classList.add("is-open");
@@ -306,8 +270,9 @@
         if (close) {
           close.addEventListener("click", function () {
             bar.classList.remove("is-open");
-            // transitionend beklemek, hareket istemeyen okuyucuda şeridi ekranda
-            // bırakırdı: geçiş bastırılmışken o olay hiç tetiklenmiyor.
+            // Waiting on transitionend would strand the bar on screen for a reader
+            // who asked for no motion: with the transition suppressed, the
+            // event never fires.
             if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
               bar.hidden = true;
             } else {
@@ -318,7 +283,7 @@
             try {
               localStorage.setItem("tv-promo-closed", String(Date.now()));
             } catch (e) {
-              // Bu ziyaret için kapatmak yine de doğru; sonra geri gelir.
+              // Closing it for this visit is still right; it simply returns later.
             }
           });
         }

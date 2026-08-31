@@ -1,0 +1,76 @@
+{
+  "code": "es",
+  "dir": "ltr",
+  "path": "/es/",
+  "name": "Español",
+  "og_locale": "es_ES",
+
+  "title": "Limpia tu Android TV",
+  "meta_description": "Limpia tu Android TV por ADB: quita las filas de anuncios, desactiva las apps de fábrica, cambia la pantalla de inicio. Sin root. Prompt listo para pegar y guía paso a paso.",
+  "og_description": "Ponle un agente de IA a tu tele por ADB: que desactive las apps que nunca usas y cambie la pantalla de inicio. Sin root, sin desinstalar nada, todo reversible.",
+  "og_image_alt": "Limpia tu Android TV - tv.cobanov.dev",
+
+  "skip": "Ir al contenido",
+  "nav_aria": "Enlaces",
+  "nav_prompt": "Prompt",
+  "lang_label": "Idioma",
+  "lang_aria": "Elegir idioma",
+
+  "promo_text": "También está esto, y también es gratis.",
+  "promo_full": "Un imperio espacial desde tu terminal",
+  "promo_more": "Todos los proyectos",
+  "promo_close": "Cerrar",
+
+  "hero_h1": "Limpia tu Android TV",
+  "hero_lede": "Si tu tele va lenta, puedes desactivar las apps de fábrica que nunca usas. Abajo tienes una preparación de cuatro pasos y el prompt que le das a un agente de IA. No se desinstala nada y cada paso es reversible. Da igual Windows, Mac o Linux.",
+
+  "steps_h2": "Preparación",
+  "steps": [
+    {
+      "h3": "Activa las opciones de desarrollador",
+      "p": "En la tele, entra en <strong>Ajustes → Sistema → Información</strong> y pulsa siete veces el botón OK del mando sobre la fila <strong>Número de compilación</strong>."
+    },
+    {
+      "h3": "Activa la depuración",
+      "p": "<strong>Ajustes → Sistema → Opciones de desarrollador → Depuración por USB.</strong> Si hay una opción aparte de «Depuración inalámbrica», actívala también."
+    },
+    {
+      "h3": "Averigua la dirección IP de la tele",
+      "p": "<strong>Ajustes → Red e Internet → Estado.</strong> Apunta el número que empieza por <code>192.168.</code> Tu ordenador tiene que estar en la <strong>misma red</strong> que la tele: el mismo Wi-Fi, o el mismo router."
+    },
+    {
+      "h3": "Abre Claude Code o Codex y pega el prompt",
+      "p": "Copia el texto de abajo, sustituye los dos <code>RELLENA ESTO</code> por el modelo y la IP de tu tele, y dáselo al agente. Del resto se encarga él: instalar la herramienta, conectarse a la tele, hacer la limpieza. De vez en cuando parará para pedirte que apruebes o pruebes algo."
+    }
+  ],
+
+  "prompt_h2": "Prompt",
+  "copy": "Copiar",
+  "copied": "Copiado",
+
+  "warn_h2": "Tres advertencias",
+  "warnings": [
+    {
+      "strong": "No desactives un paquete que no sepas identificar por el nombre",
+      "p": "En mi tele, al desactivar <code>com.tcl.suspension</code> murió el botón «Fuentes» del mando y ya no podía pasar a HDMI. Resultó ser el menú de selección de entrada."
+    },
+    {
+      "strong": "No desactives la pantalla de inicio antes de instalar otra",
+      "p": "Instala primero FLauncher y ponlo como predeterminado. Solo entonces desactiva el lanzador viejo. Si no, pantalla negra."
+    },
+    {
+      "strong": "No hagas root",
+      "p": "Desbloquear el bootloader restaura la tele de fábrica, y si Widevine baja a L3 Netflix se queda en SD. No hay nada que ganar: <code>disable-user</code> ya hace lo que haría el root."
+    }
+  ],
+
+  "undo_h2": "Deshacerlo",
+  "undo_p1": "Como no se desinstala nada, cada paso se puede deshacer. El agente guarda la lista de lo que desactivó, así que basta con decirle <strong>«vuelve a activar todo lo que desactivaste»</strong>.",
+  "undo_p2": "Para recuperar una sola app tú mismo:",
+  "terminal_label": "terminal",
+
+  "footer_source": "código",
+
+  "og_h1": "Limpia tu <em>Android TV</em>",
+  "og_sub": "Cuatro pasos y un prompt listo para pegar."
+}

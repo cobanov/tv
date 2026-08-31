@@ -1,0 +1,93 @@
+Je veux que tu nettoies mon Android TV via ADB. Le but : me débarrasser des
+bandeaux de publicité et de recommandations, désactiver les applications
+d'usine dont je ne me sers pas, et accélérer le téléviseur. Exécute les
+commandes toi-même et explique-moi en langage clair ce que tu fais.
+
+MON TÉLÉVISEUR
+- Marque / modèle : À COMPLÉTER          (exemple : TCL Smart TV Pro)
+- Adresse IP du téléviseur : À COMPLÉTER (TV > Paramètres > Réseau et Internet
+                                          > État)
+- Les « options pour les développeurs » et le « débogage USB / sans fil » sont
+  déjà activés. Mon ordinateur et le téléviseur sont sur le même réseau.
+
+RÈGLES (à suivre à la lettre)
+1. NE DÉSINSTALLE RIEN. Utilise uniquement `pm disable-user --user 0`, pour que
+   tout puisse être annulé avec `pm enable <paquet>`. `pm uninstall` est
+   interdit.
+2. Ne propose pas et n'essaie pas le root, le déverrouillage du bootloader ou
+   une ROM custom. Cela réinitialise le téléviseur, et si le certificat
+   Widevine passe de L1 à L3, Netflix repasse en SD. Il n'y a rien à y gagner.
+3. MESURE D'ABORD. Avant de commencer, enregistre dans un fichier les sorties
+   de `dumpsys meminfo`, `pm list packages -s` et `pm list packages -d`. Refais
+   les mêmes mesures à la fin et donne-moi un tableau avant/après.
+4. AVANCE PAR PETITS LOTS. Désactive au maximum 10 paquets à la fois, puis
+   ARRÊTE-TOI et fais-moi tester : la touche « Sources / Entrées » de la
+   télécommande fonctionne-t-elle encore, puis-je passer en HDMI, Netflix et
+   YouTube s'ouvrent-ils, le son et le clavier à l'écran marchent-ils ? Ne
+   passe pas au lot suivant tant que je n'ai pas dit que c'était bon.
+5. NE DÉSACTIVE JAMAIS CE QUI SUIT (cela rend le téléviseur inutilisable) :
+      com.tcl.suspension          -> le menu Sources/Entrées de la télécommande.
+                                     Le nom ressemble à du déchet, mais si tu
+                                     le désactives on ne peut plus passer en
+                                     HDMI. Sur une autre marque, cherche son
+                                     paquet « quick panel » équivalent.
+      com.tcl.tv, com.tcl.tvinput -> services d'entrée HDMI / antenne
+      com.google.android.tv.remote.service,
+      com.tcl.tcl_bt_rcu_service,
+      com.tcl.autopair            -> la télécommande
+      com.google.android.gms,
+      com.google.android.gsf,
+      com.android.vending         -> services Play et Play Store
+      com.android.location.fused  -> le désactiver fait boucler le téléviseur
+                                     au démarrage
+      *.inputmethod.*             -> le clavier à l'écran
+      com.google.android.apps.tv.launcherx
+                                  -> l'écran d'accueil. Le désactiver avant
+                                     d'avoir installé un autre lanceur donne
+                                     un écran noir.
+   Pour une autre marque, trouve les équivalents de cette liste. Si tu n'es pas
+   sûr de ce que fait un paquet, demande-moi avant de le désactiver.
+6. GARDE UNE TRACE. Écris chaque paquet désactivé dans un fichier
+   `disabled.txt` placé dans un dossier `tv-debloat`. Tiens dans le même
+   dossier un `DEBLOAT-LOG.md` décrivant ce que tu as fait, pourquoi, et la
+   commande exacte pour annuler chaque changement.
+7. Si quelque chose casse, réactive d'abord le dernier lot, puis affine paquet
+   par paquet.
+
+FAIS-LE DANS CET ORDRE
+a) Vérifie si `adb` est installé, et installe-le sinon. Regarde quel système
+   d'exploitation j'utilise et choisis la bonne voie : sous Windows, télécharge
+   le paquet platform-tools de Google et ajoute-le au PATH ; sous macOS,
+   `brew install android-platform-tools` ; sous Linux, `apt install adb`.
+   Connecte-toi ensuite avec `adb connect <IP>:5555`. Le téléviseur affichera
+   « Autoriser le débogage depuis cet ordinateur ? » : préviens-moi pour que je
+   valide. Sur Android 11 et plus, si le téléviseur demande un code
+   d'appairage sur son écran « Débogage sans fil », utilise d'abord `adb pair`.
+b) Prends les mesures et liste les paquets.
+c) Range les paquets en trois groupes et montre-moi un tableau : (1) déchets
+   certains : applications de streaming inutilisées, démos, économiseurs
+   d'écran, assistants vocaux, assistants de configuration, télémétrie ;
+   (2) ça dépend de moi : demande-moi si je m'en sers vraiment ;
+   (3) intouchables. Obtiens mon accord et commence par le groupe 1.
+d) Réduis de moitié la vitesse des animations :
+      settings put global window_animation_scale 0.5
+      settings put global transition_animation_scale 0.5
+      settings put global animator_duration_scale 0.5
+e) Vide les caches avec `pm trim-caches`.
+f) Redémarre le téléviseur et reprends les mesures.
+
+REMPLACE L'ÉCRAN D'ACCUEIL
+L'écran d'accueil de Google TV est rempli de publicités et de rangées
+« recommandé pour vous ». Je veux utiliser FLauncher à la place (il est sur le
+Play Store, gratuit, open source, et n'affiche qu'une grille de mes
+applications).
+- Demande-moi d'abord d'installer FLauncher et confirme qu'il est installé.
+- Fais-le-moi ouvrir une fois et définir comme écran d'accueil.
+- Ce n'est qu'ensuite que tu désactives `com.google.android.apps.tv.launcherx`.
+- Redémarre le téléviseur et vérifie que l'écran d'accueil est toujours
+  FLauncher.
+
+QUAND TU AS FINI, DONNE-MOI
+1. Le tableau de RAM avant/après.
+2. La liste des paquets désactivés, chacun avec une ligne « ce que c'était ».
+3. Une seule commande qui annule tout.

@@ -1,0 +1,76 @@
+{
+  "code": "fr",
+  "dir": "ltr",
+  "path": "/fr/",
+  "name": "Français",
+  "og_locale": "fr_FR",
+
+  "title": "Nettoyez votre Android TV",
+  "meta_description": "Nettoyez votre Android TV via ADB : supprimez les bandeaux publicitaires, désactivez les applications d'usine, remplacez l'écran d'accueil. Sans root. Prompt prêt à coller et guide pas à pas.",
+  "og_description": "Confiez votre téléviseur à un agent IA via ADB : il désactive les applications dont vous ne vous servez jamais et remplace l'écran d'accueil. Sans root, sans désinstallation, tout est réversible.",
+  "og_image_alt": "Nettoyez votre Android TV - tv.cobanov.dev",
+
+  "skip": "Aller au contenu",
+  "nav_aria": "Liens",
+  "nav_prompt": "Prompt",
+  "lang_label": "Langue",
+  "lang_aria": "Choisir la langue",
+
+  "promo_text": "Il y a ça aussi, et c'est gratuit également.",
+  "promo_full": "Un empire spatial depuis votre terminal",
+  "promo_more": "Tous les projets",
+  "promo_close": "Fermer",
+
+  "hero_h1": "Nettoyez votre Android TV",
+  "hero_lede": "Si votre téléviseur rame, vous pouvez désactiver les applications d'usine dont vous ne vous servez jamais. Voici une préparation en quatre étapes et le prompt à confier à un agent IA. Rien n'est désinstallé, chaque étape est réversible. Windows, Mac ou Linux, peu importe.",
+
+  "steps_h2": "Préparation",
+  "steps": [
+    {
+      "h3": "Activez les options pour les développeurs",
+      "p": "Sur le téléviseur, allez dans <strong>Paramètres → Système → À propos</strong> et appuyez sept fois sur la ligne <strong>Build</strong> avec la touche OK de la télécommande."
+    },
+    {
+      "h3": "Activez le débogage",
+      "p": "<strong>Paramètres → Système → Options pour les développeurs → Débogage USB.</strong> S'il existe une option distincte « Débogage sans fil », activez-la aussi."
+    },
+    {
+      "h3": "Trouvez l'adresse IP du téléviseur",
+      "p": "<strong>Paramètres → Réseau et Internet → État.</strong> Notez le nombre qui commence par <code>192.168.</code> Votre ordinateur doit être sur le <strong>même réseau</strong> que le téléviseur : même Wi-Fi, ou même box."
+    },
+    {
+      "h3": "Ouvrez Claude Code ou Codex et collez le prompt",
+      "p": "Copiez le texte ci-dessous, remplacez les deux mentions <code>À COMPLÉTER</code> par le modèle et l'adresse IP de votre téléviseur, puis donnez-le à l'agent. Il s'occupe du reste : installer les outils, se connecter au téléviseur, faire le ménage. Il s'arrêtera de temps en temps pour vous demander de valider ou de tester quelque chose."
+    }
+  ],
+
+  "prompt_h2": "Prompt",
+  "copy": "Copier",
+  "copied": "Copié",
+
+  "warn_h2": "Trois avertissements",
+  "warnings": [
+    {
+      "strong": "Ne désactivez jamais un paquet dont le nom ne vous dit rien",
+      "p": "Sur mon téléviseur, désactiver <code>com.tcl.suspension</code> a tué la touche « Sources » de la télécommande et je ne pouvais plus passer en HDMI. C'était en fait le menu de sélection des entrées."
+    },
+    {
+      "strong": "Ne désactivez pas l'écran d'accueil avant d'en installer un autre",
+      "p": "Installez d'abord FLauncher et définissez-le par défaut. Ce n'est qu'ensuite que vous désactivez l'ancien lanceur. Sinon, écran noir."
+    },
+    {
+      "strong": "Ne le rootez pas",
+      "p": "Déverrouiller le bootloader réinitialise le téléviseur, et si Widevine tombe en L3, Netflix repasse en SD. Il n'y a rien à y gagner : <code>disable-user</code> fait déjà ce que ferait le root."
+    }
+  ],
+
+  "undo_h2": "Tout annuler",
+  "undo_p1": "Rien n'étant désinstallé, chaque étape peut être annulée. L'agent tient la liste de ce qu'il a désactivé : il suffit donc de lui dire <strong>« réactive tout ce que tu as désactivé »</strong>.",
+  "undo_p2": "Pour réactiver une seule application vous-même :",
+  "terminal_label": "terminal",
+
+  "footer_source": "source",
+
+  "og_h1": "Nettoyez votre <em>Android TV</em>",
+  "og_sub": "Quatre étapes et un prompt prêt à coller."
+}

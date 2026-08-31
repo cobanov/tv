@@ -1,0 +1,76 @@
+{
+  "code": "de",
+  "dir": "ltr",
+  "path": "/de/",
+  "name": "Deutsch",
+  "og_locale": "de_DE",
+
+  "title": "Räum deinen Android TV auf",
+  "meta_description": "Android TV per ADB aufräumen: Werbezeilen loswerden, Werksapps deaktivieren, Startbildschirm ersetzen. Kein Root nötig. Fertiger Prompt und Schritt-für-Schritt-Anleitung.",
+  "og_description": "Lass einen KI-Agenten per ADB an deinen Fernseher: Er deaktiviert die Apps, die du nie benutzt, und ersetzt den Startbildschirm. Kein Root, nichts wird deinstalliert, alles umkehrbar.",
+  "og_image_alt": "Räum deinen Android TV auf - tv.cobanov.dev",
+
+  "skip": "Zum Inhalt springen",
+  "nav_aria": "Links",
+  "nav_prompt": "Prompt",
+  "lang_label": "Sprache",
+  "lang_aria": "Sprache wählen",
+
+  "promo_text": "Das gibt es auch noch, ebenfalls kostenlos.",
+  "promo_full": "Ein Weltraumreich aus dem Terminal",
+  "promo_more": "Alle Projekte",
+  "promo_close": "Schließen",
+
+  "hero_h1": "Räum deinen Android TV auf",
+  "hero_lede": "Wenn dein Fernseher träge geworden ist, kannst du die Werksapps deaktivieren, die du nie benutzt. Unten stehen vier Vorbereitungsschritte und der Prompt, den du einem KI-Agenten gibst. Nichts wird deinstalliert, jeder Schritt ist umkehrbar. Windows, Mac oder Linux, egal.",
+
+  "steps_h2": "Vorbereitung",
+  "steps": [
+    {
+      "h3": "Entwickleroptionen einschalten",
+      "p": "Geh am Fernseher auf <strong>Einstellungen → System → Info</strong> und drück mit der OK-Taste der Fernbedienung sieben Mal auf die Zeile <strong>Build-Nummer</strong>."
+    },
+    {
+      "h3": "Debugging einschalten",
+      "p": "<strong>Einstellungen → System → Entwickleroptionen → USB-Debugging.</strong> Wenn es einen eigenen Schalter „Drahtloses Debugging“ gibt, schalte den auch ein."
+    },
+    {
+      "h3": "IP-Adresse des Fernsehers herausfinden",
+      "p": "<strong>Einstellungen → Netzwerk und Internet → Status.</strong> Notier dir die Zahl, die mit <code>192.168.</code> beginnt. Dein Rechner muss im <strong>selben Netz</strong> hängen wie der Fernseher: gleiches WLAN oder gleicher Router."
+    },
+    {
+      "h3": "Claude Code oder Codex öffnen und den Prompt einfügen",
+      "p": "Kopier den Text unten, ersetz die beiden <code>HIER EINTRAGEN</code> durch Modell und IP-Adresse deines Fernsehers und gib ihn dem Agenten. Den Rest erledigt er: Werkzeug installieren, sich mit dem Fernseher verbinden, aufräumen. Zwischendurch hält er an und bittet dich, etwas zu bestätigen oder zu testen."
+    }
+  ],
+
+  "prompt_h2": "Prompt",
+  "copy": "Kopieren",
+  "copied": "Kopiert",
+
+  "warn_h2": "Drei Warnungen",
+  "warnings": [
+    {
+      "strong": "Deaktivier kein Paket, das du nicht am Namen erkennst",
+      "p": "Bei mir hat das Deaktivieren von <code>com.tcl.suspension</code> die Taste „Quellen“ auf der Fernbedienung getötet, ich kam nicht mehr auf HDMI. Es war das Menü zur Eingangswahl."
+    },
+    {
+      "strong": "Deaktivier den Startbildschirm nicht, bevor ein neuer installiert ist",
+      "p": "Installier zuerst FLauncher und setz ihn als Standard. Erst dann den alten Launcher deaktivieren. Sonst: schwarzer Bildschirm."
+    },
+    {
+      "strong": "Kein Root",
+      "p": "Das Entsperren des Bootloaders setzt den Fernseher zurück, und wenn Widevine auf L3 fällt, läuft Netflix nur noch in SD. Es bringt nichts: <code>disable-user</code> tut schon das, was Root täte."
+    }
+  ],
+
+  "undo_h2": "Rückgängig machen",
+  "undo_p1": "Weil nichts deinstalliert wird, lässt sich jeder Schritt rückgängig machen. Der Agent führt Buch über alles, was er deaktiviert hat, es reicht also, ihm zu sagen: <strong>„aktivier alles wieder, was du deaktiviert hast“</strong>.",
+  "undo_p2": "Wenn du eine einzelne App selbst zurückholen willst:",
+  "terminal_label": "Terminal",
+
+  "footer_source": "Quellcode",
+
+  "og_h1": "Räum deinen <em>Android TV</em> auf",
+  "og_sub": "Vier Schritte und ein fertiger Prompt."
+}

@@ -1,0 +1,76 @@
+{
+  "code": "en",
+  "dir": "ltr",
+  "path": "/",
+  "name": "English",
+  "og_locale": "en_US",
+
+  "title": "Clean up your Android TV",
+  "meta_description": "Clean up your Android TV over ADB: drop the ad rows, disable factory apps, replace the home screen. No root needed. Copy-paste prompt and a step-by-step guide.",
+  "og_description": "Point an AI agent at your TV over ADB, have it disable the apps you never use and replace the home screen. No root, nothing uninstalled, everything reversible.",
+  "og_image_alt": "Clean up your Android TV - tv.cobanov.dev",
+
+  "skip": "Skip to content",
+  "nav_aria": "Links",
+  "nav_prompt": "Prompt",
+  "lang_label": "Language",
+  "lang_aria": "Choose language",
+
+  "promo_text": "One more here, and it is free too.",
+  "promo_full": "A space empire from your terminal",
+  "promo_more": "All projects",
+  "promo_close": "Close",
+
+  "hero_h1": "Clean up your Android TV",
+  "hero_lede": "If your TV has gotten sluggish, you can disable the factory apps you never use. Below is a four-step setup and the prompt you hand to an AI agent. Nothing gets uninstalled, every step is reversible. Windows, Mac and Linux all work.",
+
+  "steps_h2": "Setup",
+  "steps": [
+    {
+      "h3": "Turn on developer options",
+      "p": "On the TV, go to <strong>Settings → System → About</strong> and press the remote's OK button on the <strong>Build</strong> row seven times."
+    },
+    {
+      "h3": "Turn on debugging",
+      "p": "<strong>Settings → System → Developer options → USB debugging.</strong> If there is a separate \"Wireless debugging\" toggle, turn that on too."
+    },
+    {
+      "h3": "Find the TV's IP address",
+      "p": "<strong>Settings → Network &amp; internet → Status.</strong> Note the number starting with <code>192.168.</code> Your computer has to be on the <strong>same network</strong> as the TV: same Wi-Fi, or same router."
+    },
+    {
+      "h3": "Open Claude Code or Codex and paste the prompt",
+      "p": "Copy the text below, replace the two <code>FILL THIS IN</code> placeholders with your TV's model and IP address, and hand it to the agent. It takes care of the rest: installing the tooling, connecting to the TV, doing the cleanup. It will occasionally stop and ask you to approve or test something."
+    }
+  ],
+
+  "prompt_h2": "Prompt",
+  "copy": "Copy",
+  "copied": "Copied",
+
+  "warn_h2": "Three warnings",
+  "warnings": [
+    {
+      "strong": "Never disable a package you can't identify by name",
+      "p": "On my TV, disabling <code>com.tcl.suspension</code> killed the \"Inputs\" button on the remote and I could no longer switch to HDMI. It turned out to be the source-select menu."
+    },
+    {
+      "strong": "Don't disable the home screen before installing a new one",
+      "p": "Install FLauncher and set it as the default first. Only then disable the old launcher. Otherwise you get a black screen."
+    },
+    {
+      "strong": "Don't root it",
+      "p": "Unlocking the bootloader factory-resets the TV, and if Widevine drops to L3 Netflix falls back to SD. There is nothing to gain: <code>disable-user</code> already does what root would."
+    }
+  ],
+
+  "undo_h2": "Undoing it",
+  "undo_p1": "Nothing is uninstalled, so every step can be reversed. The agent keeps a list of what it disabled, so telling it <strong>\"re-enable everything you disabled\"</strong> is enough.",
+  "undo_p2": "To bring back a single app yourself:",
+  "terminal_label": "terminal",
+
+  "footer_source": "source",
+
+  "og_h1": "Clean up your <em>Android TV</em>",
+  "og_sub": "Four steps and a copy-paste prompt."
+}

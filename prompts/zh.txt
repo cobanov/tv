@@ -1,0 +1,76 @@
+我想让你通过 ADB 清理我的 Android TV。目标是:去掉广告和推荐的横栏，停用我
+从不使用的出厂应用，让电视更快一些。命令由你来执行，并用平实的话告诉我你在
+做什么。
+
+我的电视
+- 品牌 / 型号: 填这里                    (例如: TCL Smart TV Pro)
+- 电视的 IP 地址: 填这里                 (电视 > 设置 > 网络和互联网 > 状态)
+- 「开发者选项」和「USB 调试 / 无线调试」都已经打开。我的电脑和电视在同一个
+  网络里。
+
+规则 (请严格遵守)
+1. 不要卸载任何东西。只使用 `pm disable-user --user 0`，这样一切都能用
+   `pm enable <包名>` 还原。禁止使用 `pm uninstall`。
+2. 不要建议也不要尝试 root、解锁 bootloader 或刷第三方 ROM。那会把电视恢复
+   出厂设置，而且 Widevine 证书一旦从 L1 掉到 L3，Netflix 就只能放标清。这么
+   做没有任何好处。
+3. 先测量。开始之前，把 `dumpsys meminfo`、`pm list packages -s` 和
+   `pm list packages -d` 的输出保存到文件里。结束时重复同样的测量，给我一张
+   前后对比表。
+4. 小批量推进。每次最多停用 10 个包，然后停下来，让我测试:遥控器上的
+   「信号源 / 输入」键还能用吗，能切到 HDMI 吗，Netflix 和 YouTube 还能打开
+   吗，声音和屏幕键盘还正常吗?在我说「没问题」之前，不要进入下一批。
+5. 以下这些绝对不要停用 (会让电视没法用):
+      com.tcl.suspension          -> 遥控器上的信号源/输入菜单。名字看着像
+                                     垃圾，但停用之后就切不到 HDMI 了。如果
+                                     是别的品牌，去找该品牌对应的「快捷面板」
+                                     包。
+      com.tcl.tv, com.tcl.tvinput -> HDMI / 天线输入服务
+      com.google.android.tv.remote.service,
+      com.tcl.tcl_bt_rcu_service,
+      com.tcl.autopair            -> 遥控器
+      com.google.android.gms,
+      com.google.android.gsf,
+      com.android.vending         -> Play 服务和 Play 商店
+      com.android.location.fused  -> 停用之后电视会陷入开机循环
+      *.inputmethod.*             -> 屏幕键盘
+      com.google.android.apps.tv.launcherx
+                                  -> 主界面。在装好别的启动器之前停用它，会
+                                     得到一片黑屏。
+   如果是别的品牌，请找出这份清单的对应项。你要是不确定某个包是干什么的，
+   停用之前先问我。
+6. 留下记录。把你停用的每一个包写进 `tv-debloat` 文件夹里的 `disabled.txt`。
+   同一个文件夹里放一份 `DEBLOAT-LOG.md`，写清楚你做了什么、为什么这么做，
+   以及撤销每一项改动的确切命令。
+7. 如果出了问题，先把最后一批整个恢复回来，再一个一个地缩小范围。
+
+按这个顺序来
+a) 检查 `adb` 装了没有，没装就装上。看看我用的是哪个操作系统，选对应的做法:
+   Windows 上下载 Google 的 platform-tools 并加入 PATH，macOS 上用
+   `brew install android-platform-tools`，Linux 上用 `apt install adb`。然后
+   用 `adb connect <IP>:5555` 连接。电视上会弹出「允许从这台电脑调试吗?」，
+   告诉我一声，我来确认。Android 11 及以上，如果电视在「无线调试」界面要求
+   配对码，先用 `adb pair`。
+b) 做测量，列出包清单。
+c) 把这些包分成三组，用表格给我看:(1) 确定是垃圾:不用的流媒体应用、演示
+   程序、屏保、语音助手、开机向导、遥测;(2) 取决于我:问我到底用不用;
+   (3) 不能动的。得到我的同意后，从第 1 组开始。
+d) 把动画速度减半:
+      settings put global window_animation_scale 0.5
+      settings put global transition_animation_scale 0.5
+      settings put global animator_duration_scale 0.5
+e) 用 `pm trim-caches` 清理缓存。
+f) 重启电视，再测一次。
+
+换掉主界面
+Google TV 自带的主界面满是广告和「为你推荐」的横栏。我想改用 FLauncher
+(Play 商店里就有，免费、开源，只显示我的应用网格)。
+- 先让我安装 FLauncher，并确认已经装好。
+- 让我打开一次，并把它设为主界面。
+- 之后再停用 `com.google.android.apps.tv.launcherx`。
+- 重启电视，确认主界面仍然是 FLauncher。
+
+做完之后给我
+1. 内存的前后对比表。
+2. 你停用过的包的清单，每一个配一句「这是干什么的」。
+3. 一条能把所有改动全部撤销的命令。
