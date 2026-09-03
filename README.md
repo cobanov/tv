@@ -1,10 +1,10 @@
 <p align="center">
-  <img src="assets/og-tr.png" alt="Android TV'ni temizle: dört adımlık hazırlık ve hazır prompt" width="640">
+  <img src="assets/og-en.png" alt="Clean up your Android TV: four steps of preparation and a ready-made prompt" width="640">
 </p>
 
 <p align="center">
-  Android TV'yi ADB ile temizlemek için tek sayfalık rehber ve<br>
-  yapay zekâ ajanına yapıştırılacak hazır prompt. On dilde.
+  A one-page guide to cleaning up an Android TV over ADB,<br>
+  and a prompt to hand to an AI agent. In ten languages.
 </p>
 
 <p align="center">
@@ -12,54 +12,58 @@
 </p>
 
 <p align="center">
-  <img alt="diller" src="https://img.shields.io/badge/dil-10-3ddc84?labelColor=1a1a1a">
-  <img alt="root" src="https://img.shields.io/badge/root-gerekmiyor-3ddc84?labelColor=1a1a1a">
-  <img alt="geri alinabilir" src="https://img.shields.io/badge/her%20ad%C4%B1m-geri%20al%C4%B1nabilir-3ddc84?labelColor=1a1a1a">
+  <img alt="languages" src="https://img.shields.io/badge/languages-10-3ddc84?labelColor=1a1a1a">
+  <img alt="root" src="https://img.shields.io/badge/root-not%20required-3ddc84?labelColor=1a1a1a">
+  <img alt="reversible" src="https://img.shields.io/badge/every%20step-reversible-3ddc84?labelColor=1a1a1a">
   <img alt="deploy" src="https://img.shields.io/badge/Cloudflare-Pages-3ddc84?labelColor=1a1a1a">
 </p>
 
 ---
 
-Android TV kutudan çıktığı gibi ana ekranını reklam ve öneri şeritlerine ayırıyor,
-hiç açmadığın on beş fabrika uygulamasını arka planda tutuyor ve iki yıl sonra
-kumandaya basınca bekletiyor. İnternetteki çözümlerin çoğu root, bootloader açma ya
-da custom ROM diyor. Üçü de televizyonu fabrika ayarlarına döndürüyor, üstüne
-Widevine sertifikası L1'den L3'e düşerse Netflix SD'ye iniyor. Kazanç yok.
+An Android TV arrives with its home screen given over to ad and recommendation rows,
+fifteen factory apps you never open running behind them, and, two years later, a
+noticeable pause between pressing a button on the remote and anything happening.
 
-Gereken şey `adb` ve tek bir komut ailesi: `pm disable-user`. Uygulama silinmiyor,
-sadece kapatılıyor, ve `pm enable` ile geri geliyor. Sayfadaki prompt bunu bir yapay
-zekâ ajanına anlatıyor: ajan aracı kuruyor, televizyona bağlanıyor, önce ölçüyor,
-sonra temizliyor.
+Most of the advice online answers this with root, an unlocked bootloader, or a custom
+ROM. All three factory-reset the television, and if the Widevine certificate drops
+from L1 to L3 on the way, Netflix falls back to SD. There is nothing to gain.
 
-- **Hiçbir şey silinmiyor.** Prompt `pm uninstall` kullanmayı açıkça yasaklıyor,
-  yalnızca `pm disable-user --user 0`. Beğenmediğin her değişiklik tek komutla geri
-  alınıyor.
-- **Root, bootloader, custom ROM yok.** Prompt bunları önermeyi de yasaklıyor.
-- **Önce ölçüyor.** Başlamadan `dumpsys meminfo` ve paket listeleri dosyaya
-  alınıyor, sonunda aynı ölçüm tekrarlanıp önce/sonra tablosu çıkıyor.
-- **On dil, tek şablon.** Aynı `index.template.html` on ayrı JSON'la dolduruluyor,
-  Arapça dahil.
-- **Sunucu yok.** Statik sayfa, Cloudflare Pages.
+What the job actually needs is `adb` and one family of commands: `pm disable-user`.
+Nothing is removed, only switched off, and `pm enable` brings it back. The prompt on
+the site explains that to an AI agent, which installs the tool, connects to the
+television, measures first, and then cleans up.
 
-## Kullanım
+- **Nothing is uninstalled.** The prompt forbids `pm uninstall` outright and allows
+  only `pm disable-user --user 0`, so any change you dislike is one command away from
+  being undone.
+- **No root, no bootloader, no custom ROM.** The prompt is told not to suggest them
+  either, along with the reason.
+- **It measures first.** `dumpsys meminfo` and the package lists are captured to a
+  file before anything changes, then taken again at the end for a before-and-after
+  table.
+- **Ten languages from one template.** The same `index.template.html` filled from ten
+  JSON files, Arabic included.
+- **No server.** A static page on Cloudflare Pages.
 
-Televizyonda geliştirici seçeneklerini ve USB hata ayıklamayı aç, IP adresini not et,
-[tv.cobanov.dev](https://tv.cobanov.dev) adresindeki prompt'u kopyala, ilk iki
-satırdaki `BURAYA YAZ` yerlerine modeli ve IP'yi yaz, Claude Code ya da Codex'e ver.
-Sayfadaki dört adım bunu ekran ekran anlatıyor.
+## Use
 
-Prompt ayrıca `prompt.txt` olarak da yayınlanıyor, yani doğrudan indirilebiliyor:
+Turn on developer options and USB debugging on the television, note its IP address,
+copy the prompt from [tv.cobanov.dev](https://tv.cobanov.dev), fill in the model and
+the IP where the first two lines say so, and hand it to Claude Code or Codex. The four
+steps on the page walk through that screen by screen.
+
+The prompt is also published as `prompt.txt`, so it can be fetched directly:
 
 ```sh
 curl https://tv.cobanov.dev/prompt.txt
 curl https://tv.cobanov.dev/tr/prompt.txt
 ```
 
-## Diller
+## Languages
 
-Varsayılan dil İngilizce ve kökte duruyor. Diğerleri `/<kod>/` altında.
+English is the default and sits at the root. The rest live under `/<code>/`.
 
-| Dil | Yol | Dil | Yol |
+| Language | Path | Language | Path |
 |---|---|---|---|
 | English | `/` | Italiano | `/it/` |
 | Türkçe | `/tr/` | Русский | `/ru/` |
@@ -67,58 +71,59 @@ Varsayılan dil İngilizce ve kökte duruyor. Diğerleri `/<kod>/` altında.
 | Español | `/es/` | العربية | `/ar/` |
 | Deutsch | `/de/` | 简体中文 | `/zh/` |
 
-İngilizce eskiden `/en/` altındaydı. `public/_redirects` o adresleri köke 301 ile
-taşıyor, eski bağlantılar kırılmıyor.
+English used to live under `/en/`. `public/_redirects` moves those addresses to the
+root with a 301, so links people already have keep working.
 
-## Yapı
+## Layout
 
-| Dosya | Ne |
+| File | What it is |
 |---|---|
-| `index.template.html` | Tek sayfa şablonu. `{{anahtar}}` yer tutucuları doldurulur. |
-| `i18n/<kod>.json` | O dilin bütün metinleri. Değerler HTML parçası içerebilir. |
-| `prompts/<kod>.txt` | O dilin prompt'u. Sayfaya gömülür, ayrıca `prompt.txt` olarak yayınlanır. |
-| `assets/site.css` | Tüm stil. Arapça için mantıksal özellikler, CJK ve Arapça için dile göre yazı tipi. |
-| `assets/og.template.html` | Sosyal medya görselinin kaynağı. |
-| `assets/og-<kod>.png` | 1200x630 sosyal medya önizlemesi, dil başına bir tane. |
-| `build.py` | `public/` klasörünü üretir. |
-| `build.sh` | `build.py` + dosya kopyalama. |
-| `og.sh` | Sosyal medya görsellerini headless Chrome ile yeniden üretir. |
+| `index.template.html` | The single page template. `{{key}}` placeholders are filled in. |
+| `i18n/<code>.json` | Every string for that language. Values may contain HTML fragments. |
+| `prompts/<code>.txt` | That language's prompt. Embedded in the page and also published as `prompt.txt`. |
+| `assets/site.css` | All the styling. Logical properties for Arabic, per-language fonts for CJK and Arabic. |
+| `assets/og.template.html` | Source of the social card. |
+| `assets/og-<code>.png` | The 1200x630 social preview, one per language. |
+| `build.py` | Produces `public/`. |
+| `build.sh` | `build.py` plus the file copying. |
+| `og.sh` | Regenerates the social cards through headless Chrome. |
 
-## Geliştirme
+## Development
 
 ```sh
 ./build.sh
 cd public && python3 -m http.server 8899
 ```
 
-Sayfalar arası bağlantılar göreli, yani `public/index.html` dosyadan da açılır; ama
-`_redirects` yalnızca Cloudflare'de çalışır.
+Links between pages are relative, so `public/index.html` opens from the filesystem
+too. `_redirects` only works on Cloudflare.
 
-Sosyal medya görsellerini yeniden üretmek için (macOS, Chrome gerekir):
+To regenerate the social cards (macOS, needs Chrome):
 
 ```sh
 ./build.sh && ./og.sh
 ```
 
-### Yeni dil ekleme
+### Adding a language
 
-1. `i18n/<kod>.json` yaz. Mevcut bir dili kopyalayıp çevirmek en hızlısı; `path`,
-   `name`, `og_locale` ve `dir` alanlarını unutma.
-2. `prompts/<kod>.txt` yaz.
-3. `build.py` içindeki `ORDER` listesine kodu ekle, `OG` sözlüğüne de bir satır
-   (yazı tipi, başlık puntosu, başlık genişliği, harf aralığı).
+1. Write `i18n/<code>.json`. Copying an existing language and translating it is the
+   fastest route; do not forget `path`, `name`, `og_locale` and `dir`.
+2. Write `prompts/<code>.txt`.
+3. Add the code to `ORDER` in `build.py`, and a row to the `OG` dictionary (font,
+   heading size, heading width, letter spacing).
 4. `./build.sh && ./og.sh`
 
-Sağdan sola yazılan bir dil eklerken JSON'da `"dir": "rtl"` yeter; stil zaten mantıksal
-özelliklerle yazıldı.
+For a right-to-left language, `"dir": "rtl"` in the JSON is enough; the stylesheet was
+written with logical properties from the start.
 
-Başlık puntosunun dilden dile değişmesinin sebebi şu: `ch` birimi Latin `0` genişliğine
-dayanıyor, o yüzden CJK başlığa dar geliyor, sıkıştırılmış harf aralığı da yalnızca
-Latin harfte doğru duruyor. Sabit bir punto on dilde birden taşıyor.
+The heading size varies by language for a specific reason: the `ch` unit is based on
+the width of a Latin `0`, so it comes out too narrow for a CJK heading, and the
+tightened letter spacing only looks right on Latin script. A single fixed size
+overflows in several of the ten at once.
 
-## Yayınlama
+## Deploy
 
-Cloudflare Pages projesi: `tv`
+Cloudflare Pages project: `tv`
 
 ```sh
 ./build.sh
