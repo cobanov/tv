@@ -23,6 +23,7 @@
 
   "hero_h1": "Limpia tu Android TV",
   "hero_lede": "Si tu tele va lenta, puedes desactivar las apps de fábrica que nunca usas. Abajo tienes una preparación de cuatro pasos y el prompt que le das a un agente de IA. No se desinstala nada y cada paso es reversible. Da igual Windows, Mac o Linux.",
+  "related_label": "También disponibles",
 
   "steps_h2": "Preparación",
   "steps": [

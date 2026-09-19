@@ -276,6 +276,18 @@ body::after {
   color: var(--muted);
 }
 
+.related-projects {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  color: var(--muted);
+  font-size: var(--step--1);
+}
+
+.related-projects > span { margin-inline-end: 4px; }
+
 .btn {
   display: inline-flex;
   align-items: center;

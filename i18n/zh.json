@@ -24,6 +24,7 @@
 
   "hero_h1": "清理你的 Android TV",
   "hero_lede": "如果电视变卡了，可以把那些你从来不用的出厂应用停用掉。下面是四步准备工作，以及交给 AI 智能体的提示词。不会卸载任何东西，每一步都能还原。Windows、Mac、Linux 都一样。",
+  "related_label": "更多指南",
 
   "steps_h2": "准备工作",
   "steps": [

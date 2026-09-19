@@ -23,6 +23,7 @@
 
   "hero_h1": "Clean up your Android TV",
   "hero_lede": "If your TV has gotten sluggish, you can disable the factory apps you never use. Below is a four-step setup and the prompt you hand to an AI agent. Nothing gets uninstalled, every step is reversible. Windows, Mac and Linux all work.",
+  "related_label": "More guides",
 
   "steps_h2": "Setup",
   "steps": [

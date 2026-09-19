@@ -23,6 +23,7 @@
 
   "hero_h1": "Android TV'ni temizle",
   "hero_lede": "Televizyonun kasıyorsa, kullanmadığın fabrika uygulamalarını kapatabilirsin. Aşağıda dört adımlık hazırlık ve yapay zekâ ajanına vereceğin prompt var. Hiçbir şey silinmez, her adım geri alınabilir. Windows, Mac ya da Linux fark etmez.",
+  "related_label": "Bunlar da var",
 
   "steps_h2": "Hazırlık",
   "steps": [
