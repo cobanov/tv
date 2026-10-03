@@ -29,6 +29,11 @@ REGLAS (síguelas al pie de la letra)
                                      desactivas ya no se puede pasar a HDMI.
                                      En otra marca, busca su paquete
                                      equivalente de «panel rápido».
+      com.tcl.ttvs                -> actualizaciones del sistema (Red / USB).
+                                     El nombre parece un servicio de voz
+                                     (TTS), pero si lo desactivas, las
+                                     opciones del menú de actualización dejan
+                                     de responder sin avisar.
       com.tcl.tv, com.tcl.tvinput -> servicios de entrada HDMI / antena
       com.google.android.tv.remote.service,
       com.tcl.tcl_bt_rcu_service,

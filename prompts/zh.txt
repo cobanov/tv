@@ -25,6 +25,9 @@
                                      垃圾，但停用之后就切不到 HDMI 了。如果
                                      是别的品牌，去找该品牌对应的「快捷面板」
                                      包。
+      com.tcl.ttvs                -> 系统更新（网络 / USB）。名字看着像语音
+                                     朗读（TTS）服务，但停用之后，更新菜单里
+                                     的选项会毫无提示地失去响应。
       com.tcl.tv, com.tcl.tvinput -> HDMI / 天线输入服务
       com.google.android.tv.remote.service,
       com.tcl.tcl_bt_rcu_service,

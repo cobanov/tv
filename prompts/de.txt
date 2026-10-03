@@ -32,6 +32,10 @@ REGELN (halt dich genau daran)
                                      aus, aber wenn du ihn deaktivierst, kommt
                                      man nicht mehr auf HDMI. Bei einer anderen
                                      Marke: such deren „Quick Panel“-Paket.
+      com.tcl.ttvs                -> Systemupdates (Netzwerk / USB). Der Name
+                                     klingt nach Sprachausgabe (TTS), aber
+                                     wenn du ihn deaktivierst, reagiert keine
+                                     Option im Update-Menü mehr.
       com.tcl.tv, com.tcl.tvinput -> HDMI-/Antennen-Eingangsdienste
       com.google.android.tv.remote.service,
       com.tcl.tcl_bt_rcu_service,

@@ -30,6 +30,11 @@ REGOLE (seguile alla lettera)
                                      disattivi non si passa più all'HDMI. Su
                                      un'altra marca, cerca il suo pacchetto
                                      equivalente del «quick panel».
+      com.tcl.ttvs                -> aggiornamenti di sistema (Rete / USB).
+                                     Il nome fa pensare alla sintesi vocale
+                                     (TTS), ma se lo disattivi nessuna
+                                     opzione del menu di aggiornamento
+                                     risponde più.
       com.tcl.tv, com.tcl.tvinput -> servizi di ingresso HDMI / antenna
       com.google.android.tv.remote.service,
       com.tcl.tcl_bt_rcu_service,
