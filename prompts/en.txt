@@ -47,7 +47,7 @@ RULES - follow these exactly
                                      you with a black screen.
    For other brands, find the equivalents of this list. If you are not sure
    what a package does, ask me before disabling it.
-6. KEEP A RECORD. Write every package you disable to `kapatilanlar.txt` inside
+6. KEEP A RECORD. Write every package you disable to `disabled.txt` inside
    a `tv-debloat` folder. Keep a `DEBLOAT-LOG.md` in the same folder describing
    what you did, why, and the exact command to undo each change.
 7. If something breaks, re-enable the last batch first, then narrow it down one
@@ -71,7 +71,7 @@ d) Halve the animation speeds:
       settings put global window_animation_scale 0.5
       settings put global transition_animation_scale 0.5
       settings put global animator_duration_scale 0.5
-e) Clear caches with `pm trim-caches`.
+e) Clear caches with `pm trim-caches 999G`.
 f) Reboot the TV and take the measurements again.
 
 REPLACE THE HOME SCREEN

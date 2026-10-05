@@ -78,7 +78,7 @@ d) Réduis de moitié la vitesse des animations :
       settings put global window_animation_scale 0.5
       settings put global transition_animation_scale 0.5
       settings put global animator_duration_scale 0.5
-e) Vide les caches avec `pm trim-caches`.
+e) Vide les caches avec `pm trim-caches 999G`.
 f) Redémarre le téléviseur et reprends les mesures.
 
 REMPLACE L'ÉCRAN D'ACCUEIL

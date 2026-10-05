@@ -76,7 +76,7 @@ d) Уменьши скорость анимаций вдвое:
       settings put global window_animation_scale 0.5
       settings put global transition_animation_scale 0.5
       settings put global animator_duration_scale 0.5
-e) Очисти кеши командой `pm trim-caches`.
+e) Очисти кеши командой `pm trim-caches 999G`.
 f) Перезагрузи телевизор и повтори измерения.
 
 ЗАМЕНИ ГЛАВНЫЙ ЭКРАН

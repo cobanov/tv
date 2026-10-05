@@ -93,7 +93,7 @@
       settings put global transition_animation_scale 0.5
       settings put global animator_duration_scale 0.5
 
-هـ) نظّف الذاكرة المؤقتة بالأمر `pm trim-caches`.
+هـ) نظّف الذاكرة المؤقتة بالأمر `pm trim-caches 999G`.
 
 و) أعد تشغيل التلفزيون وكرّر القياسات.
 

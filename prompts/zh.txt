@@ -62,7 +62,7 @@ d) 把动画速度减半:
       settings put global window_animation_scale 0.5
       settings put global transition_animation_scale 0.5
       settings put global animator_duration_scale 0.5
-e) 用 `pm trim-caches` 清理缓存。
+e) 用 `pm trim-caches 999G` 清理缓存。
 f) 重启电视，再测一次。
 
 换掉主界面

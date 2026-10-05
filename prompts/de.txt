@@ -79,7 +79,7 @@ d) Halbier die Animationsgeschwindigkeiten:
       settings put global window_animation_scale 0.5
       settings put global transition_animation_scale 0.5
       settings put global animator_duration_scale 0.5
-e) Leer die Caches mit `pm trim-caches`.
+e) Leer die Caches mit `pm trim-caches 999G`.
 f) Starte den Fernseher neu und miss noch einmal.
 
 ERSETZ DEN STARTBILDSCHIRM
