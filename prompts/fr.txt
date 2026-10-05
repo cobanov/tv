@@ -31,6 +31,11 @@ RÈGLES (à suivre à la lettre)
                                      le désactives on ne peut plus passer en
                                      HDMI. Sur une autre marque, cherche son
                                      paquet « quick panel » équivalent.
+      com.tcl.ttvs                -> mises à jour système (Réseau / USB). Le
+                                     nom fait penser à une synthèse vocale
+                                     (TTS), mais si tu le désactives, plus
+                                     aucune option du menu de mise à jour ne
+                                     répond, sans message d'erreur.
       com.tcl.tv, com.tcl.tvinput -> services d'entrée HDMI / antenne
       com.google.android.tv.remote.service,
       com.tcl.tcl_bt_rcu_service,

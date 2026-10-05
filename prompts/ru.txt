@@ -31,6 +31,10 @@
                                      на HDMI больше не переключиться. Если
                                      марка другая, найди её аналог пакета
                                      «quick panel».
+      com.tcl.ttvs                -> обновление системы (Сеть / USB). Имя
+                                     похоже на службу синтеза речи (TTS), но
+                                     если его отключить, пункты меню
+                                     обновления молча перестают работать.
       com.tcl.tv, com.tcl.tvinput -> службы входов HDMI / антенна
       com.google.android.tv.remote.service,
       com.tcl.tcl_bt_rcu_service,

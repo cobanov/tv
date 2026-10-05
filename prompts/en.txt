@@ -28,6 +28,10 @@ RULES - follow these exactly
                                      means you can no longer switch to HDMI.
                                      If your TV is a different brand, find that
                                      brand's equivalent "quick panel" package.
+      com.tcl.ttvs                -> system updates (Network / USB). The name
+                                     suggests a text-to-speech service, but
+                                     disabling it makes every option in the
+                                     system update menu silently stop working.
       com.tcl.tv, com.tcl.tvinput -> HDMI / antenna input services
       com.google.android.tv.remote.service,
       com.tcl.tcl_bt_rcu_service,

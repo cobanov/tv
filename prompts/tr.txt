@@ -27,6 +27,10 @@ KURALLAR (bunlara harfiyen uy)
                                      Adı çöp gibi durur ama kapatırsan
                                      HDMI'ya geçemezsin. Markanın kendi
                                      "quick panel" paketi neyse o da aynı.
+      com.tcl.ttvs                -> sistem güncellemesi (Ağ / USB). Adı TTS
+                                     servisi gibi durur ama kapatırsan
+                                     Ayarlar'daki güncelleme seçenekleri
+                                     sessizce tepki vermeyi bırakır.
       com.tcl.tv, com.tcl.tvinput -> HDMI / anten giriş servisleri
       com.google.android.tv.remote.service,
       com.tcl.tcl_bt_rcu_service,

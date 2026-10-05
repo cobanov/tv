@@ -30,6 +30,10 @@ ADB 経由で私の Android TV を掃除してほしい。目的は、広告と�
                                      に切り替えられなくなる。メーカーが違う
                                      場合は、そのメーカーの「クイックパネル」
                                      相当のパッケージを探すこと。
+      com.tcl.ttvs                -> システムアップデート（ネットワーク / USB）。
+                                     名前は音声読み上げ（TTS）のように見えるが、
+                                     無効にするとアップデートメニューの項目が
+                                     エラーも出さずに反応しなくなる。
       com.tcl.tv, com.tcl.tvinput -> HDMI / アンテナの入力サービス
       com.google.android.tv.remote.service,
       com.tcl.tcl_bt_rcu_service,
