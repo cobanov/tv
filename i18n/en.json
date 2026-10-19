@@ -41,19 +41,20 @@
     },
     {
       "h3": "Open Claude Code or Codex and paste the prompt",
-      "p": "Copy the text below, replace the two <code>FILL THIS IN</code> placeholders with your TV's model and IP address, and hand it to the agent. It takes care of the rest: installing the tooling, connecting to the TV, doing the cleanup. It will occasionally stop and ask you to approve or test something."
+      "p": "Copy the text below, replace the two <code>FILL THIS IN</code> placeholders with your TV's model and IP address, and hand it to the agent. It takes care of the rest: installing the tooling, connecting to the TV, doing the cleanup. It checks every change on the TV itself with screenshots, and only stops to ask about what it can't see: sound, the remote, the apps you use."
     }
   ],
 
   "prompt_h2": "Prompt",
   "copy": "Copy",
   "copied": "Copied",
+  "prompt_credit": "The prompt borrows lessons from <a href=\"https://github.com/Gathin23/cleanyourtv\" rel=\"noreferrer\">cleanyourtv</a>, which also keeps ready-made lists for many TV models.",
 
-  "warn_h2": "Three warnings",
+  "warn_h2": "Four warnings",
   "warnings": [
     {
       "strong": "Never disable a package you can't identify by name",
-      "p": "On my TV, disabling <code>com.tcl.suspension</code> killed the \"Inputs\" button on the remote and I could no longer switch to HDMI. It turned out to be the source-select menu."
+      "p": "On my TV, disabling <code>com.tcl.suspension</code> killed the \"Inputs\" button on the remote and I could no longer switch to HDMI. It turned out to be the source-select menu. On some TCL models, <code>com.tcl.providers.config</code> and <code>com.tcl.initsetup</code> drop the Wi-Fi the same way."
     },
     {
       "strong": "Don't disable the home screen before installing a new one",
@@ -62,6 +63,10 @@
     {
       "strong": "Don't root it",
       "p": "Unlocking the bootloader factory-resets the TV, and if Widevine drops to L3 Netflix falls back to SD. There is nothing to gain: <code>disable-user</code> already does what root would."
+    },
+    {
+      "strong": "Turn USB debugging off when you're done",
+      "p": "Some TVs cut power to their USB ports while debugging is on. If a USB speaker or drive stops working, switch off USB debugging in Developer options."
     }
   ],
 
@@ -71,6 +76,23 @@
   "terminal_label": "terminal",
 
   "footer_source": "source",
+
+  "sticker_top": "No root",
+  "sticker_main": "100% reversible",
+  "ig_h2": "See who doesn't follow you back on Instagram",
+  "ig_p": "A free tool that runs in your browser. Paste one line into the console and it lists everyone who doesn't follow you back; unfollow them in a few clicks. No password, no app.",
+  "ig_cta": "Open the tool",
+  "ig_alt": "The Instagram Unfollowers panel during a scan, listing accounts that don't follow back",
+  "ol_h2": "Run decision models locally",
+  "ol_p": "Ask typed questions about any text or JSON and get calibrated answers in milliseconds. Private, open source, on your own hardware.",
+  "ol_cta": "Get Ollaya",
+  "spot_kicker": "Ad space",
+  "spot_title": "Put your brand here",
+  "spot_pitch": "Reach people tuning up their Android TV, in ten languages.",
+  "spot_cta": "Advertise",
+  "spot_label": "Ad",
+  "ig_url": "https://instagram.cobanov.dev/?lang=en&amp;ref=tv",
+  "ig_img": "instagram-panel-en.png",
 
   "og_h1": "Clean up your <em>Android TV</em>",
   "og_sub": "Four steps and a copy-paste prompt."

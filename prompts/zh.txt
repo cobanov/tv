@@ -1,6 +1,6 @@
 我想让你通过 ADB 清理我的 Android TV。目标是:去掉广告和推荐的横栏，停用我
-从不使用的出厂应用，让电视更快一些。命令由你来执行，并用平实的话告诉我你在
-做什么。
+从不使用的出厂应用，让电视更快一些。命令由你来执行，每一步改动都在电视上
+亲自检查，并用平实的话告诉我你在做什么。
 
 我的电视
 - 品牌 / 型号: 填这里                    (例如: TCL Smart TV Pro)
@@ -14,38 +14,49 @@
 2. 不要建议也不要尝试 root、解锁 bootloader 或刷第三方 ROM。那会把电视恢复
    出厂设置，而且 Widevine 证书一旦从 L1 掉到 L3，Netflix 就只能放标清。这么
    做没有任何好处。
-3. 先测量。开始之前，把 `dumpsys meminfo`、`pm list packages -s` 和
-   `pm list packages -d` 的输出保存到文件里。结束时重复同样的测量，给我一张
-   前后对比表。
-4. 小批量推进。每次最多停用 10 个包，然后停下来，让我测试:遥控器上的
-   「信号源 / 输入」键还能用吗，能切到 HDMI 吗，Netflix 和 YouTube 还能打开
-   吗，声音和屏幕键盘还正常吗?在我说「没问题」之前，不要进入下一批。
-5. 以下这些绝对不要停用 (会让电视没法用):
+3. 先备份、先测量。动任何东西之前，把这些保存到 `tv-debloat` 文件夹:
+   `pm list packages -f`、`pm list packages -d`、`getprop`、
+   `settings list global`、`settings list secure`、`settings list system`
+   和 `dumpsys meminfo`。马上建一个恢复脚本 (`restore.sh`，Windows 上用
+   `restore.ps1`)，每停用一个包就立刻把它加进去。结束时重复内存测量，给我
+   一张前后对比表。
+4. 在电视上亲自检查你的工作。每一批之后，用 `adb shell input keyevent`
+   按键 (主页、方向键、返回、信号源/输入)，用
+   `adb exec-out screencap -p > screen.png` 截一张图来看:主界面出来了吗，
+   信号源菜单能打开吗，能切到 HDMI 吗，Netflix 和 YouTube 还能启动吗?看到
+   问题先修好再继续。如果直播电视或 HDMI 在屏幕上时截图是黑的，先按主页键。
+   只问我截图看不出来的东西:声音、遥控器上的按键、屏幕键盘。
+5. 小批量，一次一条命令。每批最多停用 10 个包。每条 `pm` 命令都单独调用一次
+   shell:串在一起的命令可能在第一条之后悄悄停下。如果出了问题，先把最后一批
+   整个恢复回来，再一个一个地缩小范围。
+6. 不管什么品牌，电视运行离不开的东西绝对不要停用:
+   - 电视应用，以及播放 HDMI 和天线/调谐器的输入服务
+   - 信号源/输入菜单 (品牌自己的「快捷面板」)
+   - 遥控器和蓝牙配对服务
+   - 屏幕键盘 (*.inputmethod.*)
+   - Play 商店和 Play 服务: com.android.vending、
+     com.google.android.gms、com.google.android.gsf
+   - com.android.location.fused:停用之后电视会陷入开机循环
+   - 当前的主界面，在新的装好并设为默认之前
+   包名常常看不出它是干什么的。停用一个你没把握的包之前，先用
+   `dumpsys package <包名>` 看看它的 activity 和服务。还是不清楚就问我。
+   比如 TCL 上已知的坑:
       com.tcl.suspension          -> 遥控器上的信号源/输入菜单。名字看着像
-                                     垃圾，但停用之后就切不到 HDMI 了。如果
-                                     是别的品牌，去找该品牌对应的「快捷面板」
-                                     包。
+                                     垃圾，但停用之后就切不到 HDMI 了。
       com.tcl.ttvs                -> 系统更新（网络 / USB）。名字看着像语音
                                      朗读（TTS）服务，但停用之后，更新菜单里
                                      的选项会毫无提示地失去响应。
       com.tcl.tv, com.tcl.tvinput -> HDMI / 天线输入服务
+      com.tcl.providers.config,
+      com.tcl.initsetup           -> 停用其中任何一个，Wi-Fi 就会断
       com.google.android.tv.remote.service,
       com.tcl.tcl_bt_rcu_service,
       com.tcl.autopair            -> 遥控器
-      com.google.android.gms,
-      com.google.android.gsf,
-      com.android.vending         -> Play 服务和 Play 商店
-      com.android.location.fused  -> 停用之后电视会陷入开机循环
-      *.inputmethod.*             -> 屏幕键盘
-      com.google.android.apps.tv.launcherx
-                                  -> 主界面。在装好别的启动器之前停用它，会
-                                     得到一片黑屏。
-   如果是别的品牌，请找出这份清单的对应项。你要是不确定某个包是干什么的，
-   停用之前先问我。
-6. 留下记录。把你停用的每一个包写进 `tv-debloat` 文件夹里的 `disabled.txt`。
+7. 凡是取决于我的，动之前先问我。流媒体应用、语音助手、Chromecast、投屏和
+   系统更新服务:给我一张勾选清单，只停用我没勾的。
+8. 留下记录。把你停用的每一个包写进 `tv-debloat` 文件夹里的 `disabled.txt`。
    同一个文件夹里放一份 `DEBLOAT-LOG.md`，写清楚你做了什么、为什么这么做，
    以及撤销每一项改动的确切命令。
-7. 如果出了问题，先把最后一批整个恢复回来，再一个一个地缩小范围。
 
 按这个顺序来
 a) 检查 `adb` 装了没有，没装就装上。看看我用的是哪个操作系统，选对应的做法:
@@ -54,26 +65,51 @@ a) 检查 `adb` 装了没有，没装就装上。看看我用的是哪个操作�
    用 `adb connect <IP>:5555` 连接。电视上会弹出「允许从这台电脑调试吗?」，
    告诉我一声，我来确认。Android 11 及以上，如果电视在「无线调试」界面要求
    配对码，先用 `adb pair`。
-b) 做测量，列出包清单。
-c) 把这些包分成三组，用表格给我看:(1) 确定是垃圾:不用的流媒体应用、演示
-   程序、屏保、语音助手、开机向导、遥测;(2) 取决于我:问我到底用不用;
-   (3) 不能动的。得到我的同意后，从第 1 组开始。
-d) 把动画速度减半:
+   - 在 macOS 上，如果端口是开着的，adb 却报「No route to host」，那是
+     macOS 的「本地网络」隐私设置在拦截。别去排查它:改用装在 venv 里的
+     Python 包 `adb-shell` 作为 ADB 客户端。
+   - 问我电视的 USB 口上接了什么。有些电视在 USB 调试打开时会切断这些口的
+     供电，USB 音箱或硬盘就不工作了。
+b) 备份并测量 (规则 3)。
+c) 找一份现成的清单:如果 github.com/Gathin23/cleanyourtv 的 `examples/`
+   里有我的型号或相近型号的文件夹，读它的 `debloat.txt` 和开头的说明，
+   拿来当起点。但我电视上的每个包仍要按规则 6 检查一遍。
+d) 把这些包分进一张表格给我看:
+   (1) 遥测、广告追踪 (Samba TV、Alphonso、Anoki 这类 ACR) 和厂商的统计
+       分析;
+   (2) 厂商的广告和内容服务:推荐横栏、内容信息流、门店演示模式;
+   (3) 我大概用不上的后台服务:重复的投屏和分享服务、清理工具;
+   (4) 预装应用;
+   (5) 取决于我 (规则 7);
+   (6) 不能动的 (规则 6)。
+   得到我的同意后，从第 1 组和第 2 组开始。
+e) 把动画速度减半:
       settings put global window_animation_scale 0.5
       settings put global transition_animation_scale 0.5
       settings put global animator_duration_scale 0.5
-e) 用 `pm trim-caches 999G` 清理缓存。
-f) 重启电视，再测一次。
+f) 用 `pm trim-caches 999G` 清理缓存。
+g) 重启电视，用截图检查一遍，再测一次。
 
 换掉主界面
 Google TV 自带的主界面满是广告和「为你推荐」的横栏。我想改用 FLauncher
 (Play 商店里就有，免费、开源，只显示我的应用网格)。
 - 先让我安装 FLauncher，并确认已经装好。
-- 让我打开一次，并把它设为主界面。
-- 之后再停用 `com.google.android.apps.tv.launcherx`。
-- 重启电视，确认主界面仍然是 FLauncher。
+- 列出想当主界面的应用:
+     cmd package query-activities -a android.intent.action.MAIN -c android.intent.category.HOME
+  用 `cmd package set-home-activity` 把 FLauncher 设为默认，或者让我在电视
+  上选它。
+- 在 Google TV 上，开机向导 (com.google.android.tungsten.setupwraith) 即使
+  在原主界面停用之后也可能把主界面抢回去。重启后检查一下，如果是这样，也把
+  它停用。
+- 之后再停用原来的启动器:Google TV 上是
+  com.google.android.apps.tv.launcherx，Android TV 上是
+  com.google.android.tvlauncher。
+- 重启电视，用截图确认主界面仍然是 FLauncher。
+- 如果在 Android 14 上 `adb install` 卡住了，那是在等电视上的确认:把 APK
+  推到电视上，再从 shell 里用 `pm install -r` 安装。
 
 做完之后给我
 1. 内存的前后对比表。
 2. 你停用过的包的清单，每一个配一句「这是干什么的」。
-3. 一条能把所有改动全部撤销的命令。
+3. 恢复脚本，以及一条能把所有改动全部撤销的命令。
+4. 提醒我:如果接在电视 USB 口上的东西不工作了，就把 USB 调试关掉。

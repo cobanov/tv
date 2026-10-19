@@ -41,19 +41,20 @@
     },
     {
       "h3": "Apri Claude Code o Codex e incolla il prompt",
-      "p": "Copia il testo qui sotto, sostituisci i due <code>DA COMPILARE</code> con modello e indirizzo IP della tua TV e passalo all'agente. Al resto pensa lui: installare gli strumenti, collegarsi alla TV, fare pulizia. Ogni tanto si fermerà per chiederti di approvare o provare qualcosa."
+      "p": "Copia il testo qui sotto, sostituisci i due <code>DA COMPILARE</code> con modello e indirizzo IP della tua TV e passalo all'agente. Al resto pensa lui: installare gli strumenti, collegarsi alla TV, fare pulizia. Controlla ogni modifica sulla TV stessa con degli screenshot e si ferma solo per chiederti ciò che non può vedere: l'audio, il telecomando, le app che usi."
     }
   ],
 
   "prompt_h2": "Prompt",
   "copy": "Copia",
   "copied": "Copiato",
+  "prompt_credit": "Il prompt riprende le lezioni di <a href=\"https://github.com/Gathin23/cleanyourtv\" rel=\"noreferrer\">cleanyourtv</a>, che offre anche elenchi già pronti per molti modelli di TV.",
 
-  "warn_h2": "Tre avvertenze",
+  "warn_h2": "Quattro avvertenze",
   "warnings": [
     {
       "strong": "Non disattivare un pacchetto che non riconosci dal nome",
-      "p": "Sulla mia TV, disattivando <code>com.tcl.suspension</code> è morto il tasto «Sorgenti» del telecomando e non riuscivo più a passare all'HDMI. Era il menu di selezione degli ingressi."
+      "p": "Sulla mia TV, disattivando <code>com.tcl.suspension</code> è morto il tasto «Sorgenti» del telecomando e non riuscivo più a passare all'HDMI. Era il menu di selezione degli ingressi. Su alcuni modelli TCL, <code>com.tcl.providers.config</code> e <code>com.tcl.initsetup</code> fanno cadere il Wi-Fi allo stesso modo."
     },
     {
       "strong": "Non disattivare la schermata principale prima di installarne un'altra",
@@ -62,6 +63,10 @@
     {
       "strong": "Non fare il root",
       "p": "Sbloccare il bootloader riporta la TV alle impostazioni di fabbrica e, se Widevine scende a L3, Netflix torna in SD. Non c'è niente da guadagnare: <code>disable-user</code> fa già quello che farebbe il root."
+    },
+    {
+      "strong": "Spegni il debug USB alla fine",
+      "p": "Alcune TV tolgono corrente alle porte USB mentre il debug è attivo. Se una cassa o un disco USB smette di funzionare, disattiva il debug USB nelle opzioni sviluppatore."
     }
   ],
 
@@ -71,6 +76,23 @@
   "terminal_label": "terminale",
 
   "footer_source": "sorgente",
+
+  "sticker_top": "Senza root",
+  "sticker_main": "100% reversibile",
+  "ig_h2": "Scopri chi non ti segue su Instagram",
+  "ig_p": "Uno strumento gratuito che funziona nel browser. Incolla una riga nella console: elenca chi non ti segue e smetti di seguirli con pochi clic. Niente password, niente app.",
+  "ig_cta": "Apri lo strumento",
+  "ig_alt": "Il pannello Instagram Unfollowers durante una scansione, con gli account che non ti seguono",
+  "ol_h2": "Esegui modelli decisionali in locale",
+  "ol_p": "Fai domande tipizzate su qualsiasi testo o JSON e ottieni risposte calibrate in millisecondi. Privato, open source, sul tuo hardware.",
+  "ol_cta": "Scarica Ollaya",
+  "spot_kicker": "Spazio pubblicitario",
+  "spot_title": "Il tuo brand qui",
+  "spot_pitch": "Raggiungi chi sistema la propria Android TV, in dieci lingue.",
+  "spot_cta": "Pubblicizza",
+  "spot_label": "Annuncio",
+  "ig_url": "https://instagram.cobanov.dev/?lang=en&amp;ref=tv",
+  "ig_img": "instagram-panel-en.png",
 
   "og_h1": "Ripulisci la tua <em>Android TV</em>",
   "og_sub": "Quattro passi e un prompt pronto da incollare."

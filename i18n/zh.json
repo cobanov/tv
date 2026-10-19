@@ -42,19 +42,20 @@
     },
     {
       "h3": "打开 Claude Code 或 Codex，粘贴提示词",
-      "p": "复制下面这段文字，把两处 <code>填这里</code> 换成你电视的型号和 IP 地址，然后交给智能体。剩下的它来做：装好工具、连上电视、完成清理。中间它会时不时停下来，让你确认或者测试一下。"
+      "p": "复制下面这段文字，把两处 <code>填这里</code> 换成你电视的型号和 IP 地址，然后交给智能体。剩下的它来做：装好工具、连上电视、完成清理。每一步改动它都会用截图在电视上亲自检查，只有截图看不出来的才会停下来问你：声音、遥控器、你用的应用。"
     }
   ],
 
   "prompt_h2": "提示词",
   "copy": "复制",
   "copied": "已复制",
+  "prompt_credit": "这份提示词借鉴了 <a href=\"https://github.com/Gathin23/cleanyourtv\" rel=\"noreferrer\">cleanyourtv</a> 的经验，那里还有许多电视型号的现成清单。",
 
-  "warn_h2": "三个提醒",
+  "warn_h2": "四个提醒",
   "warnings": [
     {
       "strong": "看名字认不出来的包，不要停用",
-      "p": "我的电视上停用 <code>com.tcl.suspension</code> 之后，遥控器的「信号源」键就废了，再也切不到 HDMI。原来那就是输入源选择菜单。"
+      "p": "我的电视上停用 <code>com.tcl.suspension</code> 之后，遥控器的「信号源」键就废了，再也切不到 HDMI。原来那就是输入源选择菜单。在部分 TCL 机型上，<code>com.tcl.providers.config</code> 和 <code>com.tcl.initsetup</code> 也会同样断掉 Wi-Fi。"
     },
     {
       "strong": "没装好新主界面之前，别停用旧的",
@@ -63,6 +64,10 @@
     {
       "strong": "不要 root",
       "p": "解锁 bootloader 会把电视恢复出厂设置，而且 Widevine 一旦掉到 L3，Netflix 就只能放标清。这么做没有好处：<code>disable-user</code> 已经能做到 root 想做的事。"
+    },
+    {
+      "strong": "做完后关掉 USB 调试",
+      "p": "有些电视在调试打开时会切断 USB 口的供电。如果 USB 音箱或硬盘不工作了，就到开发者选项里关掉「USB 调试」。"
     }
   ],
 
@@ -72,6 +77,23 @@
   "terminal_label": "终端",
 
   "footer_source": "源码",
+
+  "sticker_top": "无需 root",
+  "sticker_main": "100% 可撤销",
+  "ig_h2": "看看 Instagram 上谁没有回关你",
+  "ig_p": "一个在浏览器里运行的免费工具。在控制台粘贴一行代码，就能列出所有没有回关你的人，点几下即可取消关注。无需密码，无需安装应用。",
+  "ig_cta": "打开工具",
+  "ig_alt": "扫描中的 Instagram Unfollowers 面板，列出没有回关的账号",
+  "ol_h2": "在本地运行决策模型",
+  "ol_p": "针对任意文本或 JSON 提出类型化问题，几毫秒内得到校准过的答案。私密、开源，运行在你自己的硬件上。",
+  "ol_cta": "获取 Ollaya",
+  "spot_kicker": "广告位",
+  "spot_title": "在这里展示你的品牌",
+  "spot_pitch": "触达正在优化 Android TV 的用户，覆盖十种语言。",
+  "spot_cta": "投放广告",
+  "spot_label": "广告",
+  "ig_url": "https://instagram.cobanov.dev/?lang=en&amp;ref=tv",
+  "ig_img": "instagram-panel-en.png",
 
   "og_h1": "清理你的 <em>Android TV</em>",
   "og_sub": "四步准备，一段现成提示词。"

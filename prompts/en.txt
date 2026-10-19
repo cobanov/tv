@@ -1,7 +1,7 @@
 I want you to clean up my Android TV over ADB. The goal: get rid of the ad and
 recommendation rows, disable the factory apps I never use, and make the TV
-faster. Run the commands yourself and explain what you are doing in plain
-language as you go.
+faster. Run the commands yourself, check every change on the TV itself, and
+explain what you are doing in plain language as you go.
 
 MY TV
 - Make / model: FILL THIS IN            (example: TCL Smart TV Pro)
@@ -15,43 +15,57 @@ RULES - follow these exactly
 2. Do not suggest or attempt rooting, unlocking the bootloader, or flashing a
    custom ROM. That factory-resets the TV, and if the Widevine certificate
    drops from L1 to L3 Netflix falls back to SD. There is nothing to gain.
-3. MEASURE FIRST. Before you start, capture `dumpsys meminfo`,
-   `pm list packages -s` and `pm list packages -d` to a file. Repeat the same
-   measurements at the end and give me a before/after table.
-4. WORK IN SMALL BATCHES. Disable at most 10 packages at a time, then STOP and
-   have me test: does the remote's "Inputs / Source" button still work, can I
-   switch to HDMI, do Netflix and YouTube still open, do sound and the on-screen
-   keyboard still work? Do not move to the next batch until I say it is fine.
-5. NEVER DISABLE THE FOLLOWING (these make the TV unusable):
+3. BACK UP AND MEASURE FIRST. Before changing anything, save these to a
+   `tv-debloat` folder: `pm list packages -f`, `pm list packages -d`,
+   `getprop`, `settings list global`, `settings list secure`,
+   `settings list system` and `dumpsys meminfo`. Start a restore script
+   (`restore.sh`, or `restore.ps1` on Windows) right away and add every
+   package to it the moment you disable it. Repeat the memory measurement at
+   the end and give me a before/after table.
+4. CHECK YOUR OWN WORK ON THE TV. After every batch, press keys with
+   `adb shell input keyevent` (Home, the D-pad, Back, Inputs/Source), pull a
+   screenshot with `adb exec-out screencap -p > shot.png` and look at it:
+   does the home screen come up, does the Inputs menu open, can you switch
+   to HDMI, do Netflix and YouTube still launch? Fix what you see before
+   moving on. If the screenshot comes out blank while Live TV or HDMI is on
+   screen, press Home first. Ask me only about what a screenshot cannot
+   show: sound, the remote's own buttons, the on-screen keyboard.
+5. SMALL BATCHES, ONE COMMAND AT A TIME. Disable at most 10 packages per
+   batch. Run each `pm` command in its own shell call: chained commands can
+   silently stop after the first one. If something breaks, re-enable the
+   last batch first, then narrow it down one package at a time.
+6. NEVER DISABLE WHAT THE TV NEEDS TO WORK, whatever the brand:
+   - the TV app and the input services that play HDMI and the antenna/tuner
+   - the Inputs/Source menu (the brand's "quick panel")
+   - the remote control and Bluetooth pairing services
+   - the on-screen keyboard (*.inputmethod.*)
+   - Play Store and Play Services: com.android.vending,
+     com.google.android.gms, com.google.android.gsf
+   - com.android.location.fused: disabling it sends the TV into a boot loop
+   - the current home screen, until a new one is installed and set as default
+   Package names often do not say what a package does. Before disabling one
+   you are unsure of, look at its activities and services with
+   `dumpsys package <name>`. If it is still unclear, ask me.
+   Known traps on TCL, for example:
       com.tcl.suspension          -> the Inputs/Source menu on the remote.
                                      The name looks like junk but disabling it
                                      means you can no longer switch to HDMI.
-                                     If your TV is a different brand, find that
-                                     brand's equivalent "quick panel" package.
       com.tcl.ttvs                -> system updates (Network / USB). The name
                                      suggests a text-to-speech service, but
                                      disabling it makes every option in the
                                      system update menu silently stop working.
       com.tcl.tv, com.tcl.tvinput -> HDMI / antenna input services
+      com.tcl.providers.config,
+      com.tcl.initsetup           -> disabling either drops the Wi-Fi
       com.google.android.tv.remote.service,
       com.tcl.tcl_bt_rcu_service,
       com.tcl.autopair            -> the remote control
-      com.google.android.gms,
-      com.google.android.gsf,
-      com.android.vending         -> Play Services and the Play Store
-      com.android.location.fused  -> disabling it sends the TV into a boot loop
-      *.inputmethod.*             -> the on-screen keyboard
-      com.google.android.apps.tv.launcherx
-                                  -> the home screen. Disabling it before an
-                                     alternative launcher is installed leaves
-                                     you with a black screen.
-   For other brands, find the equivalents of this list. If you are not sure
-   what a package does, ask me before disabling it.
-6. KEEP A RECORD. Write every package you disable to `disabled.txt` inside
-   a `tv-debloat` folder. Keep a `DEBLOAT-LOG.md` in the same folder describing
+7. ASK BEFORE ANYTHING THAT DEPENDS ON ME. Streaming apps, the voice
+   assistant, Chromecast, screen mirroring and the system update service:
+   show me a checklist and disable only what I do not tick.
+8. KEEP A RECORD. Write every package you disable to `disabled.txt` in the
+   `tv-debloat` folder. Keep a `DEBLOAT-LOG.md` in the same folder describing
    what you did, why, and the exact command to undo each change.
-7. If something breaks, re-enable the last batch first, then narrow it down one
-   package at a time.
 
 DO IT IN THIS ORDER
 a) Check whether `adb` is installed and install it if not. Check which
@@ -62,28 +76,56 @@ a) Check whether `adb` is installed and install it if not. Check which
    from this computer?" dialog, tell me so I can approve it. On Android 11 and
    above, if the TV asks for a pairing code on its "Wireless debugging" screen,
    use `adb pair` first.
-b) Take the measurements and list the packages.
-c) Sort the packages into three groups and show me a table: (1) definitely junk:
-   unused streaming apps, demos, screensavers, voice assistants, setup wizards,
-   telemetry; (2) depends on me: ask whether I actually use them; (3) untouchable.
-   Get my approval and start with group 1.
-d) Halve the animation speeds:
+   - On macOS, if adb says "No route to host" even though the port is open,
+     macOS Local Network privacy is blocking it. Do not debug that: use the
+     Python `adb-shell` package in a venv as the ADB client instead.
+   - Ask me what is plugged into the TV's USB ports. Some TVs cut power to
+     them while USB debugging is on, so a USB speaker or drive goes dead.
+b) Back up and measure (rule 3).
+c) Look for a ready-made list: if github.com/Gathin23/cleanyourtv has an
+   `examples/` folder for my model or a close one, read its `debloat.txt`
+   and the notes at the top, and use it as a starting point. Still check
+   every package on my TV against rule 6.
+d) Sort the packages into a table and show it to me:
+   (1) telemetry, ad tracking (ACR such as Samba TV, Alphonso, Anoki) and
+       the manufacturer's analytics;
+   (2) the manufacturer's ad and content services: recommendation rows,
+       content feeds, store demo mode;
+   (3) background services I probably do not need: duplicate cast and share
+       services, cleaners;
+   (4) preloaded apps;
+   (5) depends on me (rule 7);
+   (6) untouchable (rule 6).
+   Get my approval and start with groups 1 and 2.
+e) Halve the animation speeds:
       settings put global window_animation_scale 0.5
       settings put global transition_animation_scale 0.5
       settings put global animator_duration_scale 0.5
-e) Clear caches with `pm trim-caches 999G`.
-f) Reboot the TV and take the measurements again.
+f) Clear caches with `pm trim-caches 999G`.
+g) Reboot the TV, check it with a screenshot and take the measurements again.
 
 REPLACE THE HOME SCREEN
 Google TV's own home screen is full of ads and "recommended for you" rows. I
 want to use FLauncher instead (it is on the Play Store, free, open source, and
 shows nothing but a grid of my apps).
 - First ask me to install FLauncher and confirm that it is installed.
-- Have me open FLauncher once and set it as the home screen.
-- Only then disable `com.google.android.apps.tv.launcherx`.
-- Reboot the TV and confirm the home screen is still FLauncher.
+- List the apps that claim the home screen:
+     cmd package query-activities -a android.intent.action.MAIN -c android.intent.category.HOME
+  Set FLauncher as the default with `cmd package set-home-activity`, or have
+  me pick it on the TV.
+- On Google TV the setup wizard (com.google.android.tungsten.setupwraith) can
+  take the home screen back even after the stock one is disabled. Check
+  after a reboot, and if it does, disable it too.
+- Only then disable the stock launcher: com.google.android.apps.tv.launcherx
+  on Google TV, com.google.android.tvlauncher on Android TV.
+- Reboot the TV and confirm with a screenshot that the home screen is still
+  FLauncher.
+- If `adb install` hangs on Android 14, it is waiting for a confirmation on
+  the TV: push the APK and run `pm install -r` from the shell instead.
 
 WHEN YOU ARE DONE, GIVE ME
 1. The before/after RAM table.
 2. The list of packages you disabled, each with a one-line "what this was".
-3. A single command that undoes everything.
+3. The restore script, and a single command that undoes everything.
+4. A reminder to switch USB debugging off if anything on the TV's USB ports
+   stopped working.

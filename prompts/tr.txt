@@ -1,7 +1,7 @@
 Android TV'mi ADB üzerinden temizlemeni istiyorum. Amaç: reklam ve öneri
 şeritlerinden kurtulmak, kullanmadığım fabrika uygulamalarını kapatıp
-televizyonu hızlandırmak. Komutları sen çalıştır, ne yaptığını bana sade bir
-dille anlat.
+televizyonu hızlandırmak. Komutları sen çalıştır, her değişikliği TV'nin
+üzerinde kendin kontrol et ve ne yaptığını bana sade bir dille anlat.
 
 BENİM TV'M
 - Marka / model: BURAYA YAZ            (örnek: TCL Smart TV Pro)
@@ -15,40 +15,57 @@ KURALLAR (bunlara harfiyen uy)
 2. Root, bootloader açma, custom ROM teklif etme ve deneme. Bunlar TV'yi
    fabrika ayarına döndürür ve Widevine sertifikası L1'den L3'e düşerse
    Netflix SD çözünürlüğe iner. Kazancı yok.
-3. ÖNCE ÖLÇ. Başlamadan `dumpsys meminfo`, `pm list packages -s`,
-   `pm list packages -d` çıktılarını al ve bir dosyaya kaydet. Bitince aynı
-   ölçümü tekrarla, önce/sonra tablosu çıkar.
-4. PARTİLER HALİNDE İLERLE. Her seferinde en fazla 10 paket kapat, sonra DUR
-   ve bana şunları test ettir: kumandanın "Girişler / Kaynak" tuşu çalışıyor
-   mu, HDMI'ya geçebiliyor muyum, Netflix ve YouTube açılıyor mu, ses ve
-   klavye çalışıyor mu. Ben "tamam" demeden sonraki partiye geçme.
-5. AŞAĞIDAKİ LİSTEYİ ASLA KAPATMA (bunlar TV'yi kullanılamaz hale getirir):
+3. ÖNCE YEDEKLE VE ÖLÇ. Hiçbir şeye dokunmadan şunları bir `tv-debloat`
+   klasörüne kaydet: `pm list packages -f`, `pm list packages -d`,
+   `getprop`, `settings list global`, `settings list secure`,
+   `settings list system` ve `dumpsys meminfo`. Hemen bir geri yükleme
+   scripti başlat (`restore.sh`, Windows'ta `restore.ps1`) ve kapattığın her
+   paketi o anda ona ekle. Bitince bellek ölçümünü tekrarla, önce/sonra
+   tablosu çıkar.
+4. YAPTIĞINI TV'DE KENDİN KONTROL ET. Her partiden sonra
+   `adb shell input keyevent` ile tuşlara bas (Ana ekran, yön tuşları, Geri,
+   Girişler/Kaynak), `adb exec-out screencap -p > ekran.png` ile ekran
+   görüntüsü al ve bak: ana ekran geliyor mu, Girişler menüsü açılıyor mu,
+   HDMI'ya geçilebiliyor mu, Netflix ve YouTube hâlâ açılıyor mu? Gördüğün
+   sorunu düzeltmeden devam etme. Canlı TV ya da HDMI ekrandayken görüntü
+   boş çıkarsa önce Ana ekran tuşuna bas. Bana yalnızca ekran görüntüsünün
+   gösteremediklerini sor: ses, kumandanın kendi tuşları, ekran klavyesi.
+5. KÜÇÜK PARTİLER, HER SEFERİNDE TEK KOMUT. Bir partide en fazla 10 paket
+   kapat. Her `pm` komutunu ayrı bir shell çağrısında çalıştır: zincirlenen
+   komutlar ilkinden sonra sessizce durabiliyor. Bir şey bozulursa önce son
+   partiyi geri aç, sonra tek tek dene.
+6. TV'NİN ÇALIŞMASI İÇİN GEREKENİ ASLA KAPATMA, marka ne olursa olsun:
+   - TV uygulaması ve HDMI ile anten/tuner'ı oynatan giriş servisleri
+   - Girişler/Kaynak menüsü (markanın "quick panel"i)
+   - kumanda ve Bluetooth eşleştirme servisleri
+   - ekran klavyesi (*.inputmethod.*)
+   - Play Store ve Play Servisleri: com.android.vending,
+     com.google.android.gms, com.google.android.gsf
+   - com.android.location.fused: kapatılırsa TV açılış döngüsüne girer
+   - mevcut ana ekran, yenisi kurulup varsayılan yapılana kadar
+   Paket adları çoğu zaman ne iş yaptığını söylemez. Emin olmadığın bir
+   paketi kapatmadan önce `dumpsys package <ad>` ile içindeki activity ve
+   servislere bak. Hâlâ belli değilse bana sor.
+   Örneğin TCL'de bilinen tuzaklar:
       com.tcl.suspension          -> kumandadaki Girişler/Kaynak menüsü.
                                      Adı çöp gibi durur ama kapatırsan
-                                     HDMI'ya geçemezsin. Markanın kendi
-                                     "quick panel" paketi neyse o da aynı.
+                                     HDMI'ya geçemezsin.
       com.tcl.ttvs                -> sistem güncellemesi (Ağ / USB). Adı TTS
                                      servisi gibi durur ama kapatırsan
                                      Ayarlar'daki güncelleme seçenekleri
                                      sessizce tepki vermeyi bırakır.
       com.tcl.tv, com.tcl.tvinput -> HDMI / anten giriş servisleri
+      com.tcl.providers.config,
+      com.tcl.initsetup           -> ikisinden biri kapanırsa Wi-Fi kopar
       com.google.android.tv.remote.service,
       com.tcl.tcl_bt_rcu_service,
       com.tcl.autopair            -> kumanda
-      com.google.android.gms,
-      com.google.android.gsf,
-      com.android.vending         -> Play Servisleri ve Play Store
-      com.android.location.fused  -> kapatılırsa TV açılış döngüsüne girer
-      *.inputmethod.*             -> klavye
-      com.google.android.apps.tv.launcherx
-                                  -> ana ekran. Yerine başka bir launcher
-                                     KURULMADAN kapatılırsa siyah ekran.
-   Marka farklıysa bu listenin karşılıklarını bul. Emin olamadığın bir paketi
-   kapatmadan önce bana sor.
-6. KAYIT TUT. Kapattığın her paketi bir `tv-debloat` klasöründeki `kapatilanlar.txt` dosyasına
-   yaz. aynı klasördeki `DEBLOAT-LOG.md` içinde ne yaptığını, neden yaptığını ve
-   tek tek geri alma komutlarını tut.
-7. Bir şey bozulursa önce son kapattığın partiyi geri aç, sonra tek tek dene.
+7. BANA BAĞLI OLANA DOKUNMADAN ÖNCE SOR. Yayın uygulamaları, sesli asistan,
+   Chromecast, ekran yansıtma ve sistem güncelleme servisi: bana işaretlemeli
+   bir liste göster, yalnızca işaretlemediklerimi kapat.
+8. KAYIT TUT. Kapattığın her paketi `tv-debloat` klasöründeki
+   `kapatilanlar.txt` dosyasına yaz. Aynı klasördeki `DEBLOAT-LOG.md` içinde
+   ne yaptığını, neden yaptığını ve tek tek geri alma komutlarını tut.
 
 SIRAYLA YAP
 a) Bilgisayarımda `adb` kurulu mu bak, değilse kur. Hangi işletim sistemini
@@ -59,28 +76,58 @@ a) Bilgisayarımda `adb` kurulu mu bak, değilse kur. Hangi işletim sistemini
    Televizyonda "Bu bilgisayara izin verilsin mi?" kutusu çıkacak, bana
    söyle, onaylayayım. Android 11 ve üstünde televizyon "Kablosuz hata
    ayıklama" ekranında eşleştirme kodu istiyorsa önce `adb pair` kullan.
-b) Ölçümleri al, paket listesini çıkar.
-c) Paketleri üç gruba ayır ve bana tabloyla göster: (1) kesin çöp: kullanılmayan
-   mağaza uygulamaları, demo/tanıtım, ekran koruyucu, sesli asistan, kurulum
-   sihirbazı, telemetri; (2) bana bağlı: kullanıp kullanmadığımı sor;
-   (3) dokunulmaz. Onayımı alıp 1. gruptan başla.
-d) Animasyon hızlarını yarıya indir:
+   - macOS'ta port açık olduğu hâlde adb "No route to host" diyorsa bunu
+     macOS'un Yerel Ağ gizlilik izni engelliyordur. Uğraşma: bir venv içinde
+     Python `adb-shell` paketini ADB istemcisi olarak kullan.
+   - TV'nin USB portlarına ne takılı olduğunu bana sor. Bazı TV'ler USB hata
+     ayıklama açıkken bu portların gücünü keser; USB hoparlör ya da disk
+     çalışmaz olur.
+b) Yedekle ve ölç (3. kural).
+c) Hazır bir liste ara: github.com/Gathin23/cleanyourtv içindeki `examples/`
+   klasöründe benim modelim ya da yakın bir model varsa onun `debloat.txt`
+   dosyasını ve en üstteki notlarını oku, başlangıç noktası olarak kullan.
+   Yine de TV'mdeki her paketi 6. kurala göre kontrol et.
+d) Paketleri bir tabloya ayırıp bana göster:
+   (1) telemetri, reklam takibi (Samba TV, Alphonso, Anoki gibi ACR) ve
+       üreticinin analitiği;
+   (2) üreticinin reklam ve içerik servisleri: öneri şeritleri, içerik
+       akışları, mağaza demo modu;
+   (3) muhtemelen ihtiyacım olmayan arka plan servisleri: birbirinin aynısı
+       yayınlama ve paylaşma servisleri, temizleyiciler;
+   (4) önceden yüklenmiş uygulamalar;
+   (5) bana bağlı olanlar (7. kural);
+   (6) dokunulmazlar (6. kural).
+   Onayımı al, 1. ve 2. gruptan başla.
+e) Animasyon hızlarını yarıya indir:
       settings put global window_animation_scale 0.5
       settings put global transition_animation_scale 0.5
       settings put global animator_duration_scale 0.5
-e) `pm trim-caches 999G` ile önbelleği temizle.
-f) TV'yi yeniden başlat, ölçümü tekrarla.
+f) `pm trim-caches 999G` ile önbelleği temizle.
+g) TV'yi yeniden başlat, ekran görüntüsüyle kontrol et, ölçümü tekrarla.
 
 ANA EKRANI DEĞİŞTİR
 Google TV'nin kendi ana ekranı reklam ve "önerilen içerik" şeritleriyle dolu.
 Onun yerine FLauncher kullanacağım (Play Store'da var, ücretsiz, açık kaynak,
 sadece uygulama ızgarası gösterir).
 - Önce FLauncher'ı kurmamı iste, kurulduğunu doğrula.
-- FLauncher'ı bir kez açtırıp ana ekran olarak seçtir.
-- Ancak ondan sonra `com.google.android.apps.tv.launcherx` paketini kapat.
-- TV'yi yeniden başlat, ana ekranın hâlâ FLauncher olduğunu doğrula.
+- Ana ekran olmaya aday uygulamaları listele:
+     cmd package query-activities -a android.intent.action.MAIN -c android.intent.category.HOME
+  FLauncher'ı `cmd package set-home-activity` ile varsayılan yap ya da TV'de
+  benim seçmemi iste.
+- Google TV'de kurulum sihirbazı (com.google.android.tungsten.setupwraith),
+  eski ana ekran kapatıldıktan sonra bile ana ekranı geri alabiliyor.
+  Yeniden başlatınca kontrol et, alıyorsa onu da kapat.
+- Ancak ondan sonra eski ana ekranı kapat: Google TV'de
+  com.google.android.apps.tv.launcherx, Android TV'de
+  com.google.android.tvlauncher.
+- TV'yi yeniden başlat, ekran görüntüsüyle ana ekranın hâlâ FLauncher
+  olduğunu doğrula.
+- Android 14'te `adb install` takılırsa TV'de bir onay bekliyordur: APK'yı
+  TV'ye gönder ve shell'den `pm install -r` ile kur.
 
 BİTİRİNCE BANA ŞUNLARI VER
 1. Önce/sonra RAM tablosu.
 2. Kapattığın paketlerin listesi, her birinin yanında bir cümlelik "bu neydi".
-3. Her şeyi geri almak için tek satırlık komut.
+3. Geri yükleme scripti ve her şeyi geri almak için tek satırlık komut.
+4. TV'nin USB portlarına takılı bir şey çalışmaz olduysa USB hata ayıklamayı
+   kapatmamı hatırlat.

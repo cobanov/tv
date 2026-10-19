@@ -41,19 +41,20 @@
     },
     {
       "h3": "Claude Code ya da Codex'i aç, prompt'u yapıştır",
-      "p": "Aşağıdaki metni kopyala, ilk iki satırdaki <code>BURAYA YAZ</code> yerlerine televizyonunun modelini ve IP adresini yaz, ajana ver. Gerisini o yapıyor: gereken aracı kuruyor, televizyona bağlanıyor, temizliyor. Sana ara ara \"şunu onayla, şunu test et\" diyecek."
+      "p": "Aşağıdaki metni kopyala, ilk iki satırdaki <code>BURAYA YAZ</code> yerlerine televizyonunun modelini ve IP adresini yaz, ajana ver. Gerisini o yapıyor: gereken aracı kuruyor, televizyona bağlanıyor, temizliyor. Her değişikliği ekran görüntüsüyle TV'nin üzerinde kendisi kontrol ediyor; yalnızca göremediğini sana soruyor: ses, kumanda, kullandığın uygulamalar."
     }
   ],
 
   "prompt_h2": "Prompt",
   "copy": "Kopyala",
   "copied": "Kopyalandı",
+  "prompt_credit": "Prompt, <a href=\"https://github.com/Gathin23/cleanyourtv\" rel=\"noreferrer\">cleanyourtv</a> projesinden öğrendiklerimizi de içeriyor. Orada birçok TV modeli için hazır listeler de var.",
 
-  "warn_h2": "Üç uyarı",
+  "warn_h2": "Dört uyarı",
   "warnings": [
     {
       "strong": "Adından ne olduğunu anlamadığın paketi kapatma",
-      "p": "Bende <code>com.tcl.suspension</code> kapanınca kumandanın \"Girişler\" tuşu öldü, HDMI'ya geçemedim. Meğer kaynak menüsüymüş."
+      "p": "Bende <code>com.tcl.suspension</code> kapanınca kumandanın \"Girişler\" tuşu öldü, HDMI'ya geçemedim. Meğer kaynak menüsüymüş. Bazı TCL modellerinde <code>com.tcl.providers.config</code> ve <code>com.tcl.initsetup</code> da aynı şekilde Wi-Fi'ı koparıyor."
     },
     {
       "strong": "Ana ekranı, yenisini kurmadan kapatma",
@@ -62,6 +63,10 @@
     {
       "strong": "Root yapma",
       "p": "Televizyon fabrika ayarına döner ve Widevine L3'e düşerse Netflix SD'ye iner. Kazancı yok: kalıcı silme işini <code>disable-user</code> zaten yapıyor."
+    },
+    {
+      "strong": "Bitince USB hata ayıklamayı kapat",
+      "p": "Bazı TV'ler hata ayıklama açıkken USB portlarının gücünü keser. USB hoparlör ya da disk çalışmaz olursa Geliştirici seçenekleri'nden USB hata ayıklamayı kapat."
     }
   ],
 
@@ -71,6 +76,23 @@
   "terminal_label": "terminal",
 
   "footer_source": "kaynak",
+
+  "sticker_top": "Root yok",
+  "sticker_main": "%100 geri alınabilir",
+  "ig_h2": "Instagram'da seni geri takip etmeyenleri gör",
+  "ig_p": "Tarayıcında çalışan ücretsiz bir araç. Konsola tek satır yapıştır; seni geri takip etmeyenleri listeler, birkaç tıkla takibi bırakırsın. Şifre yok, uygulama yok.",
+  "ig_cta": "Aracı aç",
+  "ig_alt": "Tarama sırasında Instagram Takip Etmeyenler paneli; geri takip etmeyen hesapları listeliyor",
+  "ol_h2": "Karar modellerini kendi bilgisayarında çalıştır",
+  "ol_p": "Herhangi bir metin ya da JSON hakkında tipli sorular sor, milisaniyeler içinde kalibre cevaplar al. Gizli, açık kaynak, kendi donanımında.",
+  "ol_cta": "Ollaya'yı indir",
+  "spot_kicker": "Reklam alanı",
+  "spot_title": "Markanı burada göster",
+  "spot_pitch": "Android TV'sini toparlayanlara on dilde ulaş.",
+  "spot_cta": "Reklam ver",
+  "spot_label": "Reklam",
+  "ig_url": "https://instagram.cobanov.dev/?ref=tv",
+  "ig_img": "instagram-panel-tr.png",
 
   "og_h1": "Android TV'ni <em>temizle</em>",
   "og_sub": "Dört adımlık hazırlık ve hazır prompt."

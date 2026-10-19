@@ -38,9 +38,13 @@ television, measures first, and then cleans up.
   being undone.
 - **No root, no bootloader, no custom ROM.** The prompt is told not to suggest them
   either, along with the reason.
-- **It measures first.** `dumpsys meminfo` and the package lists are captured to a
-  file before anything changes, then taken again at the end for a before-and-after
-  table.
+- **It backs up and measures first.** Package lists, `getprop`, every `settings`
+  table and `dumpsys meminfo` are saved before anything changes, a restore script
+  grows with each disabled package, and memory is measured again at the end for a
+  before-and-after table.
+- **It checks its own work.** After each batch of at most ten packages the agent
+  presses keys over ADB and reads a screenshot of the TV, and only asks you about
+  what a screenshot cannot show.
 - **Ten languages from one template.** The same `index.template.html` filled from ten
   JSON files, Arabic included.
 - **No server.** A static page on Cloudflare Pages.
@@ -129,3 +133,11 @@ Cloudflare Pages project: `tv`
 ./build.sh
 wrangler pages deploy public --project-name tv --branch main
 ```
+
+## Thanks
+
+The prompt borrows several lessons from [cleanyourtv](https://github.com/Gathin23/cleanyourtv):
+the full backup, checking each batch with screenshots, the brand-agnostic list of
+packages never to touch, and the pitfalls around macOS Local Network, Android 14
+installs and Google TV's setup wizard. Its `examples/` folder has ready-made lists
+for many TV models, and the prompt points the agent there.

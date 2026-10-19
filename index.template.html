@@ -126,7 +126,10 @@
 
     <main id="main">
       <div class="shell hero">
-        <h1>{{hero_h1}}</h1>
+        <div class="hero-title">
+          <h1>{{hero_h1}}</h1>
+          <p class="sticker"><span class="sticker-top">{{sticker_top}}</span><span class="sticker-main">{{sticker_main}}</span></p>
+        </div>
         <p class="hero-lede">{{hero_lede}}</p>
         <div class="related-projects">
           <span>{{related_label}}</span>
@@ -134,6 +137,23 @@
           <a class="btn btn-sm" href="https://3dprinter.cobanov.dev/?ref=tv" data-oa-event="visit-3dprinter-guide">3dprinter.cobanov.dev</a>
         </div>
       </div>
+
+      <!-- Ad slots. Class names avoid an "ad-" prefix: ad blockers hide those.
+           Once sold, a slot's contents become the creative:
+           <a class="spot spot--wide" href="ADVERTISER_URL" rel="sponsored noopener" data-label="{{spot_label}}"><img src="{{base}}assets/spots/top.png" alt="..."></a>
+           The wide slot needs 728x90 and 320x100 images; a rail needs 160x600. -->
+      <section class="spot-band" aria-label="{{spot_kicker}}">
+        <div class="shell">
+          <a class="spot spot--wide" href="mailto:mertcobanov@gmail.com?subject=tv.cobanov.dev%20ad%3A%20top%20slot" data-label="{{spot_label}}" data-oa-event="ad-top">
+            <span class="spot-copy">
+              <span class="spot-kicker">{{spot_kicker}}<span class="spot-kicker-size"> · 728×90</span></span>
+              <span class="spot-title">{{spot_title}}</span>
+            </span>
+            <span class="spot-pitch">{{spot_pitch}}</span>
+            <span class="btn btn-primary spot-cta">{{spot_cta}}</span>
+          </a>
+        </div>
+      </section>
 
       <section id="steps">
         <div class="shell">
@@ -157,6 +177,7 @@
                  the indentation and the package list readable. -->
             <pre dir="ltr"><code>{{prompt}}</code></pre>
           </div>
+          <p class="prompt-credit">{{prompt_credit}}</p>
         </div>
       </section>
 
@@ -183,7 +204,65 @@
           </div>
         </div>
       </section>
+
+      <!-- Two of Mert's other projects, each beside its own picture. -->
+      <section id="instagram" aria-labelledby="instagram-title">
+        <div class="shell xpromo">
+          <a class="xpromo-shot" href="{{ig_url}}" data-oa-event="instagram-image">
+            <img src="{{base}}assets/{{ig_img}}" width="858" height="900" alt="{{ig_alt}}" loading="lazy" decoding="async" />
+          </a>
+          <div class="xpromo-copy">
+            <p class="xpromo-brand"><span class="xpromo-mark xpromo-mark--ig" aria-hidden="true"></span>Instagram Unfollowers</p>
+            <h2 id="instagram-title">{{ig_h2}}</h2>
+            <p>{{ig_p}}</p>
+            <a class="btn btn-primary" href="{{ig_url}}" data-oa-event="visit-instagram-tool-section">{{ig_cta}}</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="ollaya" aria-labelledby="ollaya-title">
+        <div class="shell xpromo xpromo--flip">
+          <div class="xpromo-copy">
+            <p class="xpromo-brand"><span class="xpromo-mark" aria-hidden="true"></span>Ollaya</p>
+            <h2 id="ollaya-title">{{ol_h2}}</h2>
+            <p>{{ol_p}}</p>
+            <a class="btn btn-primary" href="https://ollaya.dev/?ref=tv" data-oa-event="visit-ollaya">{{ol_cta}}</a>
+          </div>
+          <!-- Real output from ollaya.dev's own demo. -->
+          <a class="code xpromo-term" href="https://ollaya.dev/?ref=tv" data-oa-event="ollaya-terminal" aria-label="Ollaya">
+            <span class="code-bar"><span class="code-label">ollaya · zsh</span></span>
+            <pre dir="ltr"><code><span class="term-prompt">$</span> ollaya run winnow:e4b \
+  "Third time this year you've double-charged
+   me. Refund it today or I'm cancelling and
+   moving to a competitor."
+
+<span class="term-key">intent          </span> refund  <span class="term-score">0.91</span>
+<span class="term-key">is_urgent       </span> yes     <span class="term-score">0.92</span>
+<span class="term-key">refund_requested</span> yes     <span class="term-score">0.99</span>
+<span class="term-key">churn_risk      </span> yes     <span class="term-score">0.99</span>
+
+<span class="term-note"># 85 ms on an RTX 4090</span></code></pre>
+          </a>
+        </div>
+      </section>
     </main>
+
+    <aside class="spot-rail spot-rail--left" aria-label="{{spot_kicker}}">
+      <a class="spot spot--rail" href="mailto:mertcobanov@gmail.com?subject=tv.cobanov.dev%20ad%3A%20left%20rail" data-label="{{spot_label}}" data-oa-event="ad-left">
+        <span class="spot-kicker">{{spot_kicker}}<span class="spot-kicker-size">160×600</span></span>
+        <span class="spot-title">{{spot_title}}</span>
+        <span class="spot-pitch">{{spot_pitch}}</span>
+        <span class="btn btn-primary spot-cta">{{spot_cta}}</span>
+      </a>
+    </aside>
+    <aside class="spot-rail spot-rail--right" aria-label="{{spot_kicker}}">
+      <a class="spot spot--rail" href="mailto:mertcobanov@gmail.com?subject=tv.cobanov.dev%20ad%3A%20right%20rail" data-label="{{spot_label}}" data-oa-event="ad-right">
+        <span class="spot-kicker">{{spot_kicker}}<span class="spot-kicker-size">160×600</span></span>
+        <span class="spot-title">{{spot_title}}</span>
+        <span class="spot-pitch">{{spot_pitch}}</span>
+        <span class="btn btn-primary spot-cta">{{spot_cta}}</span>
+      </a>
+    </aside>
 
     <footer>
       <div class="shell footer-inner">

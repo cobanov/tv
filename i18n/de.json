@@ -41,19 +41,20 @@
     },
     {
       "h3": "Claude Code oder Codex öffnen und den Prompt einfügen",
-      "p": "Kopier den Text unten, ersetz die beiden <code>HIER EINTRAGEN</code> durch Modell und IP-Adresse deines Fernsehers und gib ihn dem Agenten. Den Rest erledigt er: Werkzeug installieren, sich mit dem Fernseher verbinden, aufräumen. Zwischendurch hält er an und bittet dich, etwas zu bestätigen oder zu testen."
+      "p": "Kopier den Text unten, ersetz die beiden <code>HIER EINTRAGEN</code> durch Modell und IP-Adresse deines Fernsehers und gib ihn dem Agenten. Den Rest erledigt er: Werkzeug installieren, sich mit dem Fernseher verbinden, aufräumen. Jede Änderung prüft er per Screenshot am Fernseher selbst und hält nur an, um nach dem zu fragen, was er nicht sehen kann: Ton, Fernbedienung, die Apps, die du nutzt."
     }
   ],
 
   "prompt_h2": "Prompt",
   "copy": "Kopieren",
   "copied": "Kopiert",
+  "prompt_credit": "Der Prompt übernimmt Lektionen aus <a href=\"https://github.com/Gathin23/cleanyourtv\" rel=\"noreferrer\">cleanyourtv</a>, wo es außerdem fertige Listen für viele Fernsehermodelle gibt.",
 
-  "warn_h2": "Drei Warnungen",
+  "warn_h2": "Vier Warnungen",
   "warnings": [
     {
       "strong": "Deaktivier kein Paket, das du nicht am Namen erkennst",
-      "p": "Bei mir hat das Deaktivieren von <code>com.tcl.suspension</code> die Taste „Quellen“ auf der Fernbedienung getötet, ich kam nicht mehr auf HDMI. Es war das Menü zur Eingangswahl."
+      "p": "Bei mir hat das Deaktivieren von <code>com.tcl.suspension</code> die Taste „Quellen“ auf der Fernbedienung getötet, ich kam nicht mehr auf HDMI. Es war das Menü zur Eingangswahl. Bei manchen TCL-Modellen kappen <code>com.tcl.providers.config</code> und <code>com.tcl.initsetup</code> auf dieselbe Weise das WLAN."
     },
     {
       "strong": "Deaktivier den Startbildschirm nicht, bevor ein neuer installiert ist",
@@ -62,6 +63,10 @@
     {
       "strong": "Kein Root",
       "p": "Das Entsperren des Bootloaders setzt den Fernseher zurück, und wenn Widevine auf L3 fällt, läuft Netflix nur noch in SD. Es bringt nichts: <code>disable-user</code> tut schon das, was Root täte."
+    },
+    {
+      "strong": "Schalte USB-Debugging am Ende aus",
+      "p": "Manche Fernseher schalten ihre USB-Anschlüsse stromlos, solange Debugging an ist. Fällt ein USB-Lautsprecher oder eine Festplatte aus, schalte USB-Debugging in den Entwickleroptionen aus."
     }
   ],
 
@@ -71,6 +76,23 @@
   "terminal_label": "Terminal",
 
   "footer_source": "Quellcode",
+
+  "sticker_top": "Kein Root",
+  "sticker_main": "100 % umkehrbar",
+  "ig_h2": "Sieh, wer dir auf Instagram nicht zurückfolgt",
+  "ig_p": "Ein kostenloses Tool, das in deinem Browser läuft. Füg eine Zeile in die Konsole ein, und es listet alle, die dir nicht zurückfolgen; entfolgen geht mit ein paar Klicks. Kein Passwort, keine App.",
+  "ig_cta": "Tool öffnen",
+  "ig_alt": "Das Instagram-Unfollowers-Panel während eines Scans mit den Konten, die nicht zurückfolgen",
+  "ol_h2": "Entscheidungsmodelle lokal ausführen",
+  "ol_p": "Stell typisierte Fragen zu beliebigem Text oder JSON und erhalte kalibrierte Antworten in Millisekunden. Privat, Open Source, auf deiner eigenen Hardware.",
+  "ol_cta": "Ollaya holen",
+  "spot_kicker": "Werbefläche",
+  "spot_title": "Deine Marke hier",
+  "spot_pitch": "Erreiche Leute, die ihren Android TV aufräumen, in zehn Sprachen.",
+  "spot_cta": "Werben",
+  "spot_label": "Anzeige",
+  "ig_url": "https://instagram.cobanov.dev/?lang=en&amp;ref=tv",
+  "ig_img": "instagram-panel-en.png",
 
   "og_h1": "Räum deinen <em>Android TV</em> auf",
   "og_sub": "Vier Schritte und ein fertiger Prompt."

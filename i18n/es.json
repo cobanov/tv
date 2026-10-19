@@ -41,19 +41,20 @@
     },
     {
       "h3": "Abre Claude Code o Codex y pega el prompt",
-      "p": "Copia el texto de abajo, sustituye los dos <code>RELLENA ESTO</code> por el modelo y la IP de tu tele, y dáselo al agente. Del resto se encarga él: instalar la herramienta, conectarse a la tele, hacer la limpieza. De vez en cuando parará para pedirte que apruebes o pruebes algo."
+      "p": "Copia el texto de abajo, sustituye los dos <code>RELLENA ESTO</code> por el modelo y la IP de tu tele, y dáselo al agente. Del resto se encarga él: instalar la herramienta, conectarse a la tele, hacer la limpieza. Comprueba cada cambio en la propia tele con capturas de pantalla y solo se detiene para preguntarte lo que no puede ver: el sonido, el mando, las apps que usas."
     }
   ],
 
   "prompt_h2": "Prompt",
   "copy": "Copiar",
   "copied": "Copiado",
+  "prompt_credit": "El prompt incorpora lecciones de <a href=\"https://github.com/Gathin23/cleanyourtv\" rel=\"noreferrer\">cleanyourtv</a>, que además tiene listas ya hechas para muchos modelos de tele.",
 
-  "warn_h2": "Tres advertencias",
+  "warn_h2": "Cuatro advertencias",
   "warnings": [
     {
       "strong": "No desactives un paquete que no sepas identificar por el nombre",
-      "p": "En mi tele, al desactivar <code>com.tcl.suspension</code> murió el botón «Fuentes» del mando y ya no podía pasar a HDMI. Resultó ser el menú de selección de entrada."
+      "p": "En mi tele, al desactivar <code>com.tcl.suspension</code> murió el botón «Fuentes» del mando y ya no podía pasar a HDMI. Resultó ser el menú de selección de entrada. En algunos modelos de TCL, <code>com.tcl.providers.config</code> y <code>com.tcl.initsetup</code> cortan el Wi-Fi de la misma manera."
     },
     {
       "strong": "No desactives la pantalla de inicio antes de instalar otra",
@@ -62,6 +63,10 @@
     {
       "strong": "No hagas root",
       "p": "Desbloquear el bootloader restaura la tele de fábrica, y si Widevine baja a L3 Netflix se queda en SD. No hay nada que ganar: <code>disable-user</code> ya hace lo que haría el root."
+    },
+    {
+      "strong": "Apaga la depuración USB al terminar",
+      "p": "Algunas teles cortan la corriente de sus puertos USB mientras la depuración está activa. Si un altavoz o un disco USB deja de funcionar, desactiva la depuración USB en las opciones de desarrollador."
     }
   ],
 
@@ -71,6 +76,23 @@
   "terminal_label": "terminal",
 
   "footer_source": "código",
+
+  "sticker_top": "Sin root",
+  "sticker_main": "100 % reversible",
+  "ig_h2": "Descubre quién no te sigue de vuelta en Instagram",
+  "ig_p": "Una herramienta gratuita que funciona en tu navegador. Pega una línea en la consola y te muestra a todos los que no te siguen de vuelta; déjalos de seguir con unos clics. Sin contraseña, sin app.",
+  "ig_cta": "Abrir la herramienta",
+  "ig_alt": "El panel de Instagram Unfollowers durante un análisis, con las cuentas que no te siguen de vuelta",
+  "ol_h2": "Ejecuta modelos de decisión en local",
+  "ol_p": "Haz preguntas tipadas sobre cualquier texto o JSON y obtén respuestas calibradas en milisegundos. Privado, de código abierto y en tu propio hardware.",
+  "ol_cta": "Descargar Ollaya",
+  "spot_kicker": "Espacio publicitario",
+  "spot_title": "Pon tu marca aquí",
+  "spot_pitch": "Llega a quienes ponen a punto su Android TV, en diez idiomas.",
+  "spot_cta": "Anunciar",
+  "spot_label": "Anuncio",
+  "ig_url": "https://instagram.cobanov.dev/?lang=en&amp;ref=tv",
+  "ig_img": "instagram-panel-en.png",
 
   "og_h1": "Limpia tu <em>Android TV</em>",
   "og_sub": "Cuatro pasos y un prompt listo para pegar."

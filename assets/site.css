@@ -276,6 +276,53 @@ body::after {
   color: var(--muted);
 }
 
+/* Başlığın köşesine yapıştırılmış etiket: beyaz kesim kenarı, yeşil zemin,
+   hafif eğik. Arapça sayfada öbür köşeye geçip öbür yana eğiliyor. */
+.hero-title { position: relative; width: fit-content; max-width: 100%; }
+
+.sticker {
+  --tilt: 7deg;
+  position: absolute;
+  top: -3.3rem;
+  inset-inline-end: -2.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  margin: 0;
+  padding: 8px 15px 10px;
+  border: 3px solid #fff;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #6ff0a8 0%, #3ddc84 45%, #22c3a6 100%);
+  color: var(--on-accent);
+  line-height: 1.1;
+  text-align: center;
+  transform: rotate(var(--tilt));
+  box-shadow: 0 16px 32px -12px rgba(61, 220, 132, 0.6), 0 2px 0 rgba(0, 0, 0, 0.18);
+  pointer-events: none;
+}
+[dir="rtl"] .sticker { --tilt: -7deg; }
+
+.sticker-top {
+  font: 600 0.6875rem/1.2 var(--font-mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.sticker-main { font-size: 1.0625rem; font-weight: 700; letter-spacing: -0.01em; white-space: nowrap; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .sticker { animation: sticker-in 0.7s var(--ease) 0.25s both; }
+  @keyframes sticker-in {
+    from { opacity: 0; transform: rotate(calc(var(--tilt) * 2.5)) scale(1.5); }
+    to { opacity: 1; transform: rotate(var(--tilt)) scale(1); }
+  }
+}
+
+@media (max-width: 639px) {
+  .sticker { top: -3rem; inset-inline-end: -0.25rem; padding: 6px 12px 8px; }
+  .sticker-main { font-size: 0.9375rem; }
+}
+
 .related-projects {
   display: flex;
   flex-wrap: wrap;
@@ -305,6 +352,9 @@ body::after {
   transition: background 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease);
 }
 .btn:hover { background: var(--surface-2); border-color: var(--ink); }
+
+.btn-primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); font-weight: 600; }
+.btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
 
 /* --- çapraz tanıtım şeridi ----------------------------------------------- */
 
@@ -507,6 +557,9 @@ section { padding-block: var(--section-y); border-top: 1px solid var(--line); }
 /* İstemin kendisi uzun; kutuyu sınırla ki sayfa okunur kalsın. */
 .code-prompt pre { max-height: 380px; overflow-y: auto; white-space: pre-wrap; }
 .code-prompt pre code { white-space: pre-wrap; }
+.prompt-credit { margin: 12px 0 0; max-width: var(--prose); font-size: var(--step--1); color: var(--muted); }
+.prompt-credit a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.prompt-credit a:hover { color: var(--ink); }
 
 /* --- notlar -------------------------------------------------------------- */
 
@@ -523,6 +576,131 @@ section { padding-block: var(--section-y); border-top: 1px solid var(--line); }
 .note:last-child { margin-bottom: 0; }
 .note p { margin: 0; font-size: var(--step--1); color: var(--muted); }
 .note p strong { display: block; color: var(--ink); font-size: var(--step-0); margin-bottom: 4px; }
+
+/* --- reklam alanları ----------------------------------------------------- */
+
+/* Satılmamış alan sitenin kendi parçalarından bir afiş: yüzey, mono üst
+   yazı, yeşil şerit, hap düğme. Tıklayınca Mert'e mail açılıyor. Satılınca
+   içine görsel giriyor ve köşesine o dilde "Reklam" etiketi geliyor. Sınıf
+   adları "ad-" ile başlamıyor: reklam engelleyiciler onları gizliyor. */
+section.spot-band { padding-block: 28px; }
+
+.spot {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  margin-inline: auto;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: radial-gradient(120% 140% at 0% 0%, rgba(61, 220, 132, 0.14), transparent 55%), var(--surface);
+  color: var(--muted);
+  font-size: var(--step--1);
+  text-decoration: none;
+  transition: border-color 0.25s var(--ease);
+}
+.spot::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: linear-gradient(90deg, #6ff0a8, #3ddc84 50%, #22c3a6);
+}
+.spot:hover, .spot:focus-visible { border-color: var(--accent); }
+.spot:hover .spot-cta { background: var(--accent-hover); border-color: var(--accent-hover); }
+
+.spot-kicker { color: var(--code-muted); font: 500 0.6875rem/1.2 var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; }
+.spot-title { color: var(--ink); font-weight: 600; letter-spacing: -0.01em; line-height: 1.15; text-wrap: balance; }
+.spot-pitch { line-height: 1.45; }
+.spot-cta { flex: none; min-height: 34px; padding: 0 16px; }
+
+.spot--wide { width: min(728px, 100%); height: 90px; align-items: center; gap: 20px; padding-inline: 24px 20px; }
+.spot-copy { display: flex; flex-direction: column; gap: 6px; flex: none; }
+.spot--wide .spot-title { font-size: var(--step-1); }
+.spot--wide .spot-pitch { flex: 1 1 auto; min-width: 0; }
+
+.spot--rail {
+  width: 160px;
+  height: 600px;
+  flex-direction: column;
+  gap: 16px;
+  padding: 26px 16px 18px;
+  background: radial-gradient(160% 60% at 50% 0%, rgba(61, 220, 132, 0.18), transparent 70%), var(--surface);
+}
+.spot--rail .spot-title { font-size: 1.5rem; }
+.spot--rail .spot-kicker-size { display: block; margin-top: 4px; }
+.spot--rail .spot-cta { width: 100%; margin-top: auto; justify-content: center; }
+
+.spot:has(img) { padding: 0; border-color: var(--line); background: var(--surface); }
+.spot:has(img)::before { content: none; }
+.spot img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.spot:has(img)::after {
+  content: attr(data-label);
+  position: absolute;
+  top: 4px;
+  inset-inline-end: 4px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 0.625rem;
+}
+
+/* Dikey alanlar 900px sütunun iki yanındaki boşlukta sabit duruyor; o boşluk
+   160px ve nefes payını taşıyacak kadar genişse görünüyor. */
+.spot-rail { display: none; }
+@media (min-width: 1360px) and (min-height: 760px) {
+  .spot-rail { position: fixed; top: 50%; z-index: 10; display: block; border-radius: var(--radius-sm); background: var(--bg); transform: translateY(-50%); }
+  .spot-rail--left { left: calc((100% - var(--measure)) / 4 - 80px); }
+  .spot-rail--right { right: calc((100% - var(--measure)) / 4 - 80px); }
+}
+
+@media (max-width: 639px) {
+  .spot--wide { width: min(320px, 100%); height: 100px; gap: 12px; padding-inline: 16px 14px; }
+  .spot--wide .spot-pitch, .spot--wide .spot-kicker-size { display: none; }
+  .spot-copy { flex: 1 1 auto; }
+}
+
+/* --- diğer projeler ------------------------------------------------------ */
+
+/* Görsel bir yanda, metin öbür yanda; ikinci bölüm tersine dönüyor ki iki
+   kart alt alta aynı ritmi tekrar etmesin. */
+.xpromo {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(28px, 5vw, 56px);
+  align-items: center;
+}
+.xpromo--flip { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+
+.xpromo-shot {
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #0d1014;
+  box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.9);
+}
+.xpromo-shot img { display: block; width: 100%; height: auto; transition: transform 0.6s var(--ease); }
+.xpromo-shot:hover img { transform: scale(1.02); }
+
+.xpromo-brand { display: flex; align-items: center; gap: 10px; margin: 0 0 16px; color: var(--ink); font-weight: 600; }
+.xpromo-mark { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+.xpromo-mark--ig { background: linear-gradient(135deg, #feda75, #fa7e1e 30%, #d62976 60%, #962fbf); }
+.xpromo-copy h2 { font-size: var(--step-3); letter-spacing: -0.02em; }
+.xpromo-copy p:not(.xpromo-brand) { margin: 14px 0 22px; color: var(--muted); max-width: 48ch; }
+
+.xpromo-term { display: block; margin: 0; color: inherit; text-decoration: none; transition: border-color 0.25s var(--ease); }
+.xpromo-term:hover { border-color: var(--line-strong); }
+.xpromo-term pre { overflow-x: auto; }
+.term-prompt { color: var(--accent); }
+.term-key { color: var(--code-muted); }
+.term-score { color: var(--accent); }
+.term-note { color: var(--code-muted); }
+
+@media (max-width: 759px) {
+  .xpromo, .xpromo--flip { grid-template-columns: minmax(0, 1fr); }
+  .xpromo-shot { max-width: 420px; }
+}
 
 /* --- alt bilgi ----------------------------------------------------------- */
 

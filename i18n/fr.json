@@ -41,19 +41,20 @@
     },
     {
       "h3": "Ouvrez Claude Code ou Codex et collez le prompt",
-      "p": "Copiez le texte ci-dessous, remplacez les deux mentions <code>À COMPLÉTER</code> par le modèle et l'adresse IP de votre téléviseur, puis donnez-le à l'agent. Il s'occupe du reste : installer les outils, se connecter au téléviseur, faire le ménage. Il s'arrêtera de temps en temps pour vous demander de valider ou de tester quelque chose."
+      "p": "Copiez le texte ci-dessous, remplacez les deux mentions <code>À COMPLÉTER</code> par le modèle et l'adresse IP de votre téléviseur, puis donnez-le à l'agent. Il s'occupe du reste : installer les outils, se connecter au téléviseur, faire le ménage. Il vérifie chaque changement sur le téléviseur lui-même avec des captures d'écran et ne s'arrête que pour vous demander ce qu'il ne voit pas : le son, la télécommande, les applications que vous utilisez."
     }
   ],
 
   "prompt_h2": "Prompt",
   "copy": "Copier",
   "copied": "Copié",
+  "prompt_credit": "Ce prompt reprend des leçons de <a href=\"https://github.com/Gathin23/cleanyourtv\" rel=\"noreferrer\">cleanyourtv</a>, qui propose aussi des listes toutes prêtes pour de nombreux modèles de téléviseurs.",
 
-  "warn_h2": "Trois avertissements",
+  "warn_h2": "Quatre avertissements",
   "warnings": [
     {
       "strong": "Ne désactivez jamais un paquet dont le nom ne vous dit rien",
-      "p": "Sur mon téléviseur, désactiver <code>com.tcl.suspension</code> a tué la touche « Sources » de la télécommande et je ne pouvais plus passer en HDMI. C'était en fait le menu de sélection des entrées."
+      "p": "Sur mon téléviseur, désactiver <code>com.tcl.suspension</code> a tué la touche « Sources » de la télécommande et je ne pouvais plus passer en HDMI. C'était en fait le menu de sélection des entrées. Sur certains modèles TCL, <code>com.tcl.providers.config</code> et <code>com.tcl.initsetup</code> coupent le Wi-Fi de la même façon."
     },
     {
       "strong": "Ne désactivez pas l'écran d'accueil avant d'en installer un autre",
@@ -62,6 +63,10 @@
     {
       "strong": "Ne le rootez pas",
       "p": "Déverrouiller le bootloader réinitialise le téléviseur, et si Widevine tombe en L3, Netflix repasse en SD. Il n'y a rien à y gagner : <code>disable-user</code> fait déjà ce que ferait le root."
+    },
+    {
+      "strong": "Désactivez le débogage USB à la fin",
+      "p": "Certains téléviseurs coupent l'alimentation de leurs ports USB tant que le débogage est actif. Si une enceinte ou un disque USB ne fonctionne plus, désactivez le débogage USB dans les options pour les développeurs."
     }
   ],
 
@@ -71,6 +76,23 @@
   "terminal_label": "terminal",
 
   "footer_source": "source",
+
+  "sticker_top": "Sans root",
+  "sticker_main": "100 % réversible",
+  "ig_h2": "Découvrez qui ne vous suit pas en retour sur Instagram",
+  "ig_p": "Un outil gratuit qui fonctionne dans votre navigateur. Collez une ligne dans la console : il liste tous ceux qui ne vous suivent pas en retour, et vous vous désabonnez en quelques clics. Ni mot de passe, ni appli.",
+  "ig_cta": "Ouvrir l'outil",
+  "ig_alt": "Le panneau Instagram Unfollowers pendant une analyse, avec les comptes qui ne vous suivent pas en retour",
+  "ol_h2": "Faites tourner des modèles de décision en local",
+  "ol_p": "Posez des questions typées sur n'importe quel texte ou JSON et obtenez des réponses calibrées en quelques millisecondes. Privé, open source, sur votre propre matériel.",
+  "ol_cta": "Obtenir Ollaya",
+  "spot_kicker": "Espace publicitaire",
+  "spot_title": "Votre marque ici",
+  "spot_pitch": "Touchez les personnes qui optimisent leur Android TV, en dix langues.",
+  "spot_cta": "Annoncer",
+  "spot_label": "Pub",
+  "ig_url": "https://instagram.cobanov.dev/?lang=en&amp;ref=tv",
+  "ig_img": "instagram-panel-en.png",
 
   "og_h1": "Nettoyez votre <em>Android TV</em>",
   "og_sub": "Quatre étapes et un prompt prêt à coller."
