@@ -633,10 +633,49 @@ section.spot-band { padding-block: 28px; }
 
 /* Sağ afişte Mert'in kendi projesi: marka satırı, terminal, kısa tanıtım. */
 .spot-brand { display: flex; align-items: center; gap: 8px; color: var(--ink); font-size: 0.75rem; font-weight: 600; }
-.spot-mark { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
-.spot-term { margin: 0; padding: 8px 6px; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: var(--code-bg); color: var(--ink); font: 0.625rem/1.6 var(--font-mono); white-space: pre; }
-.term-prompt, .term-score { color: var(--accent); }
-.term-key, .term-note { color: var(--code-muted); }
+/* Ollaya kendi kimliğiyle: siyah kart, baykuş, skor çubuklu terminal, beyaz düğme. */
+.spot--ollaya {
+  gap: 14px;
+  padding: 22px 14px 16px;
+  border-color: #262626;
+  background: radial-gradient(140% 50% at 50% 0%, rgba(121, 192, 255, 0.16), transparent 70%), #0a0a0a;
+  color: #a3a3a3;
+}
+.spot--ollaya::before { background: linear-gradient(90deg, #79c0ff, #7ee2a8); }
+.spot--ollaya:hover, .spot--ollaya:focus-visible { border-color: #79c0ff; }
+.spot--ollaya .spot-title { color: #fafafa; font-size: 1.25rem; font-weight: 500; letter-spacing: -0.02em; line-height: 1.1; }
+.spot--ollaya .spot-pitch { line-height: 1.4; }
+
+.ol-brand { display: flex; align-items: center; gap: 6px; color: #fafafa; }
+/* Logo hep soldan sağa okunur; Arapça sayfada sağa yaslanır. */
+[dir="rtl"] .ol-brand { justify-content: flex-end; }
+.ol-owl { flex: none; width: 22px; height: 22px; }
+.ol-name { font-size: 1rem; font-weight: 500; letter-spacing: -0.02em; }
+.ol-beta { padding: 0 6px; border: 1px solid #404040; border-radius: 999px; color: #a3a3a3; font-size: 0.625rem; line-height: 15px; }
+
+.ol-term { flex: none; display: block; overflow: hidden; border: 1px solid #262626; border-radius: 8px; background: #111; box-shadow: 0 0 60px -24px rgba(121, 192, 255, 0.35); font: 0.625rem/1.55 var(--font-mono); }
+.ol-dots { display: flex; gap: 4px; padding: 6px 8px; border-bottom: 1px solid #262626; }
+.ol-dots i { width: 6px; height: 6px; border-radius: 50%; background: #ff5f57; }
+.ol-dots i:nth-child(2) { background: #febc2e; }
+.ol-dots i:nth-child(3) { background: #28c840; }
+.ol-body { display: flex; flex-direction: column; gap: 6px; padding: 8px 6px; color: #fafafa; }
+.ol-cmd { display: block; }
+.ol-p, .ol-k { color: #8b949e; }
+.ol-fn { color: #ffc36b; }
+.ol-str { display: block; color: #7ee2a8; }
+.ol-row { display: flex; flex-direction: column; gap: 2px; }
+.ol-kv { white-space: nowrap; }
+.ol-meter { display: flex; align-items: center; gap: 6px; }
+.ol-bar { flex: 1; height: 3px; border-radius: 2px; background: linear-gradient(90deg, #79c0ff, #7ee2a8) 0 / calc(var(--p) * 100%) 100% no-repeat, #262626; }
+.ol-score { color: #fafafa; font-variant-numeric: tabular-nums; }
+
+.ol-stat { display: flex; flex-direction: column; gap: 2px; }
+.ol-stat b { color: #fafafa; font-size: 1.75rem; font-weight: 600; letter-spacing: -0.03em; line-height: 1; }
+.ol-stat span { font-size: 0.75rem; line-height: 1.35; }
+
+.ol-cta { display: inline-flex; align-items: center; justify-content: center; gap: 6px; width: 100%; min-height: 34px; margin-top: auto; border-radius: 999px; background: #f5f5f5; color: #0a0a0a; font-weight: 600; }
+.ol-cta svg { width: 15px; height: 15px; }
+.spot--ollaya:hover .ol-cta { background: #fff; }
 
 .spot:has(> img) { padding: 0; border-color: var(--line); background: var(--surface); }
 .spot:has(> img)::before { content: none; }

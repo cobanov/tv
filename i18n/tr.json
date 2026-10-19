@@ -79,8 +79,9 @@
 
   "sticker_top": "Root yok",
   "sticker_main": "%100 geri alınır",
-  "ol_h2": "Karar modellerini kendi bilgisayarında çalıştır",
-  "ol_p": "Her metin hakkında milisaniyede tipli cevaplar, kendi donanımında.",
+  "ol_h2": "Karar modellerini yerelde çalıştır",
+  "ol_p": "Tipli, kalibre cevaplar. Veri sende kalır, açık kaynak.",
+  "ol_stat": "RTX 4090'da beş cevap",
   "ol_cta": "Ollaya'yı indir",
   "spot_kicker": "Reklam alanı",
   "spot_title": "Markanı burada göster",

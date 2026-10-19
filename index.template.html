@@ -39,7 +39,7 @@
       href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="{{base}}assets/site.css?v=2026-10-19c" />
+    <link rel="stylesheet" href="{{base}}assets/site.css?v=2026-10-19d" />
     <script
       async
       src="https://oa-c.cobanov.run/oa.js"
@@ -146,7 +146,7 @@
         <div class="shell">
           <a class="spot spot--wide" href="mailto:mertcobanov@gmail.com?subject=tv.cobanov.dev%20ad%3A%20top%20slot" data-label="{{spot_label}}" data-oa-event="ad-top">
             <span class="spot-copy">
-              <span class="spot-kicker">{{spot_kicker}}<span class="spot-kicker-size"> · 728×90</span></span>
+              <span class="spot-kicker">{{spot_kicker}}<span class="spot-kicker-size"> · <bdi>728×90</bdi></span></span>
               <span class="spot-title">{{spot_title}}</span>
             </span>
             <span class="spot-pitch">{{spot_pitch}}</span>
@@ -210,29 +210,30 @@
     <!-- Left: open for an advertiser. Right: Mert's Ollaya until someone buys it. -->
     <aside class="spot-rail spot-rail--left" aria-label="{{spot_kicker}}">
       <a class="spot spot--rail" href="mailto:mertcobanov@gmail.com?subject=tv.cobanov.dev%20ad%3A%20left%20rail" data-label="{{spot_label}}" data-oa-event="ad-left">
-        <span class="spot-kicker">{{spot_kicker}}<span class="spot-kicker-size">160×600</span></span>
+        <span class="spot-kicker">{{spot_kicker}}<span class="spot-kicker-size"><bdi>160×600</bdi></span></span>
         <span class="spot-title spot-title--open">{{spot_title}}</span>
         <span class="spot-pitch">{{spot_pitch}}</span>
         <span class="btn btn-primary spot-cta">{{spot_cta}}</span>
       </a>
     </aside>
     <aside class="spot-rail spot-rail--right" aria-label="Ollaya">
-      <a class="spot spot--rail" href="https://ollaya.dev/?ref=tv" data-oa-event="rail-ollaya">
-        <span class="spot-brand"><span class="spot-mark" aria-hidden="true"></span>Ollaya</span>
+      <!-- Dressed in ollaya.dev's own look: black card, owl, terminal with score bars, white button. -->
+      <a class="spot spot--rail spot--ollaya" href="https://ollaya.dev/?ref=tv" data-oa-event="rail-ollaya">
+        <span class="ol-brand" dir="ltr"><svg class="ol-owl" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 5.5 10.5 9.5Q16 7.5 21.5 9.5L26 5.5V19Q26 27.5 16 27.5T6 19Z"/><circle cx="11.5" cy="15.5" r="3.25"/><circle cx="20.5" cy="15.5" r="3.25"/><circle cx="11.5" cy="15.5" r="1.1" fill="currentColor" stroke="none"/><circle cx="20.5" cy="15.5" r="1.1" fill="currentColor" stroke="none"/><path d="M14.75 21 16 23l1.25-2"/></svg><span class="ol-name">ollaya</span><span class="ol-beta">Beta</span></span>
         <span class="spot-title">{{ol_h2}}</span>
-        <!-- Real output from ollaya.dev's own demo. -->
-        <pre class="spot-term" dir="ltr"><span class="term-prompt">$</span> ollaya run \
- "…Refund it today
-  or I'm cancelling
-  and moving to a
-  competitor."
-
-<span class="term-key">intent</span> refund <span class="term-score">0.91</span>
-<span class="term-key">urgent</span> yes    <span class="term-score">0.92</span>
-<span class="term-key">churn </span> yes    <span class="term-score">0.99</span>
-<span class="term-note"># 85 ms · RTX 4090</span></pre>
+        <!-- Real output from ollaya.dev's own demo, two of its five rows. -->
+        <span class="ol-term" dir="ltr" aria-hidden="true">
+          <span class="ol-dots"><i></i><i></i><i></i></span>
+          <span class="ol-body">
+            <span class="ol-cmd"><span class="ol-p">$</span> <span class="ol-fn">ollaya</span> run<br />&nbsp; winnow:e4b</span>
+            <span class="ol-str">"…Refund it today or I'm cancelling…"</span>
+            <span class="ol-row" style="--p: 0.91"><span class="ol-kv"><span class="ol-k">intent</span> refund</span><span class="ol-meter"><span class="ol-bar"></span><span class="ol-score">0.91</span></span></span>
+            <span class="ol-row" style="--p: 0.99"><span class="ol-kv"><span class="ol-k">churn_risk</span> yes</span><span class="ol-meter"><span class="ol-bar"></span><span class="ol-score">0.99</span></span></span>
+          </span>
+        </span>
+        <span class="ol-stat"><b><bdi>85 ms</bdi></b><span>{{ol_stat}}</span></span>
         <span class="spot-pitch">{{ol_p}}</span>
-        <span class="btn btn-primary spot-cta">{{ol_cta}}</span>
+        <span class="ol-cta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>{{ol_cta}}</span>
       </a>
     </aside>
 
