@@ -79,10 +79,6 @@
 
   "sticker_top": "root不要",
   "sticker_main": "すべて元に戻せる",
-  "ig_h2": "Instagramでフォローを返していない人を見つける",
-  "ig_p": "無料でブラウザで動きます。パスワードもアプリも不要です。",
-  "ig_cta": "ツールを開く",
-  "ig_alt": "スキャン中のInstagram Unfollowersパネル。フォローを返していないアカウントの一覧",
   "ol_h2": "判断モデルをローカルで動かす",
   "ol_p": "どんなテキストにも型付きの答えをミリ秒で。あなたのハードウェア上で動きます。",
   "ol_cta": "Ollayaを入手",
@@ -91,8 +87,6 @@
   "spot_pitch": "Android TVを整えている人に、10言語で届けましょう。",
   "spot_cta": "広告を出す",
   "spot_label": "広告",
-  "ig_url": "https://instagram.cobanov.dev/?lang=en&amp;ref=tv",
-  "ig_img": "instagram-panel-en.png",
 
   "og_h1": "<em>Android TV</em> をきれいにする",
   "og_sub": "四つの手順と、貼るだけのプロンプト。"

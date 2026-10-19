@@ -79,10 +79,6 @@
 
   "sticker_top": "Kein Root",
   "sticker_main": "100 % umkehrbar",
-  "ig_h2": "Sieh, wer dir auf Instagram nicht zurückfolgt",
-  "ig_p": "Kostenlos, im Browser. Kein Passwort, keine App.",
-  "ig_cta": "Tool öffnen",
-  "ig_alt": "Das Instagram-Unfollowers-Panel während eines Scans mit den Konten, die nicht zurückfolgen",
   "ol_h2": "Entscheidungsmodelle lokal ausführen",
   "ol_p": "Typisierte Antworten zu jedem Text in Millisekunden, auf deiner eigenen Hardware.",
   "ol_cta": "Ollaya holen",
@@ -91,8 +87,6 @@
   "spot_pitch": "Erreiche Leute, die ihren Android TV aufräumen, in zehn Sprachen.",
   "spot_cta": "Werben",
   "spot_label": "Anzeige",
-  "ig_url": "https://instagram.cobanov.dev/?lang=en&amp;ref=tv",
-  "ig_img": "instagram-panel-en.png",
 
   "og_h1": "Räum deinen <em>Android TV</em> auf",
   "og_sub": "Vier Schritte und ein fertiger Prompt."

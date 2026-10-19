@@ -80,10 +80,6 @@
 
   "sticker_top": "无需 root",
   "sticker_main": "100% 可撤销",
-  "ig_h2": "看看 Instagram 上谁没有回关你",
-  "ig_p": "免费，在浏览器里运行。不要密码，也不用装应用。",
-  "ig_cta": "打开工具",
-  "ig_alt": "扫描中的 Instagram Unfollowers 面板，列出没有回关的账号",
   "ol_h2": "在本地运行决策模型",
   "ol_p": "对任何文本给出类型化的回答，毫秒级，跑在你自己的硬件上。",
   "ol_cta": "获取 Ollaya",
@@ -92,8 +88,6 @@
   "spot_pitch": "触达正在优化 Android TV 的用户，覆盖十种语言。",
   "spot_cta": "投放广告",
   "spot_label": "广告",
-  "ig_url": "https://instagram.cobanov.dev/?lang=en&amp;ref=tv",
-  "ig_img": "instagram-panel-en.png",
 
   "og_h1": "清理你的 <em>Android TV</em>",
   "og_sub": "四步准备，一段现成提示词。"

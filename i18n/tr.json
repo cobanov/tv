@@ -79,10 +79,6 @@
 
   "sticker_top": "Root yok",
   "sticker_main": "%100 geri alınır",
-  "ig_h2": "Instagram'da seni geri takip etmeyenleri gör",
-  "ig_p": "Ücretsiz, tarayıcında çalışır. Şifre yok, uygulama yok.",
-  "ig_cta": "Aracı aç",
-  "ig_alt": "Tarama sırasında Instagram Takip Etmeyenler paneli; geri takip etmeyen hesapları listeliyor",
   "ol_h2": "Karar modellerini kendi bilgisayarında çalıştır",
   "ol_p": "Her metin hakkında milisaniyede tipli cevaplar, kendi donanımında.",
   "ol_cta": "Ollaya'yı indir",
@@ -91,8 +87,6 @@
   "spot_pitch": "Android TV'sini toparlayanlara on dilde ulaş.",
   "spot_cta": "Reklam ver",
   "spot_label": "Reklam",
-  "ig_url": "https://instagram.cobanov.dev/?ref=tv",
-  "ig_img": "instagram-panel-tr.png",
 
   "og_h1": "Android TV'ni <em>temizle</em>",
   "og_sub": "Dört adımlık hazırlık ve hazır prompt."

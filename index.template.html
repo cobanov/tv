@@ -39,7 +39,7 @@
       href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="{{base}}assets/site.css?v=2026-10-19b" />
+    <link rel="stylesheet" href="{{base}}assets/site.css?v=2026-10-19c" />
     <script
       async
       src="https://oa-c.cobanov.run/oa.js"
@@ -207,14 +207,13 @@
 
     </main>
 
-    <!-- The side banners show two of Mert's own projects until someone buys them. -->
-    <aside class="spot-rail spot-rail--left" aria-label="Instagram Unfollowers">
-      <a class="spot spot--rail spot--ig" href="{{ig_url}}" data-oa-event="rail-instagram">
-        <span class="spot-brand"><span class="spot-mark" aria-hidden="true"></span>Instagram Unfollowers</span>
-        <span class="spot-title">{{ig_h2}}</span>
-        <span class="spot-shot"><img src="{{base}}assets/{{ig_img}}" width="384" height="640" alt="{{ig_alt}}" loading="lazy" decoding="async" /></span>
-        <span class="spot-pitch">{{ig_p}}</span>
-        <span class="btn btn-primary spot-cta">{{ig_cta}}</span>
+    <!-- Left: open for an advertiser. Right: Mert's Ollaya until someone buys it. -->
+    <aside class="spot-rail spot-rail--left" aria-label="{{spot_kicker}}">
+      <a class="spot spot--rail" href="mailto:mertcobanov@gmail.com?subject=tv.cobanov.dev%20ad%3A%20left%20rail" data-label="{{spot_label}}" data-oa-event="ad-left">
+        <span class="spot-kicker">{{spot_kicker}}<span class="spot-kicker-size">160×600</span></span>
+        <span class="spot-title spot-title--open">{{spot_title}}</span>
+        <span class="spot-pitch">{{spot_pitch}}</span>
+        <span class="btn btn-primary spot-cta">{{spot_cta}}</span>
       </a>
     </aside>
     <aside class="spot-rail spot-rail--right" aria-label="Ollaya">

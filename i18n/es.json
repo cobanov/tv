@@ -79,10 +79,6 @@
 
   "sticker_top": "Sin root",
   "sticker_main": "100 % reversible",
-  "ig_h2": "Descubre quién no te sigue de vuelta en Instagram",
-  "ig_p": "Gratis, en tu navegador. Sin contraseña ni app.",
-  "ig_cta": "Abrir la herramienta",
-  "ig_alt": "El panel de Instagram Unfollowers durante un análisis, con las cuentas que no te siguen de vuelta",
   "ol_h2": "Ejecuta modelos de decisión en local",
   "ol_p": "Respuestas tipadas sobre cualquier texto en milisegundos, en tu propio hardware.",
   "ol_cta": "Descargar Ollaya",
@@ -91,8 +87,6 @@
   "spot_pitch": "Llega a quienes ponen a punto su Android TV, en diez idiomas.",
   "spot_cta": "Anunciar",
   "spot_label": "Anuncio",
-  "ig_url": "https://instagram.cobanov.dev/?lang=en&amp;ref=tv",
-  "ig_img": "instagram-panel-en.png",
 
   "og_h1": "Limpia tu <em>Android TV</em>",
   "og_sub": "Cuatro pasos y un prompt listo para pegar."

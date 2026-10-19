@@ -627,16 +627,13 @@ section.spot-band { padding-block: 28px; }
   background: radial-gradient(160% 60% at 50% 0%, rgba(61, 220, 132, 0.18), transparent 70%), var(--surface);
 }
 .spot--rail .spot-title { font-size: 1.125rem; }
+.spot--rail .spot-title--open { font-size: 1.5rem; }
+.spot--rail .spot-kicker-size { display: block; margin-top: 4px; }
 .spot--rail .spot-cta { width: 100%; margin-top: auto; justify-content: center; }
 
-/* Yan afişlerde Mert'in kendi projeleri: marka satırı, görsel, kısa tanıtım. */
+/* Sağ afişte Mert'in kendi projesi: marka satırı, terminal, kısa tanıtım. */
 .spot-brand { display: flex; align-items: center; gap: 8px; color: var(--ink); font-size: 0.75rem; font-weight: 600; }
 .spot-mark { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
-.spot--ig { background: radial-gradient(160% 60% at 50% 0%, rgba(214, 41, 118, 0.2), transparent 70%), var(--surface); }
-.spot--ig::before, .spot--ig .spot-mark { background: linear-gradient(135deg, #feda75, #fa7e1e 30%, #d62976 60%, #962fbf); }
-.spot--ig:hover, .spot--ig:focus-visible { border-color: #d62976; }
-.spot-shot { display: block; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: #0d1014; }
-.spot-shot img { display: block; width: 100%; height: auto; }
 .spot-term { margin: 0; padding: 8px 6px; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: var(--code-bg); color: var(--ink); font: 0.625rem/1.6 var(--font-mono); white-space: pre; }
 .term-prompt, .term-score { color: var(--accent); }
 .term-key, .term-note { color: var(--code-muted); }
