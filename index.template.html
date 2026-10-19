@@ -205,62 +205,35 @@
         </div>
       </section>
 
-      <!-- Two of Mert's other projects, each beside its own picture. -->
-      <section id="instagram" aria-labelledby="instagram-title">
-        <div class="shell xpromo">
-          <a class="xpromo-shot" href="{{ig_url}}" data-oa-event="instagram-image">
-            <img src="{{base}}assets/{{ig_img}}" width="858" height="900" alt="{{ig_alt}}" loading="lazy" decoding="async" />
-          </a>
-          <div class="xpromo-copy">
-            <p class="xpromo-brand"><span class="xpromo-mark xpromo-mark--ig" aria-hidden="true"></span>Instagram Unfollowers</p>
-            <h2 id="instagram-title">{{ig_h2}}</h2>
-            <p>{{ig_p}}</p>
-            <a class="btn btn-primary" href="{{ig_url}}" data-oa-event="visit-instagram-tool-section">{{ig_cta}}</a>
-          </div>
-        </div>
-      </section>
-
-      <section id="ollaya" aria-labelledby="ollaya-title">
-        <div class="shell xpromo xpromo--flip">
-          <div class="xpromo-copy">
-            <p class="xpromo-brand"><span class="xpromo-mark" aria-hidden="true"></span>Ollaya</p>
-            <h2 id="ollaya-title">{{ol_h2}}</h2>
-            <p>{{ol_p}}</p>
-            <a class="btn btn-primary" href="https://ollaya.dev/?ref=tv" data-oa-event="visit-ollaya">{{ol_cta}}</a>
-          </div>
-          <!-- Real output from ollaya.dev's own demo. -->
-          <a class="code xpromo-term" href="https://ollaya.dev/?ref=tv" data-oa-event="ollaya-terminal" aria-label="Ollaya">
-            <span class="code-bar"><span class="code-label">ollaya · zsh</span></span>
-            <pre dir="ltr"><code><span class="term-prompt">$</span> ollaya run winnow:e4b \
-  "Third time this year you've double-charged
-   me. Refund it today or I'm cancelling and
-   moving to a competitor."
-
-<span class="term-key">intent          </span> refund  <span class="term-score">0.91</span>
-<span class="term-key">is_urgent       </span> yes     <span class="term-score">0.92</span>
-<span class="term-key">refund_requested</span> yes     <span class="term-score">0.99</span>
-<span class="term-key">churn_risk      </span> yes     <span class="term-score">0.99</span>
-
-<span class="term-note"># 85 ms on an RTX 4090</span></code></pre>
-          </a>
-        </div>
-      </section>
     </main>
 
-    <aside class="spot-rail spot-rail--left" aria-label="{{spot_kicker}}">
-      <a class="spot spot--rail" href="mailto:mertcobanov@gmail.com?subject=tv.cobanov.dev%20ad%3A%20left%20rail" data-label="{{spot_label}}" data-oa-event="ad-left">
-        <span class="spot-kicker">{{spot_kicker}}<span class="spot-kicker-size">160×600</span></span>
-        <span class="spot-title">{{spot_title}}</span>
-        <span class="spot-pitch">{{spot_pitch}}</span>
-        <span class="btn btn-primary spot-cta">{{spot_cta}}</span>
+    <!-- The side banners show two of Mert's own projects until someone buys them. -->
+    <aside class="spot-rail spot-rail--left" aria-label="Instagram Unfollowers">
+      <a class="spot spot--rail spot--ig" href="{{ig_url}}" data-oa-event="rail-instagram">
+        <span class="spot-brand"><span class="spot-mark" aria-hidden="true"></span>Instagram Unfollowers</span>
+        <span class="spot-title">{{ig_h2}}</span>
+        <span class="spot-shot"><img src="{{base}}assets/{{ig_img}}" width="384" height="640" alt="{{ig_alt}}" loading="lazy" decoding="async" /></span>
+        <span class="spot-pitch">{{ig_p}}</span>
+        <span class="btn btn-primary spot-cta">{{ig_cta}}</span>
       </a>
     </aside>
-    <aside class="spot-rail spot-rail--right" aria-label="{{spot_kicker}}">
-      <a class="spot spot--rail" href="mailto:mertcobanov@gmail.com?subject=tv.cobanov.dev%20ad%3A%20right%20rail" data-label="{{spot_label}}" data-oa-event="ad-right">
-        <span class="spot-kicker">{{spot_kicker}}<span class="spot-kicker-size">160×600</span></span>
-        <span class="spot-title">{{spot_title}}</span>
-        <span class="spot-pitch">{{spot_pitch}}</span>
-        <span class="btn btn-primary spot-cta">{{spot_cta}}</span>
+    <aside class="spot-rail spot-rail--right" aria-label="Ollaya">
+      <a class="spot spot--rail" href="https://ollaya.dev/?ref=tv" data-oa-event="rail-ollaya">
+        <span class="spot-brand"><span class="spot-mark" aria-hidden="true"></span>Ollaya</span>
+        <span class="spot-title">{{ol_h2}}</span>
+        <!-- Real output from ollaya.dev's own demo. -->
+        <pre class="spot-term" dir="ltr"><span class="term-prompt">$</span> ollaya run \
+ "…Refund it today
+  or I'm cancelling
+  and moving to a
+  competitor."
+
+<span class="term-key">intent</span> refund <span class="term-score">0.91</span>
+<span class="term-key">urgent</span> yes    <span class="term-score">0.92</span>
+<span class="term-key">churn </span> yes    <span class="term-score">0.99</span>
+<span class="term-note"># 85 ms · RTX 4090</span></pre>
+        <span class="spot-pitch">{{ol_p}}</span>
+        <span class="btn btn-primary spot-cta">{{ol_cta}}</span>
       </a>
     </aside>
 

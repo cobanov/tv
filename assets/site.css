@@ -623,17 +623,28 @@ section.spot-band { padding-block: 28px; }
   height: 600px;
   flex-direction: column;
   gap: 16px;
-  padding: 26px 16px 18px;
+  padding: 26px 14px 18px;
   background: radial-gradient(160% 60% at 50% 0%, rgba(61, 220, 132, 0.18), transparent 70%), var(--surface);
 }
-.spot--rail .spot-title { font-size: 1.5rem; }
-.spot--rail .spot-kicker-size { display: block; margin-top: 4px; }
+.spot--rail .spot-title { font-size: 1.125rem; }
 .spot--rail .spot-cta { width: 100%; margin-top: auto; justify-content: center; }
 
-.spot:has(img) { padding: 0; border-color: var(--line); background: var(--surface); }
-.spot:has(img)::before { content: none; }
-.spot img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.spot:has(img)::after {
+/* Yan afişlerde Mert'in kendi projeleri: marka satırı, görsel, kısa tanıtım. */
+.spot-brand { display: flex; align-items: center; gap: 8px; color: var(--ink); font-size: 0.75rem; font-weight: 600; }
+.spot-mark { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.spot--ig { background: radial-gradient(160% 60% at 50% 0%, rgba(214, 41, 118, 0.2), transparent 70%), var(--surface); }
+.spot--ig::before, .spot--ig .spot-mark { background: linear-gradient(135deg, #feda75, #fa7e1e 30%, #d62976 60%, #962fbf); }
+.spot--ig:hover, .spot--ig:focus-visible { border-color: #d62976; }
+.spot-shot { display: block; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: #0d1014; }
+.spot-shot img { display: block; width: 100%; height: auto; }
+.spot-term { margin: 0; padding: 8px 6px; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: var(--code-bg); color: var(--ink); font: 0.625rem/1.6 var(--font-mono); white-space: pre; }
+.term-prompt, .term-score { color: var(--accent); }
+.term-key, .term-note { color: var(--code-muted); }
+
+.spot:has(> img) { padding: 0; border-color: var(--line); background: var(--surface); }
+.spot:has(> img)::before { content: none; }
+.spot > img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.spot:has(> img)::after {
   content: attr(data-label);
   position: absolute;
   top: 4px;
@@ -658,48 +669,6 @@ section.spot-band { padding-block: 28px; }
   .spot--wide { width: min(320px, 100%); height: 100px; gap: 12px; padding-inline: 16px 14px; }
   .spot--wide .spot-pitch, .spot--wide .spot-kicker-size { display: none; }
   .spot-copy { flex: 1 1 auto; }
-}
-
-/* --- diğer projeler ------------------------------------------------------ */
-
-/* Görsel bir yanda, metin öbür yanda; ikinci bölüm tersine dönüyor ki iki
-   kart alt alta aynı ritmi tekrar etmesin. */
-.xpromo {
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: clamp(28px, 5vw, 56px);
-  align-items: center;
-}
-.xpromo--flip { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-
-.xpromo-shot {
-  display: block;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: #0d1014;
-  box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.9);
-}
-.xpromo-shot img { display: block; width: 100%; height: auto; transition: transform 0.6s var(--ease); }
-.xpromo-shot:hover img { transform: scale(1.02); }
-
-.xpromo-brand { display: flex; align-items: center; gap: 10px; margin: 0 0 16px; color: var(--ink); font-weight: 600; }
-.xpromo-mark { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
-.xpromo-mark--ig { background: linear-gradient(135deg, #feda75, #fa7e1e 30%, #d62976 60%, #962fbf); }
-.xpromo-copy h2 { font-size: var(--step-3); letter-spacing: -0.02em; }
-.xpromo-copy p:not(.xpromo-brand) { margin: 14px 0 22px; color: var(--muted); max-width: 48ch; }
-
-.xpromo-term { display: block; margin: 0; color: inherit; text-decoration: none; transition: border-color 0.25s var(--ease); }
-.xpromo-term:hover { border-color: var(--line-strong); }
-.xpromo-term pre { overflow-x: auto; }
-.term-prompt { color: var(--accent); }
-.term-key { color: var(--code-muted); }
-.term-score { color: var(--accent); }
-.term-note { color: var(--code-muted); }
-
-@media (max-width: 759px) {
-  .xpromo, .xpromo--flip { grid-template-columns: minmax(0, 1fr); }
-  .xpromo-shot { max-width: 420px; }
 }
 
 /* --- alt bilgi ----------------------------------------------------------- */
