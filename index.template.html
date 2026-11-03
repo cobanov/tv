@@ -39,7 +39,7 @@
       href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="{{base}}assets/site.css?v=2026-10-19d" />
+    <link rel="stylesheet" href="{{base}}assets/site.css?v=2026-11-03" />
     <script
       async
       src="https://oa-c.cobanov.run/oa.js"
@@ -140,13 +140,14 @@
            The wide slot needs 728x90 and 320x100 images; a rail needs 160x600. -->
       <section class="spot-band" aria-label="{{spot_kicker}}">
         <div class="shell">
-          <a class="spot spot--wide" href="mailto:mertcobanov@gmail.com?subject=tv.cobanov.dev%20ad%3A%20top%20slot" data-label="{{spot_label}}" data-oa-event="ad-top">
+          <!-- bucketmark's house ad, in bucketmark's own look, until someone buys the slot. -->
+          <a class="spot spot--wide spot--bucketmark" href="https://bucketmark.app/?ref=tv" data-oa-event="band-bucketmark">
             <span class="spot-copy">
-              <span class="spot-kicker">{{spot_kicker}}<span class="spot-kicker-size"> · <bdi>728×90</bdi></span></span>
-              <span class="spot-title">{{spot_title}}</span>
+              <img class="bm-logo" src="{{base}}assets/bucketmark-logo.svg" alt="bucketmark" width="109" height="22" />
+              <span class="spot-title">{{bm_title}}</span>
             </span>
-            <span class="spot-pitch">{{spot_pitch}}</span>
-            <span class="btn btn-primary spot-cta">{{spot_cta}}</span>
+            <span class="spot-pitch">{{bm_pitch}}</span>
+            <span class="btn btn-primary spot-cta">{{bm_cta}}</span>
           </a>
         </div>
       </section>

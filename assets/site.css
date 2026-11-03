@@ -634,6 +634,16 @@ section.spot-band { padding-block: 28px; }
 /* Sağ afişte Mert'in kendi projesi: marka satırı, terminal, kısa tanıtım. */
 .spot-brand { display: flex; align-items: center; gap: 8px; color: var(--ink); font-size: 0.75rem; font-weight: 600; }
 /* Ollaya kendi kimliğiyle: siyah kart, baykuş, skor çubuklu terminal, beyaz düğme. */
+/* bucketmark's house ad in its own look: Paper card, Ink text, one Lamp Green action. */
+.spot--bucketmark { border-color: #e5e5ea; background: #f5f5f7; color: #6e6e73; }
+.spot--bucketmark::before { display: none; }
+.spot--bucketmark:hover, .spot--bucketmark:focus-visible { border-color: #10734f; }
+.spot--bucketmark .spot-title { color: #1d1d1f; }
+.spot--bucketmark .spot-cta { border-color: #10734f; background: #10734f; color: #fff; }
+.spot--bucketmark:hover .spot-cta { border-color: #0c5e41; background: #0c5e41; }
+.bm-nw { white-space: nowrap; } /* keeps "read-later" from breaking at its hyphen */
+.bm-logo { display: block; align-self: flex-start; width: auto; height: 22px; }
+
 .spot--ollaya {
   gap: 14px;
   padding: 22px 14px 16px;

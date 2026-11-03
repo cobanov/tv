@@ -11,7 +11,7 @@ set -e
 rm -rf public
 mkdir -p public/assets
 python3 build.py
-cp assets/site.css public/assets/
+cp assets/site.css assets/bucketmark-logo.svg public/assets/
 cp assets/og-*.png public/assets/
 # Ingilizce koke tasinmadan once paylasilan kartlar bu adrese bakiyor.
 cp assets/og-en.png public/assets/og.png
