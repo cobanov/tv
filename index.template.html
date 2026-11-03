@@ -60,17 +60,13 @@
         <span class="promo-bar-actions">
           <a
             class="btn btn-sm"
-            href="https://terminal.army/?ref=tv"
+            href="https://bucketmark.app/?ref=tv"
             rel="noreferrer"
-            data-oa-event="visit-terminal-army"
+            data-oa-event="visit-bucketmark"
           >
-            <svg class="promo-bar-icon" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="1.7" aria-hidden="true">
-              <rect x="2.5" y="4" width="19" height="16" rx="1" />
-              <path d="M6 9l3 3-3 3" stroke-linecap="round" stroke-linejoin="round" />
-              <path d="M12.5 15h5" stroke-linecap="round" />
-            </svg>
+            <svg class="promo-bar-icon" viewBox="0 0 256 256" aria-hidden="true"><path fill="#5CC995" fill-rule="evenodd" d="M72 0 H184 A72 72 0 0 1 256 72 V184 A72 72 0 0 1 184 256 H72 A72 72 0 0 1 0 184 V72 A72 72 0 0 1 72 0 Z M32 192 V72 A40 40 0 0 1 72 32 H184 A40 40 0 0 1 224 72 V192 A16 16 0 0 1 192 192 V136 A24 24 0 0 0 168 112 H88 A24 24 0 0 0 64 136 V192 A16 16 0 0 1 32 192 Z"/></svg>
             <span class="promo-full">{{promo_full}}</span>
-            <span class="promo-tiny">terminal.army</span>
+            <span class="promo-tiny">bucketmark</span>
           </a>
           <a
             class="btn btn-sm btn-more"
@@ -319,7 +315,7 @@
 
         var dismissed = false;
         try {
-          var at = Number(localStorage.getItem("tv-promo-closed") || 0);
+          var at = Number(localStorage.getItem("tv-promo-closed-bucketmark") || 0);
           dismissed = at > 0 && Date.now() - at < QUIET_DAYS * 86400000;
         } catch (e) {
           // Private window, or storage refused. Showing it is the safe answer.
@@ -350,7 +346,7 @@
               }, 550);
             }
             try {
-              localStorage.setItem("tv-promo-closed", String(Date.now()));
+              localStorage.setItem("tv-promo-closed-bucketmark", String(Date.now()));
             } catch (e) {
               // Closing it for this visit is still right; it simply returns later.
             }
